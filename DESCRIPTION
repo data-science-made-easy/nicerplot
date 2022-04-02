@@ -6,6 +6,7 @@ Authors@R: person("Martijn", "Dijkstra", email = "info@RConsultant.nl", role = c
 Description: Use functions plot(my_data_frame, title = 'Nicer Plot', style = 'no-legend', pdf = TRUE) or
     plot('my-plot-data.xlsx') to create elegant data visualizations and save them in high resolution PNG or PDF.
 License: MIT + file LICENSE
+Language: en-US
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 StagedInstall: no

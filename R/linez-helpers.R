@@ -1,0 +1,1 @@
+is_line <- function(type) is.element(type, LINE_SET)

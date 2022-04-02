@@ -4,10 +4,12 @@
 \alias{plot.mts}
 \title{plots data in mts object}
 \usage{
-\method{plot}{mts}(mat, ...)
+\method{plot}{mts}(x, ...)
 }
 \arguments{
-\item{mat}{ts object}
+\item{x}{ts object}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

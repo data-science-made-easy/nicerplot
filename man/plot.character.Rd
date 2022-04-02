@@ -4,10 +4,12 @@
 \alias{plot.character}
 \title{plots data from file or URL}
 \usage{
-\method{plot}{character}(string, ...)
+\method{plot}{character}(x, ...)
 }
 \arguments{
-\item{string}{may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl}
+\item{x}{may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

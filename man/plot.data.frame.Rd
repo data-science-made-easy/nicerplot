@@ -4,10 +4,12 @@
 \alias{plot.data.frame}
 \title{plots data in data frame}
 \usage{
-\method{plot}{data.frame}(mat, ...)
+\method{plot}{data.frame}(x, ...)
 }
 \arguments{
-\item{mat}{data.frame}
+\item{x}{data.frame}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

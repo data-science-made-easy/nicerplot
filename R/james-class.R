@@ -1,6 +1,7 @@
 #' @title nicerplot object
 #' @description creates object you can plot
 #' @param ... may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return object of class james
 #' @export
 james <- function(...) { # Arg may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()

@@ -4,10 +4,12 @@
 \alias{plot.matrix}
 \title{plots data in matrix}
 \usage{
-\method{plot}{matrix}(mat, ...)
+\method{plot}{matrix}(x, ...)
 }
 \arguments{
-\item{mat}{matrix}
+\item{x}{matrix}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

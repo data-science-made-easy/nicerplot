@@ -7,7 +7,7 @@
 james(...)
 }
 \arguments{
-\item{...}{may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()}
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 object of class james

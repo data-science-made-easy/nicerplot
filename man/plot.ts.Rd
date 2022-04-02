@@ -4,10 +4,12 @@
 \alias{plot.ts}
 \title{plots data in ts object}
 \usage{
-\method{plot}{ts}(mat, ...)
+\method{plot}{ts}(x, ...)
 }
 \arguments{
-\item{mat}{ts object}
+\item{x}{ts object}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

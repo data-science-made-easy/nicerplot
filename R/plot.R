@@ -1,18 +1,19 @@
 #' @title plots data from file or URL
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
-#' @param string may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl
+#' @param x may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 #' @export
-plot.character <- function(string, ...) {
+plot.character <- function(x, ...) {
   # string may be file or cbs-url
-  if (file.exists(string)) { # try file
+  if (file.exists(x)) { # try file
     # For now we allow only xlsx files with a 'meta' tab
-    if (!is.element(META, openxlsx::getSheetNames(string))) {
-      show_msg("Skipping file '", string, "' because it has no meta tab. Please see manual for details.")
+    if (!is.element(META, openxlsx::getSheetNames(x))) {
+      show_msg("Skipping file '", x, "' because it has no meta tab. Please see manual for details.")
       return(invisible(NULL)) # nothing to do
     } else {
       # get figs as lst
-      lst <- import(xlsx = string, ...)
+      lst <- import(xlsx = x, ...)
 
       if (0 == length(lst)) {
         print_warning("Nothing to do...")
@@ -29,69 +30,74 @@ plot.character <- function(string, ...) {
       }
     }    
   } else { # try cbs
-    if ("https://" == stringr::str_sub(string, 1, 8)) {
-      return(plot(james(data = cbs(string), ...)))
+    if ("https://" == stringr::str_sub(x, 1, 8)) {
+      return(plot(james(data = cbs(x), ...)))
     } else {
-      error_msg("File '", string, "' not found.")
+      error_msg("File '", x, "' not found.")
     }
   }
 }
 
 #' @title plots data in matrix
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
-#' @param mat matrix
+#' @param x matrix
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 #' @export
-plot.matrix <- function(mat, ...) {
-  plot(james(data = mat, ...))
+plot.matrix <- function(x, ...) {
+  plot(james(data = x, ...))
 }
 
 #' @title plots data in data frame
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
-#' @param mat data.frame
+#' @param x data.frame
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 #' @export
-plot.data.frame <- function(mat, ...) {
-  plot(james(data = mat, ...))
+plot.data.frame <- function(x, ...) {
+  plot(james(data = x, ...))
 }
 
 #' @title plots data in ts object
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
-#' @param mat ts object
+#' @param x ts object
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 #' @export
-plot.ts <- function(mat, ...) {
-  if (is.null(dim(mat))) { # mat has only one dimension
-    n <- length(mat)
+plot.ts <- function(x, ...) {
+  if (is.null(dim(x))) { # mat has only one dimension
+    n <- length(x)
   } else { # mat has >1 dimensions
-    n <- nrow(mat)
+    n <- nrow(x)
   }
-  z <- cbind(as.vector(stats::time(mat)), head(mat, n))
+  z <- cbind(as.vector(stats::time(x)), head(x, n))
   plot(james(data = z, ...))
 }
 
 #' @title plots data in mts object
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
-#' @param mat ts object
+#' @param x ts object
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 #' @export
-plot.mts <- function(mat, ...) { # multi variate time series
-  plot.ts(mat, ...)
+plot.mts <- function(x, ...) { # multi variate time series
+  plot.ts(x, ...)
 }
 
 #' @title plots data in list
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
-#' @param lst list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
+#' @param x list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 #' @export
-plot.list <- function(lst, ...) {
+plot.list <- function(x, ...) {
   # Overwrite parameters in each imported item p with those in P
   P <- list(...)
   
-  # (i) Add ... parameters to each p element lst; (ii) find out which figures to process in parallel
+  # (i) Add ... parameters to each p element lst x; (ii) find out which figures to process in parallel
   index_parallel <- NULL
-  for (i_p in seq_along(lst)) {
-    p <- lst[[i_p]]
+  for (i_p in seq_along(x)) {
+    p <- x[[i_p]]
 
     # Add super parameters to p
     if (!missing(...)) {
@@ -104,7 +110,7 @@ plot.list <- function(lst, ...) {
   }
   
   #
-  index_all        <- seq_along(lst)
+  index_all        <- seq_along(x)
   index_sequential <- setdiff(index_all, index_parallel)
   #
   # # Create figs and collect paths to those figs
@@ -112,8 +118,8 @@ plot.list <- function(lst, ...) {
   #
   # # PARALLEL
   if (length(index_parallel)) {
-    show_msg("Starting to create [", length(index_parallel), "] of [", length(lst), "] figures in parallel on [", parallel::detectCores(), "] cores...")
-    p_result_lst <- parallel::mclapply(lst[index_parallel], plot_continue_on_error)
+    show_msg("Starting to create [", length(index_parallel), "] of [", length(x), "] figures in parallel on [", parallel::detectCores(), "] cores...")
+    p_result_lst <- parallel::mclapply(x[index_parallel], plot_continue_on_error)
     
     error_text <- NULL
     for (i in seq_along(p_result_lst)) {
@@ -133,8 +139,8 @@ plot.list <- function(lst, ...) {
 
   # # SEQUENTIAL
   if (length(index_sequential)) {
-    show_msg("Starting to create [", length(index_sequential), "] of [", length(lst), "] figures sequentially...\nSet parameter 'parallel = y' in tab 'globals' in your xlsx-file to speed-up this process.\n")
-    for (p in lst[index_sequential]) paths <- c(paths, plot(p))
+    show_msg("Starting to create [", length(index_sequential), "] of [", length(x), "] figures sequentially...\nSet parameter 'parallel = y' in tab 'globals' in your xlsx-file to speed-up this process.\n")
+    for (p in x[index_sequential]) paths <- c(paths, plot(p))
   }
     
   # Check for duplicated file names
@@ -163,8 +169,9 @@ plot_continue_on_error <- function(p) {
 #' @title plots data in so-called 'james' object
 #' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
 #' @param p object of class james
+#' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-#' @export
+# @export
 plot.james <- function(p, ...) {
   print_debug_info(p)
 

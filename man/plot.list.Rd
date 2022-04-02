@@ -4,10 +4,12 @@
 \alias{plot.list}
 \title{plots data in list}
 \usage{
-\method{plot}{list}(lst, ...)
+\method{plot}{list}(x, ...)
 }
 \arguments{
-\item{lst}{list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)}
+\item{x}{list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

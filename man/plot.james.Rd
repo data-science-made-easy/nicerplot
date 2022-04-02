@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{p}{object of class james}
+
+\item{...}{you can add parameters to customize your figure (see manual)}
 }
 \value{
 path/to/result/files.png

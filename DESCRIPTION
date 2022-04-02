@@ -1,7 +1,7 @@
 Package: nicerplot
 Type: Package
 Title: Create 'Nice R'/'Nicer Plot' and Save it as PNG, PDF, JPEG or SVG
-Version: 2022.4.3
+Version: 2022.4.2
 Authors@R: person("Martijn", "Dijkstra", email = "info@RConsultant.nl", role = c("cre","aut"))
 Description: Use functions plot(my_data_frame, title = 'Nicer Plot', style = 'no-legend', pdf = TRUE, ...) or
     plot('my-plot-data.xlsx', ...) to create elegant data visualizations and save them in high resolution PNG or PDF.

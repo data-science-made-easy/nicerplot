@@ -3,6 +3,7 @@
 #' @param x may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
+#' @export plot.character
 #' @export
 plot.character <- function(x, ...) {
   # string may be file or cbs-url
@@ -43,6 +44,7 @@ plot.character <- function(x, ...) {
 #' @param x matrix
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
+#' @export plot.matrix
 #' @export
 plot.matrix <- function(x, ...) {
   plot(james(data = x, ...))
@@ -53,6 +55,7 @@ plot.matrix <- function(x, ...) {
 #' @param x data.frame
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
+#' @export plot.data.frame
 #' @export
 plot.data.frame <- function(x, ...) {
   plot(james(data = x, ...))
@@ -63,6 +66,7 @@ plot.data.frame <- function(x, ...) {
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
+#' @export plot.ts
 #' @export
 plot.ts <- function(x, ...) {
   if (is.null(dim(x))) { # mat has only one dimension
@@ -79,6 +83,7 @@ plot.ts <- function(x, ...) {
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
+#' @export plot.mts
 #' @export
 plot.mts <- function(x, ...) { # multi variate time series
   plot.ts(x, ...)
@@ -89,6 +94,7 @@ plot.mts <- function(x, ...) { # multi variate time series
 #' @param x list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
+#' @export plot.list
 #' @export
 plot.list <- function(x, ...) {
   # Overwrite parameters in each imported item p with those in P

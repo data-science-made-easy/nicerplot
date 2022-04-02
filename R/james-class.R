@@ -1,3 +1,8 @@
+#' @title nicerplot object
+#' @description creates object you can plot
+#' @param ... may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()
+#' @return object of class james
+#' @export
 james <- function(...) { # Arg may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()
   p <- list(...)
   if (1 == length(p)) {
@@ -29,6 +34,11 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
   p
 }
 
+#' @title tests if its argument has class 'james'.
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param p an R object
+#' @return boolean
+#' @export
 is.james <- function(p) "james" == class(p)
 
 force_value <- function(lst, name, val) {

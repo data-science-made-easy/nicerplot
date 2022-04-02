@@ -96,7 +96,7 @@ get_param_list_sep <- function(name) {
 
 get_param_replicate <- function() pkg.env$globals$param[which(is_yes(pkg.env$globals[[REPLICATE]]))]
 
-#' Indicate whether all values in vec are really char
+#' Indicates whether all values in vec are really char
 #' @param vec vector
 #' @import utils
 #' @keywords internal

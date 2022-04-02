@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{is_really_character}
 \alias{is_really_character}
-\title{Indicate whether all values in vec are really char}
+\title{Indicates whether all values in vec are really char}
 \usage{
 is_really_character(vec)
 }
@@ -10,6 +10,6 @@ is_really_character(vec)
 \item{vec}{vector}
 }
 \description{
-Indicate whether all values in vec are really char
+Indicates whether all values in vec are really char
 }
 \keyword{internal}

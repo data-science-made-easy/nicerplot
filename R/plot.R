@@ -1,3 +1,8 @@
+#' @title plots data from file or URL
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param string may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl
+#' @return path/to/result/files.png
+#' @export
 plot.character <- function(string, ...) {
   # string may be file or cbs-url
   if (file.exists(string)) { # try file
@@ -32,14 +37,29 @@ plot.character <- function(string, ...) {
   }
 }
 
+#' @title plots data in matrix
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param mat matrix
+#' @return path/to/result/files.png
+#' @export
 plot.matrix <- function(mat, ...) {
   plot(james(data = mat, ...))
 }
 
+#' @title plots data in data frame
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param mat data.frame
+#' @return path/to/result/files.png
+#' @export
 plot.data.frame <- function(mat, ...) {
   plot(james(data = mat, ...))
 }
 
+#' @title plots data in ts object
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param mat ts object
+#' @return path/to/result/files.png
+#' @export
 plot.ts <- function(mat, ...) {
   if (is.null(dim(mat))) { # mat has only one dimension
     n <- length(mat)
@@ -50,10 +70,20 @@ plot.ts <- function(mat, ...) {
   plot(james(data = z, ...))
 }
 
+#' @title plots data in mts object
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param mat ts object
+#' @return path/to/result/files.png
+#' @export
 plot.mts <- function(mat, ...) { # multi variate time series
   plot.ts(mat, ...)
 }
 
+#' @title plots data in list
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param lst list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
+#' @return path/to/result/files.png
+#' @export
 plot.list <- function(lst, ...) {
   # Overwrite parameters in each imported item p with those in P
   P <- list(...)
@@ -130,6 +160,11 @@ plot_continue_on_error <- function(p) {
   p
 }
 
+#' @title plots data in so-called 'james' object
+#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @param p object of class james
+#' @return path/to/result/files.png
+#' @export
 plot.james <- function(p, ...) {
   print_debug_info(p)
 

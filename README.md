@@ -1,4 +1,4 @@
-# Nice R plot
+# Nicer plot
 Time series data visualisation made easy for Excel users and R programmers.
 
 # Installation

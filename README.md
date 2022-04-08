@@ -1,10 +1,10 @@
 Time series data visualisation made easy for Excel users and R programmers.
 
 # Content
+- [Content](#content)
 - [Installation](#installation)
-  * [Download R](#download-r)
-  * [Install the `nicerplot` package](#install-the--nicerplot--package)
-- [Hello-World example](#hello-world-example)
+- [Hello World example](#hello-world-example)
+  * [Change the layout](#change-the-layout)
 - [More examples](#more-examples)
 
 # Installation
@@ -33,12 +33,19 @@ library(nicerplot)
 plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
-Please beware that `library(nicerplot)` overwrites R's default `plot` function for most data types. Alternatively, you may use `nicerplot::plot(...)` instead.
-
 Step 2 produces a figure in`./generated/hello-world.png` in your workingdirectory (see: `getwd()`), which looks like this:
 
 <img src="./inst/extdata/examples/png/Hello-World.png" width = 400>
 
-# More examples
-Below each figure in [the manual](https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html) you can find the R-code to reproduce that figure.
+## Change the layout
+Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shoulderd bars):
 
+``` R
+plot(my_data, title = 'Shouldered bars', x_title = 'x', y_title = 'y', type = 'bar--', file = 'Hello-World-shouldered-bars')
+plot(my_data, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = 'with turn = TRUE', type = 'bar=', file = 'Hello-World-stacked-bars', turn = TRUE)
+```
+
+<img src="./inst/extdata/examples/png/Hello-World-shouldered-bars.png" width = 400> <img src="./inst/extdata/examples/png/Hello-World-stacked-bars.png" width = 400>
+
+# More examples
+The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">official manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure. Please ignore the file paths in the manual.

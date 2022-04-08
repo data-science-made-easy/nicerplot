@@ -10,9 +10,9 @@ Time series data visualisation made easy for Excel users and R programmers.
 # Installation
 1. Download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
 2. Open RStudio or R, and install the package `devtools`.
-  ``` R
-  install.packages("devtools", repos = "http://cran.us.r-project.org")
-  ```
+    ``` R
+    install.packages("devtools", repos = "http://cran.us.r-project.org")
+    ```
 3. with the `devtools` package you can install `nicerplot` directly from github:
   ``` R
   devtools::install_github("data-science-made-easy/nicerplot")

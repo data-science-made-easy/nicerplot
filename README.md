@@ -1,3 +1,4 @@
+# Content
 - [Nicer plot](#nicer-plot)
 - [Installation](#installation)
   * [Download R](#download-r)
@@ -9,42 +10,36 @@
 Time series data visualisation made easy for Excel users and R programmers.
 
 # Installation
-## Download R
-First download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
+Step 1: download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
 
-## Install the `nicerplot` package
-Open RStudio or R, and install the package `devtools` if not yet done before.
+Step 2: open RStudio or R, and install the package `devtools`.
 ``` R
-if (!is.element("devtools", installed.packages())) install.packages("devtools", repos = "http://cran.us.r-project.org")
+install.packages("devtools", repos = "http://cran.us.r-project.org")
 ```
 
-With the `devtools` package you can install `nicerplot` directly from github:
+Step 3: with the `devtools` package you can install `nicerplot` directly from github:
 ``` R
 devtools::install_github("data-science-made-easy/nicerplot")
 ```
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
 
-# Hello-World example
-The following three steps create a first example.
-
-Step 1: load the package:
-``` R
-library(nicerplot)
-```
-
-Step 2: define a so-called data-frame (other data types, e.g., matrix, are fine as well):
+# Hello World example
+Step 1: define a so-called data-frame (other data types, e.g., matrix, are fine as well):
 ``` R
 x <- 0:6
 my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
 ```
 
-Step 3: plot the data given some parameters:
+Step 2: plot the data given some parameters:
 ``` R
+library(nicerplot)
 plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
-This results in the following figure `./generated/hello-world.png`:
+Please beware that `library(nicerplot)` overwrites R's default `plot` function for most data types. Alternatively, you may use `nicerplot::plot(...)` instead.
+
+Step 2 produces a figure in`./generated/hello-world.png` in your workingdirectory (see: `getwd()`), which looks like this:
 
 <img src="./inst/extdata/examples/png/Hello-World.png" width = 400>
 

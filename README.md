@@ -19,15 +19,22 @@ devtools::install_github("data-science-made-easy/nicerplot")
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
 
 # Hello-World example
-First define a so-called data-frame (other data types, e.g., matrix, are fine as well):
+The following three steps create a first example.
+
+Step 1: load the package:
+``` R
+library(nicerplot)
+```
+
+Step 2: define a so-called data-frame (other data types, e.g., matrix, are fine as well):
 ``` R
 x <- 0:6
 my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
 ```
 
-Then plot the data given some parameters:
+Step 3: plot the data given some parameters:
 ``` R
-nicerplot::plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
+plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
 This results in the following figure `./generated/hello-world.png`:

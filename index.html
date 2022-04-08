@@ -73,26 +73,42 @@
 <p>Time series data visualisation made easy for Excel users and R programmers.</p>
 </div>
 <div class="section level1">
-<h1 id="geting-james-in-r">Geting James in R<a class="anchor" aria-label="anchor" href="#geting-james-in-r"></a>
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h1>
+<div class="section level2">
+<h2 id="download-r">Download R<a class="anchor" aria-label="anchor" href="#download-r"></a>
+</h2>
 <p>First download <a href="https://www.rstudio.com" class="external-link">RStudio</a> or <a href="https://cran.r-project.org/" class="external-link">R</a>.</p>
-<p>Open it, and install the package <code>devtools</code> if not yet done before.</p>
+</div>
+<div class="section level2">
+<h2 id="install-the-nicerplot-package">Install the <code>nicerplot</code> package<a class="anchor" aria-label="anchor" href="#install-the-nicerplot-package"></a>
+</h2>
+<p>Open RStudio or R, and install the package <code>devtools</code> if not yet done before.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">is.element</a></span><span class="op">(</span><span class="st">"devtools"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span><span class="op">)</span></code></pre></div>
-<p>Install <code>james</code> directly from github and load the package:</p>
+<p>With the <code>devtools</code> package you can install <code>nicerplot</code> directly from github:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"data-science-made-easy/nicerplot"</span><span class="op">)</span></code></pre></div>
 <p>Congratulations, you now have the cutting-edge development version of <code>nicerplot</code>!</p>
 </div>
-<div class="section level1">
-<h1 id="using-nicerplot">Using <code>nicerplot</code>
-<a class="anchor" aria-label="anchor" href="#using-nicerplot"></a>
-</h1>
-<div class="section level2">
-<h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
-</h2>
-<p>To do..</p>
 </div>
+<div class="section level1">
+<h1 id="hello-world-example">Hello-World example<a class="anchor" aria-label="anchor" href="#hello-world-example"></a>
+</h1>
+<p>First define a so-called data-frame (other data types, e.g., matrix, are fine as well):</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">6</span>
+<span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x</span>, first <span class="op">=</span> <span class="op">(</span><span class="fl">6</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, second <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<p>Then plot the data given some parameters:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">nicerplot</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my_data</span>, title <span class="op">=</span> <span class="st">'Hello World'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, <span class="st">'y'</span>, footnote <span class="op">=</span> <span class="st">"just an example"</span><span class="op">)</span></code></pre></div>
+<p>This results in the following figure <code>./generated/hello-world.png</code>:</p>
+<p>…</p>
+</div>
+<div class="section level1">
+<h1 id="more-examples">More examples<a class="anchor" aria-label="anchor" href="#more-examples"></a>
+</h1>
+<p>Below each figure in <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" class="external-link">the manual</a> you can find the R-code to reproduce that figure.</p>
 </div>
 
   </div>

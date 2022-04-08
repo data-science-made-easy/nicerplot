@@ -4,7 +4,7 @@ Time series data visualisation made easy for Excel users and R programmers.
 - [Installation](#installation)
 - [Hello World example](#hello-world-example)
   * [Change the layout](#change-the-layout)
-- [More examples](#more-examples)
+- [Manual with more examples](#manual-with-more-examples)
 - [Details](#details)
 
 # Installation

@@ -14,6 +14,8 @@ init_font <- function(p) {
   print_debug_info(p)
   # p <- list(font = "RijksoverheidSansText")
 
+  if ("RijksoverheidSansText" != p$font) return(p)
+
   # if (on_windows())     path_prefix <- "M:/p_james/fonts/RijksoverheidSansText-"
   # if (on_linux_server()) path_prefix <- "~/m:/p_james/fonts/RijksoverheidSansText-"
   # if (on_mac())         path_prefix <- "~/Library/Fonts/RijksoverheidSansText-"
@@ -31,7 +33,11 @@ init_font <- function(p) {
     rijk_italic     <- paste0(path_prefix, "Italic_2_0.ttf")
     rijk_bold       <- paste0(path_prefix, "Bold_2_0.ttf")
     rijk_bolditalic <- paste0(path_prefix, "BoldItalic_2_0.ttf")
-    if (file.exists(rijk_regular)) sysfonts::font_add("RijksoverheidSansText", regular = rijk_regular, bold = rijk_bold, italic = rijk_italic, bolditalic = rijk_bolditalic)
+    if (file.exists(rijk_regular)) {
+      sysfonts::font_add("RijksoverheidSansText", regular = rijk_regular, bold = rijk_bold, italic = rijk_italic, bolditalic = rijk_bolditalic)
+    } else {
+      p$font <- "sans" # use this as backup font
+    }
   }
   
   # For pdf: TODO moet hier niet ook bold, italic, enz staan?

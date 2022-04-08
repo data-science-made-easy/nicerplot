@@ -18,8 +18,8 @@ for (sheet in openxlsx::getSheetNames(settings_file)) {
 }
 
 
-# overwrite font
-index <- which("font" == pkg.env$globals$param)
-pkg.env$globals$default[index] <- "sans"
+# overwrite font # << don't do that; just check for RijksoverheidSansText and if not available use 'sans'
+# index <- which("font" == pkg.env$globals$param)
+# pkg.env$globals$default[index] <- "sans"
 
 cat("Done.\n")

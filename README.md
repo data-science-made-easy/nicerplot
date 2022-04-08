@@ -49,3 +49,9 @@ plot(my_data, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = '
 
 # More examples
 The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">official manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure. Please ignore the file paths in the manual.
+
+# Details
+The default
+
+- font is 'RijksoverheidSansText'. If that font is unavailable, 'sans' will be selected.
+- language is Dutch, so the decimal (thousand) separator is a comma (point). Use `style = 'english'` to swap those two separators.

@@ -71,12 +71,13 @@ isolate_xlsx_and_r_script <- function(p) {
   if (!file.exists(result_dir_r)) dir.create(result_dir_r, showWarnings = F, recursive = T)
   result_file_r_data <- file.path(result_dir_r, paste0(file_base_name, ".RData"))
   result_file_r      <- file.path(result_dir_r, paste0(file_base_name, ".R"))
+  package_r_file     <- file.path(result_dir_r, paste0("plot-", file_base_name, ".R"))
 
   # save data
   dput(p$data, result_file_r_data)  
   
   #
-  ## (3) create R-script
+  ## (3a) create R-script for online manual on M-disk or james-start/www/example
   #
   write(paste0("source('", knitr::knit(text = fix_path(get_param("manual_source_R_header"))), "')"), file = result_file_r)
   write(paste0("d <- dget('", knitr::knit(text = fix_path(result_file_r_data)), "')"), result_file_r, append = T)
@@ -89,12 +90,24 @@ isolate_xlsx_and_r_script <- function(p) {
   param_vec <- c(param_vec, "open = FALSE")
   write(paste0("plot(d, ", paste0(param_vec, collapse = ", "), ")"), result_file_r, append = T)
   
+  #
+  ## (3b) create R-script for manual shipped with PACKAGE
+  #
+  xlsx_data_file <- paste0(file_base_name, ".xlsx")
+  rdata_file     <- paste0(file_base_name, ".RData")
+  write(paste0("if (file.exists('", xlsx_data_file, "') { # plot figures from Excel file:"), file = package_r_file)
+  write(paste0("  nicerplot::plot('", xlsx_data_file, "')"), file = package_r_file, append = T)
+  write(paste0("} else if (file.exists('", rdata_file, "') { # or plot figures directly in R:"), file = package_r_file, append = T)
+  write(paste0("  d <- dget('", rdata_file, "')"), file = package_r_file, append = T)
+  write(paste0("  nicerplot::plot(d, ", paste0(param_vec, collapse = ", "), ")"), file = package_r_file, append = T)
+  write(paste0("}"), file = package_r_file, append = T)
+  
   # (4) return paths
   if (!exists("generate_manual_for_james_start")) generate_manual_for_james_start <- FALSE # Man.. what a hack :-O
   if (generate_manual_for_james_start) {
-    return(list(xlsx = result_file_xlsx, rdata = result_file_r_data, r = result_file_r))
+    return(list(xlsx = result_file_xlsx, rdata = result_file_r_data, r = result_file_r, rpack = package_r_file))
   } else {
-    return(list(xlsx = fix_path(fix_path_if_manual_local_dev(result_file_xlsx)), rdata = fix_path(fix_path_if_manual_local_dev(result_file_r_data)), r = fix_path(fix_path_if_manual_local_dev(result_file_r))))
+    return(list(xlsx = fix_path(fix_path_if_manual_local_dev(result_file_xlsx)), rdata = fix_path(fix_path_if_manual_local_dev(result_file_r_data)), r = fix_path(fix_path_if_manual_local_dev(result_file_r)), rpack = fix_path(fix_path_if_manual_local_dev(package_r_file))))
   }
 }
 
@@ -149,6 +162,12 @@ figure_with_params <- function(report, id = "", ...) {
   # Create html table
   param_table <- kableExtra::kable_styling(knitr::kable(unlist(param_value), col.names = NULL, table.attr = "class=\'param\'"))
 
+  ###
+  ### HACK so we can easily put manual online
+  ### - local paths
+  ### - easier footer
+  if (!exists("generate_manual_for_package")) generate_manual_for_package <- FALSE # Man.. what a hack :-O
+
   # Figure path
   if ("geo-first-example" == id) { # TODO WORKAROUND FOR BUG ON MAC: suddenly can't read *.gpkg file anymore
     p$figure_path <- "ext/img/geo-first-example.png"
@@ -199,7 +218,7 @@ figure_with_params <- function(report, id = "", ...) {
   }
   
   html <- paste0(c(html,
-    "<span style='color:#43B546'><B>How to reproduce this figure:</B></span> copy [this xlsx-file](", path$xlsx, ") and [", get_param("james_server_2_path"), "](", james_win_lin_path, ") (starts on Windows, runs on Linux), [", get_param("james_windows_path"), "](", james_win_win_path, ") (starts on Windows, runs on Windows), or [", get_param("james_sh_path"), "](", james_sh_path, ") (starts on Linux, runs on Linux) to a personal directory and start the batch file. Alternatively, you can also run [this R-script](", path$r, ") in R (starts in R, runs in R).",
+    "<span style='color:#43B546'><B>How to reproduce this figure:</B></span> copy [this xlsx-file](", path$xlsx, ") and [", get_param("james_server_2_path"), "](", james_win_lin_path, ") (starts on Windows, runs on Linux), [", get_param("james_windows_path"), "](", james_win_win_path, ") (starts on Windows, runs on Windows), or [", get_param("james_sh_path"), "](", james_sh_path, ") (starts on Linux, runs on Linux) to a personal directory and start the batch file. Alternatively, you can also run [this R-script](", path$r, ") in R (starts in R, runs in R). If you use the package 'nicerplot', you can download the [RData file](", path$rdata, ") and [this R-script](", path$rpack, ") to plot from the Excel-file or RData in R.",
     "</td></tr>",
   "</table>"), collapse = "\n")
   

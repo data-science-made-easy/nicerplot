@@ -33,6 +33,7 @@ nicerplot::plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', fo
 This results in the following figure `./generated/hello-world.png`:
 
 [](./inst/extdata/examples/png/Hello-World.png)
+<img src="./inst/extdata/examples/png/Hello-World.png">
 
 # More examples
 Below each figure in [the manual](https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html) you can find the R-code to reproduce that figure.

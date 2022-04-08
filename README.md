@@ -1,26 +1,22 @@
+Time series data visualisation made easy for Excel users and R programmers.
+
 # Content
-- [Nicer plot](#nicer-plot)
 - [Installation](#installation)
   * [Download R](#download-r)
   * [Install the `nicerplot` package](#install-the--nicerplot--package)
 - [Hello-World example](#hello-world-example)
 - [More examples](#more-examples)
 
-# Nicer plot
-Time series data visualisation made easy for Excel users and R programmers.
-
 # Installation
-Step 1: download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
-
-Step 2: open RStudio or R, and install the package `devtools`.
-``` R
-install.packages("devtools", repos = "http://cran.us.r-project.org")
-```
-
-Step 3: with the `devtools` package you can install `nicerplot` directly from github:
-``` R
-devtools::install_github("data-science-made-easy/nicerplot")
-```
+1. Download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
+2. Open RStudio or R, and install the package `devtools`.
+  ``` R
+  install.packages("devtools", repos = "http://cran.us.r-project.org")
+  ```
+3. with the `devtools` package you can install `nicerplot` directly from github:
+  ``` R
+  devtools::install_github("data-science-made-easy/nicerplot")
+  ```
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
 

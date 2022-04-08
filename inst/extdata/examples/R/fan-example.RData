@@ -1,0 +1,9 @@
+structure(list(X1 = c(2015, 2016, 2017, 2018, 2019, 2020, 2021
+), `hicp-inflatie` = c(0.2, 0.1, 1.3, 1.6, 2.67, 1.6, 1.6), `5-95ste percentiel` = c(NA, 
+NA, NA, NA, 2.67, 1.11158279958842, 0.15025505010076), `5-95ste percentiel` = c(NA, 
+NA, NA, NA, 2.67, 2.02841720041158, 3.04974494989924), `20-80ste percentiel` = c(NA, 
+NA, NA, NA, 2.67, 1.3352959775989, 0.858153973673622), `20-80ste percentiel` = c(NA, 
+NA, NA, NA, 2.67, 1.8047040224011, 2.34184602632638), `35-65ste percentiel` = c(NA, 
+NA, NA, NA, 2.67, 1.4626946807462, 1.26052721805348), `35-65ste percentiel` = c(NA, 
+NA, NA, NA, 2.67, 1.6773053192538, 1.93947278194652)), row.names = c(NA, 
+7L), class = "data.frame")

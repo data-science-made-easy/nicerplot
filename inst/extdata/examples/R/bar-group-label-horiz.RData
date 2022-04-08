@@ -1,0 +1,5 @@
+structure(list(X1 = c("geslacht", "geslacht", "opleiding ouders", 
+"opleiding ouders"), X2 = c("jongen", "meisje", "laag", "hoog"
+), `als centraal examen meetelt` = c(8.723, 9.711, 11.197, 8.027
+), `als centraal examen niet meetelt` = c(8.752, 5.072, 7.971, 
+6.001)), row.names = c(NA, 4L), class = "data.frame")

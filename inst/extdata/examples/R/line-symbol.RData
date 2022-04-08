@@ -1,0 +1,7 @@
+structure(list(X1 = c(2018, 2019, 2020, 2021, 2022, 2023, 2024, 
+2025), `EMU-schuld (basispad)` = c(52.43, 48.71, 59.56, 62.12, 
+63.63, 64.74, 65.53, 66.39), `Financiële crisis` = c(NA, 48.71, 
+69.47, 81.01, 89.49, 96.25, 101.31, 105.24), `Europese schuldencrisis` = c(NA, 
+48.71, 64.63, 73.44, 80.52, 86.45, 91.1, 94.89), `Mondiale economische crisis` = c(NA, 
+48.71, 68.61, 80.97, 91.49, 100.6, 107.99, 114.04)), row.names = c(NA, 
+8L), class = "data.frame")

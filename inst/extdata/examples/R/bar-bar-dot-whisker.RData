@@ -1,0 +1,5 @@
+structure(list(X1 = c("scenario 1", "scenario 2", "scenario 3", 
+"scenario 4"), `random bar 1` = c(4, 1, 8, 4), `random bar 2` = c(2, 
+1, 6, 1), `random dot` = c(3.57, 1.23, 9.58, 7.05), `whisker bar 2` = c(1.5, 
+0.5, 5.5, 0.5), `whisker bar 2` = c(3, 2, 7, 2)), row.names = c(NA, 
+4L), class = "data.frame")

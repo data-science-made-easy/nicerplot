@@ -1,0 +1,14 @@
+structure(list(X1 = c("geslacht", "geslacht", "afkomst", "afkomst", 
+"afkomst", "inkomen", "inkomen", "inkomen", "opleiding ouders", 
+"opleiding ouders"), X2 = c("jongens", "meisjes", "Nederlands", 
+"Westers", "niet-Westers", "laag", "midden", "hoog", "geen HO", 
+"HO"), normaal = c(5.637, 5.219, 4.759, 5.668, 8.096, 5.636, 
+5.376, 5.176, 5.773, 4.352), corona = c(5.922, 3.345, 4.257, 
+5.294, 6.264, 5.063, 4.471, 4.368, 5.002, 3.694), `5-95% (normal)` = c(5.442, 
+5.023, 4.599, 5.061, 7.65, 5.386, 5.135, 4.875, 5.61, 4.081), 
+    `10-90% (normal)` = c(5.831, 5.416, 4.919, 6.275, 8.542, 
+    5.886, 5.617, 5.477, 5.937, 4.624), `10-90% (corona)` = c(5.723, 
+    3.184, 4.105, 4.7, 5.857, 4.828, 4.251, 4.091, 4.849, 3.442
+    ), `10-90% (corona)` = c(6.121, 3.506, 4.41, 5.889, 6.672, 
+    5.298, 4.691, 4.644, 5.156, 3.946)), row.names = c(NA, 10L
+), class = "data.frame")

@@ -1,0 +1,2 @@
+structure(list(land = c("normal", "bold", "italic", "bold\\nitalic"
+), gdp_2020 = c(1, 2, 3, 4)), row.names = c(NA, 4L), class = "data.frame")

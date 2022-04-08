@@ -1,0 +1,7 @@
+structure(list(X1 = c("Geinvesteerd in NL", "Geinvesteerd in NL", 
+"Geinvesteerd in NL", "Door NL geinvesteerd in…", "Door NL geinvesteerd in…", 
+"Door NL geinvesteerd in…"), X2 = c("FDI", "Obligaties", "Aandelen", 
+"FDI", "Obligaties", "Aandelen"), Duitsland = c(300, 200, 30, 
+100, 150, 10), Frankrijk = c(100, 200, 50, 100, 100, 10), Italie = c(50, 
+30, 10, 100, 20, 10), Spanje = c(20, 10, 10, 100, 50, 10)), row.names = c(NA, 
+6L), class = "data.frame")

@@ -1,0 +1,4 @@
+structure(list(Inkomensbron = c("Loon/Winst", "WW/AO", "Bijstand/Overige sociale voorzieningen", 
+"Pensioen/Vroegpensioen", "Overig"), `Aandeel personen met inkomensarmoede (som 100%)` = c(0.401201526799954, 
+0.0552382697034842, 0.379265624803087, 0.14709928868422, 0.072750845564812
+)), row.names = c(NA, 5L), class = "data.frame")

@@ -16,4 +16,10 @@ pkg.env$globals <- NULL
 for (sheet in openxlsx::getSheetNames(settings_file)) {
   pkg.env$globals <- rbind(pkg.env$globals, openxlsx::read.xlsx(settings_file, sheet = sheet))  
 }
+
+
+# overwrite font
+index <- which("font" == pkg.env$globals$param)
+pkg.env$globals$default[index] <- "sans"
+
 cat("Done.\n")

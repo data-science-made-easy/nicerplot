@@ -1,16 +1,9 @@
----
-title: "James' manual"
-author: "Dr. M. Dijkstra <[m.dijkstra@cpb.nl](mailto:m.dijkstra@cpb.nl)>"
-date: "Version: **`r report$james_version`**"
-output:
-  html_document:
-    number_sections: true
-    css: ext/style/style.css
-    keep_md: yes
-    toc: true
-    toc_depth: 3
-    toc_float: true
----
+- [Nicer plot](#nicer-plot)
+- [Installation](#installation)
+  * [Download R](#download-r)
+  * [Install the `nicerplot` package](#install-the--nicerplot--package)
+- [Hello-World example](#hello-world-example)
+- [More examples](#more-examples)
 
 # Nicer plot
 Time series data visualisation made easy for Excel users and R programmers.

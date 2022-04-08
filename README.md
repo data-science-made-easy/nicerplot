@@ -1,11 +1,11 @@
 Time series data visualisation made easy for Excel users and R programmers.
 
 # Content
-- [Content](#content)
 - [Installation](#installation)
 - [Hello World example](#hello-world-example)
   * [Change the layout](#change-the-layout)
 - [More examples](#more-examples)
+- [Details](#details)
 
 # Installation
 1. Download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
@@ -55,3 +55,4 @@ The default
 
 - font is 'RijksoverheidSansText'. If that font is unavailable, 'sans' will be selected.
 - language is Dutch, so the decimal (thousand) separator is a comma (point). Use `style = 'english'` to swap those two separators.
+

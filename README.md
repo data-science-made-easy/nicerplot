@@ -1,3 +1,17 @@
+---
+title: "James' manual"
+author: "Dr. M. Dijkstra <[m.dijkstra@cpb.nl](mailto:m.dijkstra@cpb.nl)>"
+date: "Version: **`r report$james_version`**"
+output:
+  html_document:
+    number_sections: true
+    css: ext/style/style.css
+    keep_md: yes
+    toc: true
+    toc_depth: 3
+    toc_float: true
+---
+
 # Nicer plot
 Time series data visualisation made easy for Excel users and R programmers.
 

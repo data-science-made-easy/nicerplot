@@ -27,7 +27,7 @@ my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
 
 Then plot the data given some parameters:
 ``` R
-nicerplot::plot(my_data, title = 'Hello World', x_title = 'x', 'y', footnote = "just an example")
+nicerplot::plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
 This results in the following figure `./generated/hello-world.png`:

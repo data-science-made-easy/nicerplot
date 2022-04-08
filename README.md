@@ -47,7 +47,7 @@ plot(my_data, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = '
 
 <img src="./inst/extdata/examples/png/Hello-World-shouldered-bars.png" width = 400> <img src="./inst/extdata/examples/png/Hello-World-stacked-bars.png" width = 400>
 
-# More examples
+# Manual with more examples
 The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">official manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure. Please ignore the file paths in the manual.
 
 # Details

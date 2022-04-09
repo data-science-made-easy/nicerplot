@@ -1,4 +1,4 @@
-Time series data visualisation made easy for Excel users and R programmers.
+Time series data visualisation made easy for Excel users and R programmers. <img src='man/figures/nicerplot-hex-logo.png' align="right" height="139" />
 
 # Content
 - [Installation](#installation)

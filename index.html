@@ -88,12 +88,13 @@
 </h1>
 <ol style="list-style-type: decimal">
 <li>Download <a href="https://www.rstudio.com" class="external-link">RStudio</a> or <a href="https://cran.r-project.org/" class="external-link">R</a>.</li>
-<li>Open RStudio or R, and install the package <code>devtools</code>: <code>R  install.packages("devtools", repos = "http://cran.us.r-project.org")</code>
+<li>Open RStudio or R, and install the package <code>devtools</code> if you don’t have it already: <code>R  install.packages("devtools", repos = "http://cran.us.r-project.org")</code>
 </li>
-<li>With the <code>devtools</code> package you can install <code>nicerplot</code> directly from github: <code>R  devtools::install_github("data-science-made-easy/nicerplot")</code>
+<li>With the <code>devtools</code> package you can install <code>nicerplot</code> directly from github. <code>R  devtools::install_github("data-science-made-easy/nicerplot")</code>
 </li>
 </ol>
 <p>Congratulations, you now have the cutting-edge development version of <code>nicerplot</code>!</p>
+<p>In some cases, however, you may prefer to install a stable release. For example, if you work together with other people, and you want to be sure that all work on the same version. In that case you can add <code>ref = &lt;tag&gt;</code> to the <code>install_github</code> call. Where <code>&lt;tag&gt;</code> is the version of the release, e.g. <code>"v2022.4.8-beta"</code>. Please find available <a href="https://github.com/data-science-made-easy/nicerplot/releases" class="external-link">releases</a> and <a href="https://github.com/data-science-made-easy/nicerplot/tags" class="external-link">tags</a> here.</p>
 </div>
 <div class="section level1">
 <h1 id="hello-world-example">Hello World example<a class="anchor" aria-label="anchor" href="#hello-world-example"></a>

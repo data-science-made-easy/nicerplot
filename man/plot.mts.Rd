@@ -15,5 +15,5 @@ plot.mts(x, ...)
 path/to/result/files.png
 }
 \description{
-Creates nice figures (png, pdf, svg, jpeg).
+Creates nice figures (PNG, PDF, SVG, JPEG).
 }

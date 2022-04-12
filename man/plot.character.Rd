@@ -15,7 +15,7 @@ plot.character(x, ...)
 path/to/result/file.png
 }
 \description{
-Creates nice figures (png, pdf, svg, jpeg).
+Creates nice figures (PNG, PDF, SVG, JPEG).
 }
 \examples{
 \dontrun{

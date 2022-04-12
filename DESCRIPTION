@@ -1,10 +1,9 @@
 Package: nicerplot
 Type: Package
-Title: Create 'Nice R'/'Nicer Plot' and Save it as PNG, PDF, JPEG or SVG
+Title: Create NiceR Plots and Save them as Png/Pdf/Jpeg/Svg
 Version: 2022.4.12
-Authors@R: person("Martijn", "Dijkstra", email = "info@RConsultant.nl", role = c("cre","aut"))
-Description: Use functions plot(my_data_frame, title = 'Nicer Plot', style = 'no-legend', pdf = TRUE, ...) or
-    plot('my-plot-data.xlsx', ...) to create elegant data visualizations and save them in high resolution PNG or PDF.
+Authors@R: person("Martijn", "Dijkstra", email = "m.dijkstra@cpb.nl", role = c("cre","aut"))
+Description: Create elegant data visualisations and save them in high resolution png or pdf. Input can be an xlsx-file, a CBS-url, a data frame, a list, a matrix, or a time-series (mts, ts) object.
 License: MIT + file LICENSE
 Language: en-US
 Encoding: UTF-8

@@ -1,5 +1,5 @@
-#' @title nicerplot object
-#' @description creates object you can plot
+#' @title Object to Save Data and Meta Data on Your Figure
+#' @description The main data object in the 'nicerplot' package has class `james`. `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement.
 #' @param ... may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return object of class james
@@ -35,8 +35,8 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
   p
 }
 
-#' @title tests if its argument has class 'james'.
-#' @description creates nice figures (png, pdf, svg, jpeg); to do: create example
+#' @title Tests if its Argument has Class 'james'.
+#' @description `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement. With `is.james` you can test whether a given object is of type `james`.
 #' @param p an R object
 #' @return boolean
 #' @export

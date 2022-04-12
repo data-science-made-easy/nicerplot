@@ -35,12 +35,12 @@ library(nicerplot)
 plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
-Step 2 produces a figure in`./generated/hello-world.png` in your workingdirectory (see: `getwd()`), which looks like this:
+Step 2 produces a figure in`./generated/hello-world.png` in your working directory (see: `getwd()`), which looks like this:
 
 <img src="./inst/extdata/examples/png/Hello-World.png" width = 400>
 
 ## Change the layout
-Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shoulderd bars):
+Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shouldered bars):
 
 ``` R
 plot(my_data, title = 'Shouldered bars', x_title = 'x', y_title = 'y', type = 'bar--', file = 'Hello-World-shouldered-bars')

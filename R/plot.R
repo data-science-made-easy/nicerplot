@@ -11,18 +11,18 @@
 #' }
 #' @export
 plot <- function(x, ...) {
-  if (class(x) == "character")       plot.character(x, ...)
-  else if (class(x) == "data.frame") plot.data.frame(x, ...)
-  else if (class(x) == "james")      plot.james(x, ...)
-  else if (class(x) == "list")       plot.list(x, ...)
-  else if (class(x) == "matrix")     plot.matrix(x, ...)
-  else if (class(x) == "mts")        plot.mts(x, ...)
-  else if (class(x) == "ts")         plot.ts(x, ...)
+  if (is.character(x))       plot.character(x, ...)
+  else if (is.data.frame(x)) plot.data.frame(x, ...)
+  else if (is.james(x))      plot.james(x, ...)
+  else if (is.list(x))       plot.list(x, ...)
+  else if (is.matrix(x))     plot.matrix(x, ...)
+  else if (is.mts(x))        plot.mts(x, ...)
+  else if (is.ts(x))         plot.ts(x, ...)
 }
 
 
 #' @title Plots Data from File or URL
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL referring to Statistics Netherlands.
 #' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).
 #' @return path/to/result/file.png
@@ -70,7 +70,7 @@ plot.character <- function(x, ...) {
 }
 
 #' @title Plots data in matrix
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x matrix
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
@@ -81,7 +81,7 @@ plot.matrix <- function(x, ...) {
 }
 
 #' @title Plots data in data frame
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x data.frame
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
@@ -92,7 +92,7 @@ plot.data.frame <- function(x, ...) {
 }
 
 #' @title Plots data in ts object
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
@@ -109,7 +109,7 @@ plot.ts <- function(x, ...) {
 }
 
 #' @title Plots data in mts object
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
@@ -120,7 +120,7 @@ plot.mts <- function(x, ...) { # multi variate time series
 }
 
 #' @title Plots data in list
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
@@ -203,7 +203,7 @@ plot_continue_on_error <- function(p) {
 }
 
 #' @title Plots data in so-called 'james' object
-#' @description Creates nice figures (png, pdf, svg, jpeg).
+#' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param p object of class james
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png

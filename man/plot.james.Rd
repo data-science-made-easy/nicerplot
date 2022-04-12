@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot.R
 \name{plot.james}
 \alias{plot.james}
-\title{plots data in so-called 'james' object}
+\title{Plots data in so-called 'james' object}
 \usage{
-\method{plot}{james}(p, ...)
+plot.james(p, ...)
 }
 \arguments{
 \item{p}{object of class james}
@@ -15,5 +15,5 @@
 path/to/result/files.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
 }

@@ -2,18 +2,26 @@
 % Please edit documentation in R/plot.R
 \name{plot.character}
 \alias{plot.character}
-\title{plots data from file or URL}
+\title{Plots Data from File or URL}
 \usage{
-\method{plot}{character}(x, ...)
+plot.character(x, ...)
 }
 \arguments{
-\item{x}{may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL refering to cbs.nl}
+\item{x}{may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL referring to Statistics Netherlands.}
 
-\item{...}{you can add parameters to customize your figure (see manual)}
+\item{...}{you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).}
 }
 \value{
-path/to/result/files.png
+path/to/result/file.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
+}
+\examples{
+\dontrun{
+# download https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx
+plot("hello-world.xlsx")
+# plot up-to-date data from CBS (Statistics Netherlands)
+plot("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD")
+}
 }

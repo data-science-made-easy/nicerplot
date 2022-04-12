@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot.R
 \name{plot.list}
 \alias{plot.list}
-\title{plots data in list}
+\title{Plots data in list}
 \usage{
-\method{plot}{list}(x, ...)
+plot.list(x, ...)
 }
 \arguments{
 \item{x}{list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)}
@@ -15,5 +15,5 @@
 path/to/result/files.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
 }

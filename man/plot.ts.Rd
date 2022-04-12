@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot.R
 \name{plot.ts}
 \alias{plot.ts}
-\title{plots data in ts object}
+\title{Plots data in ts object}
 \usage{
-\method{plot}{ts}(x, ...)
+plot.ts(x, ...)
 }
 \arguments{
 \item{x}{ts object}
@@ -15,5 +15,5 @@
 path/to/result/files.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
 }

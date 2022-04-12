@@ -2,7 +2,7 @@
 % Please edit documentation in R/james-class.R
 \name{james}
 \alias{james}
-\title{nicerplot object}
+\title{Object to Save Data and Meta Data on Your Figure}
 \usage{
 james(...)
 }
@@ -13,5 +13,5 @@ james(...)
 object of class james
 }
 \description{
-creates object you can plot
+The main data object in the 'nicerplot' package has class `james`. `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement.
 }

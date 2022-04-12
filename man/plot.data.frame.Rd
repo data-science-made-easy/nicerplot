@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot.R
 \name{plot.data.frame}
 \alias{plot.data.frame}
-\title{plots data in data frame}
+\title{Plots data in data frame}
 \usage{
-\method{plot}{data.frame}(x, ...)
+plot.data.frame(x, ...)
 }
 \arguments{
 \item{x}{data.frame}
@@ -15,5 +15,5 @@
 path/to/result/files.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
 }

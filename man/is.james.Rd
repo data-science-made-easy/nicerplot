@@ -2,7 +2,7 @@
 % Please edit documentation in R/james-class.R
 \name{is.james}
 \alias{is.james}
-\title{tests if its argument has class 'james'.}
+\title{Tests if its Argument has Class 'james'.}
 \usage{
 is.james(p)
 }
@@ -13,5 +13,5 @@ is.james(p)
 boolean
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+`james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement. With `is.james` you can test whether a given object is of type `james`.
 }

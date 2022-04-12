@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot.R
 \name{plot.matrix}
 \alias{plot.matrix}
-\title{plots data in matrix}
+\title{Plots data in matrix}
 \usage{
-\method{plot}{matrix}(x, ...)
+plot.matrix(x, ...)
 }
 \arguments{
 \item{x}{matrix}
@@ -15,5 +15,5 @@
 path/to/result/files.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
 }

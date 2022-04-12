@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot.R
 \name{plot.mts}
 \alias{plot.mts}
-\title{plots data in mts object}
+\title{Plots data in mts object}
 \usage{
-\method{plot}{mts}(x, ...)
+plot.mts(x, ...)
 }
 \arguments{
 \item{x}{ts object}
@@ -15,5 +15,5 @@
 path/to/result/files.png
 }
 \description{
-creates nice figures (png, pdf, svg, jpeg); to do: create example
+Creates nice figures (png, pdf, svg, jpeg).
 }

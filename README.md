@@ -9,16 +9,18 @@ Time series data visualisation made easy for Excel users and R programmers. <img
 
 # Installation
 1. Download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
-2. Open RStudio or R, and install the package `devtools`:
+2. Open RStudio or R, and install the package `devtools` if you don't have it already:
     ``` R
     install.packages("devtools", repos = "http://cran.us.r-project.org")
     ```
-3. With the `devtools` package you can install `nicerplot` directly from github:
+3. With the `devtools` package you can install `nicerplot` directly from github.
     ``` R
     devtools::install_github("data-science-made-easy/nicerplot")
     ```
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
+
+In some cases, however, you may prefer to install a stable release. For example, if you work together with other people, and you want to be sure that all work on the same version. In that case you can add `ref = <tag>` to the `install_github` call. Where `<tag>` is the version of the release, e.g. `"v2022.4.8-beta"`. Please find available [releases](https://github.com/data-science-made-easy/nicerplot/releases) and [tags](https://github.com/data-science-made-easy/nicerplot/tags) here.
 
 # Hello World example
 Step 1: define a so-called data-frame (other data types, e.g., matrix, are fine as well):

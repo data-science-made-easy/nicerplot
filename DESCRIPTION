@@ -13,6 +13,6 @@ StagedInstall: no
 URL: https://github.com/data-science-made-easy/nicerplot
 BugReports: https://github.com/data-science-made-easy/nicerplot/issues
 Imports:
-    methods, openxlsx, png, stringi, stringr
+    methods, openxlsx, png, stringi, stringr, digest, showtext
 Suggests:
-    cbsodataR, circlize, digest, dplyr, gifski, ISOcodes, jpeg, kableExtra, knitr, lubridate, plyr, rmarkdown, rnaturalearth, sf, showtext, extrafont, sysfonts, tidyr
+    cbsodataR, circlize, dplyr, gifski, ISOcodes, jpeg, kableExtra, knitr, lubridate, plyr, rmarkdown, rnaturalearth, sf, extrafont, sysfonts, tidyr

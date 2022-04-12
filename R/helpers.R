@@ -96,10 +96,6 @@ get_param_list_sep <- function(name) {
 
 get_param_replicate <- function() pkg.env$globals$param[which(is_yes(pkg.env$globals[[REPLICATE]]))]
 
-#' Indicates whether all values in vec are really char
-#' @param vec vector
-#' @import utils
-#' @keywords internal
 is_really_character <- function(vec) {
   if ("character" == class(vec)) {
     return("character" == class(type.convert(vec, as.is = TRUE)))

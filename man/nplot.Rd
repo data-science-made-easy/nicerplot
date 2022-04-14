@@ -9,7 +9,7 @@ nplot(x, ...)
 \arguments{
 \item{x}{data.frame, james object, matrix, mts, ts, 'path/to/file.xlsx', URL}
 
-\item{...}{you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).}
+\item{...}{you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.\{png,pdf,jpg,svg\} as a result).}
 }
 \value{
 path/to/result/file.png
@@ -20,7 +20,7 @@ an xlsx-file or in a list that combines these data structures. The result is sav
 PNG, PDF, SVG, and/or JPEG.
 }
 \details{
-'james' can help you to recycle parameters and data accross multiple figures. A 'james'
+Class 'james' can help you to recycle parameters and data accross multiple figures. A 'james'
 object also enables you also to add parameters in an incremental fashion, rather than
 putting them all in one big nplot-statement.
 }
@@ -32,5 +32,5 @@ nplot(d, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just a
 }
 }
 \seealso{
-[nicerplot::james()] to create a james object
+\code{\link{james}} to create a james object
 }

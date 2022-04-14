@@ -5,13 +5,13 @@
 #' PNG, PDF, SVG, and/or JPEG.
 #'
 #' @param x data.frame, james object, matrix, mts, ts, 'path/to/file.xlsx', URL
-#' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).
+#' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.\{png,pdf,jpg,svg\} as a result).
 #' @return path/to/result/file.png
 #' @details
-#' 'james' can help you to recycle parameters and data accross multiple figures. A 'james'
+#' Class 'james' can help you to recycle parameters and data accross multiple figures. A 'james'
 #' object also enables you also to add parameters in an incremental fashion, rather than
 #' putting them all in one big nplot-statement.
-#' @seealso [nicerplot::james()] to create a james object
+#' @seealso \code{\link{james}} to create a james object
 #' @examples
 #' \dontrun{
 #' x <- 0:6

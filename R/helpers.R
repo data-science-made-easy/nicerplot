@@ -291,7 +291,9 @@ even_elements <- function(vec) {
   if (length(vec) < 2) NULL else vec[seq(from = 2, to = length(vec), by = 2)]
 }
 
-fix_path <- function(path = '', use_local_path = F, linux_server = F) { # Don't replace use_local_path = F with use_local_path = on_mac()
+fix_path <- function(path = '', use_local_path = F, linux_server = F, return_relative_path_only = F) { # Don't replace use_local_path = F with use_local_path = on_mac()
+  if (return_relative_path_only) return(path)
+
   path_prefix <- ""
   if (get_param("install_status_production")) { # PROD
     if (get_param("install_local")) { # Local Prod = /tmp/dev, Local Dev = ~/Dropbox/cpb/git/james

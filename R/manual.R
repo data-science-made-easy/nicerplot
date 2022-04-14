@@ -88,7 +88,7 @@ isolate_xlsx_and_r_script <- function(p) {
   }
   
   param_vec <- c(param_vec, "open = FALSE")
-  write(paste0("plot(d, ", paste0(param_vec, collapse = ", "), ")"), result_file_r, append = T)
+  write(paste0("nplot(d, ", paste0(param_vec, collapse = ", "), ")"), result_file_r, append = T)
   
   #
   ## (3b) create R-script for manual shipped with PACKAGE
@@ -96,10 +96,10 @@ isolate_xlsx_and_r_script <- function(p) {
   xlsx_data_file <- paste0(file_base_name, ".xlsx")
   rdata_file     <- paste0(file_base_name, ".RData")
   write(paste0("if (file.exists('", xlsx_data_file, "') { # plot figures from Excel file:"), file = package_r_file)
-  write(paste0("  nicerplot::plot('", xlsx_data_file, "')"), file = package_r_file, append = T)
+  write(paste0("  nicerplot::nplot('", xlsx_data_file, "')"), file = package_r_file, append = T)
   write(paste0("} else if (file.exists('", rdata_file, "') { # or plot figures directly in R:"), file = package_r_file, append = T)
   write(paste0("  d <- dget('", rdata_file, "')"), file = package_r_file, append = T)
-  write(paste0("  nicerplot::plot(d, ", paste0(param_vec, collapse = ", "), ")"), file = package_r_file, append = T)
+  write(paste0("  nicerplot::nplot(d, ", paste0(param_vec, collapse = ", "), ")"), file = package_r_file, append = T)
   write(paste0("}"), file = package_r_file, append = T)
   
   # (4) return paths
@@ -160,7 +160,12 @@ figure_with_params <- function(report, id = "", ...) {
   }
 
   # Create html table
-  param_table <- kableExtra::kable_styling(knitr::kable(unlist(param_value), col.names = NULL, table.attr = "class=\'param\'"))
+  if ("html" == report$report_format) {
+    param_table <- kableExtra::kable_styling(knitr::kable(unlist(param_value), col.names = NULL, table.attr = "class=\'param\'"))
+  } else {
+    param_table <- kableExtra::kable_styling(knitr::kable(unlist(param_value), col.names = NULL))
+  }
+
 
   ###
   ### HACK so we can easily put manual online
@@ -176,7 +181,7 @@ figure_with_params <- function(report, id = "", ...) {
   } else if ("geo-participatie-gemeenten" == id) {
     p$figure_path <- "ext/img/geo-participatie-gemeenten.png"
   } else {
-    p$figure_path <- plot(p, lock = F)
+    p$figure_path <- nplot(p, lock = F)
   }
   rmd_link_to_figure <- if ("pdf" == report$report_format) paste0("\\includegraphics{", p$figure_path, "}") else paste0("![](", p$figure_path, ")")
 
@@ -218,7 +223,7 @@ figure_with_params <- function(report, id = "", ...) {
   }
   
   html <- paste0(c(html,
-    "<span style='color:#43B546'><B>How to reproduce this figure:</B></span> copy [this xlsx-file](", path$xlsx, ") and [", get_param("james_server_2_path"), "](", james_win_lin_path, ") (starts on Windows, runs on Linux), [", get_param("james_windows_path"), "](", james_win_win_path, ") (starts on Windows, runs on Windows), or [", get_param("james_sh_path"), "](", james_sh_path, ") (starts on Linux, runs on Linux) to a personal directory and start the batch file. Alternatively, you can also run [this R-script](", path$r, ") in R (starts in R, runs in R). If you use the package 'nicerplot', you can download the [RData file](", path$rdata, ") and [this R-script](", path$rpack, ") to plot from the Excel-file or RData in R.",
+    "<span style='color:#43B546'><B>How to reproduce this figure:</B></span> copy [this xlsx-file](", path$xlsx, ") and [", get_param("james_server_2_path"), "](", james_win_lin_path, ") (starts on Windows, runs on Linux), [", get_param("james_windows_path"), "](", james_win_win_path, ") (starts on Windows, runs on Windows), or [", get_param("james_sh_path"), "](", james_sh_path, ") (starts on Linux, runs on Linux) to a personal directory and start the batch file. Alternatively, you can also run [this R-script](", path$r, ") in R (starts in R, runs in R). If you use [the package 'nicerplot'](https://data-science-made-easy.github.io/nicerplot), you can download [this RData file](", path$rdata, ") and [this R-script](", path$rpack, ") to plot from the Excel-file or RData in R.",
     "</td></tr>",
   "</table>"), collapse = "\n")
   

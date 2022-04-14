@@ -35,15 +35,15 @@ set_yaml <- function(p, form) {
   if (is_set(p$report_text)) if ("---" == p$report_text[1]) return(p)
   
   yaml <- "---"
-  yaml <- c(yaml, readLines(fix_path(p$report_yaml_default, use_local_path = on_mac())))
-  if ("html" == form)       yaml <- c(yaml, readLines(fix_path(p$report_yaml_html, use_local_path = on_mac()))) else
-  if ("pdf" == form)        yaml <- c(yaml, readLines(fix_path(p$report_yaml_pdf, use_local_path = on_mac())))  else
-  if ("word" == form)       yaml <- c(yaml, readLines(fix_path(p$report_yaml_word, use_local_path = on_mac()))) else
-  if ("ioslides" == form)   yaml <- c(yaml, readLines(fix_path(p$report_yaml_ioslides, use_local_path = on_mac()))) else
-  if ("powerpoint" == form) yaml <- c(yaml, readLines(fix_path(p$report_yaml_powerpoint, use_local_path = on_mac()))) else
+  yaml <- c(yaml, readLines(fix_path(p$report_yaml_default, use_local_path = on_mac(), return_relative_path_only = T)))
+  if ("html" == form)       yaml <- c(yaml, readLines(fix_path(p$report_yaml_html, use_local_path = on_mac(), return_relative_path_only = T))) else
+  if ("pdf" == form)        yaml <- c(yaml, readLines(fix_path(p$report_yaml_pdf, use_local_path = on_mac(), return_relative_path_only = T)))  else
+  if ("word" == form)       yaml <- c(yaml, readLines(fix_path(p$report_yaml_word, use_local_path = on_mac(), return_relative_path_only = T))) else
+  if ("ioslides" == form)   yaml <- c(yaml, readLines(fix_path(p$report_yaml_ioslides, use_local_path = on_mac(), return_relative_path_only = T))) else
+  if ("powerpoint" == form) yaml <- c(yaml, readLines(fix_path(p$report_yaml_powerpoint, use_local_path = on_mac(), return_relative_path_only = T))) else
     error_msg("Add yaml for ", form)
   
-  if (p$report_table_of_content)    yaml <- c(yaml, readLines(fix_path(p$report_yaml_toc, use_local_path = on_mac())))
+  if (p$report_table_of_content)    yaml <- c(yaml, readLines(fix_path(p$report_yaml_toc, use_local_path = on_mac(), return_relative_path_only = T)))
   if (is_set(p$report_yaml_custom)) yaml <- c(yaml, p$report_yaml_custom)
   
   p$report_text <- c(yaml, "---", "", p$report_text)
@@ -53,7 +53,7 @@ set_yaml <- function(p, form) {
 
 get_user_name <- function() {
   u <- Sys.info()[["user"]]
-  unames <- dget(fix_path(get_param("user_names_file"), use_local_path = on_mac()))
+  unames <- dget(fix_path(get_param("user_names_file"), use_local_path = on_mac(), return_relative_path_only = T))
   index <- which(u == unames[,"username"])
   if (length(index)) return(unames[index, "full name"]) else return(u)
 }
@@ -83,10 +83,10 @@ create_report <- function(report) { # TODO rewrite code
     # Copy xlsx style, logo shabba
     file.copy(from = report$xlsx, to = report_dir)
     dir.create(file.path(report_dir, "ext/report"), showWarnings = F, recursive = T)
-    file.copy(fix_path(file.path("ext/style", ""), use_local_path = on_mac()), file.path(report_dir, "ext", ""), recursive = T)
-    file.copy(fix_path(file.path("ext/img", ""), use_local_path = on_mac()), file.path(report_dir, "ext", ""), recursive = T)
-    file.copy(fix_path(file.path("ext/misc", ""), use_local_path = on_mac()), file.path(report_dir, "ext", ""), recursive = T)
-    file.copy(fix_path(file.path("ext/report/kmev2021"), use_local_path = on_mac()), file.path(report_dir, "ext/report"), recursive = T)
+    file.copy(fix_path(file.path("ext/style", ""), use_local_path = on_mac(), return_relative_path_only = T), file.path(report_dir, "ext", ""), recursive = T)
+    file.copy(fix_path(file.path("ext/img", ""), use_local_path = on_mac(), return_relative_path_only = T), file.path(report_dir, "ext", ""), recursive = T)
+    file.copy(fix_path(file.path("ext/misc", ""), use_local_path = on_mac(), return_relative_path_only = T), file.path(report_dir, "ext", ""), recursive = T)
+    file.copy(fix_path(file.path("ext/report/kmev2021"), use_local_path = on_mac(), return_relative_path_only = T), file.path(report_dir, "ext/report"), recursive = T)
     if (is_set(report$report_place_files_in_input_dir)) {
       print_progress(report, "Creating directory 'input'...")
       dir.create(file.path(report_dir, "input"), showWarnings = F, recursive = T)
@@ -117,11 +117,11 @@ create_report <- function(report) { # TODO rewrite code
     
     if (add_default_text) { # write default text if no custom text
       print_progress(report, "Using default report: ", report$report_default_file)
-      write(c("", readLines(fix_path(report$report_default_file, use_local_path = on_mac()))), report$report_file, append = T)      
+      write(c("", readLines(fix_path(report$report_default_file, use_local_path = on_mac(), return_relative_path_only = T))), report$report_file, append = T)      
     }
 
     # Do we want the appendix with all info from James?
-    if (report$report_include_james_appendix) write(c("", readLines(fix_path(report$report_james_appendix_path, use_local_path = on_mac()))), report$report_file, append = T)
+    if (report$report_include_james_appendix) write(c("", readLines(fix_path(report$report_james_appendix_path, use_local_path = on_mac(), return_relative_path_only = T))), report$report_file, append = T)
 
       # Export one variable, specifically for the manual
     described_param_set <- "hoi"
@@ -191,7 +191,7 @@ plot_all_figs_in_xlsx <- function(report) {
   for (elt in lst) {
     res <- c(res, paste0("## ", elt$title, "\n\n"))
     
-    path <- plot(elt)
+    path <- nplot(elt)
     path <- if ("pdf" == report$report_format) paste0("\\includegraphics{", path, "}") else paste0("![](", path, ")")
     
     caption <- if (is_set(elt$caption)) c(elt$caption, "<BR/>\n\n") else ""

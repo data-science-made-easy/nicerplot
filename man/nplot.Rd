@@ -2,12 +2,12 @@
 % Please edit documentation in R/nplot.R
 \name{nplot}
 \alias{nplot}
-\title{Generic function to make a 'nice R plot'/'nicer plot` and save it as png, pdf, jpg and/or svg.}
+\title{Generic Function to Make a 'nice R plot'/'nicer plot` and Save it as Png, Pdf, Jpg and/or Svg}
 \usage{
 nplot(x, ...)
 }
 \arguments{
-\item{x}{'path/to/file.xlsx', 'URL', or above data types.}
+\item{x}{data.frame, james object, matrix, mts, ts, 'path/to/file.xlsx', URL}
 
 \item{...}{you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).}
 }
@@ -15,12 +15,22 @@ nplot(x, ...)
 path/to/result/file.png
 }
 \description{
-Can plot time series data from xlsx-files, certain URLs, and directly from R (`data.frame`, `james`, `list`, `matrix`, `mts`, `ts`). Saves it as png, pdf, svg, and/or jpeg.
+Plots data stored in a data.frame, james object, matrix, mts, ts, cbs.nl-type 'share data' URL,
+an xlsx-file or in a list that combines these data structures. The result is saved as
+PNG, PDF, SVG, and/or JPEG.
+}
+\details{
+An easy way of recycling parameters or data is storing them in a 'james' object. This
+enables you also to add parameters in an incremental fashion, rather than putting them
+all in one big nplot-statement.
 }
 \examples{
 \dontrun{
 x <- 0:6
-my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
-nplot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
+d <- data.frame(x, first = (6 - x)^2, second = x^2)
+nplot(d, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 }
+}
+\seealso{
+[james()] to create a james object
 }

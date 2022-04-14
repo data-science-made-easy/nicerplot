@@ -22,30 +22,33 @@
     <loc>/reference/is.james.html</loc>
   </url>
   <url>
-    <loc>/reference/is_really_character.html</loc>
-  </url>
-  <url>
     <loc>/reference/james.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.character.html</loc>
+    <loc>/reference/nplot.character.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.data.frame.html</loc>
+    <loc>/reference/nplot.data.frame.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.james.html</loc>
+    <loc>/reference/nplot.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.list.html</loc>
+    <loc>/reference/nplot.james.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.matrix.html</loc>
+    <loc>/reference/nplot.list.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.mts.html</loc>
+    <loc>/reference/nplot.matrix.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.ts.html</loc>
+    <loc>/reference/nplot.mts.html</loc>
+  </url>
+  <url>
+    <loc>/reference/nplot.ts.html</loc>
+  </url>
+  <url>
+    <loc>/reference/print.james.html</loc>
   </url>
 </urlset>

@@ -1,4 +1,4 @@
-#' @title Generic Function to Make a 'nice R plot'/'nicer plot` and Save it as Png, Pdf, Jpg and/or Svg
+#' @title Create a 'nice R plot'/'nicer plot` in Png, Pdf, Jpg and/or Svg format
 #' @description
 #' Plots data stored in a data.frame, james object, matrix, mts, ts, cbs.nl-type 'share data' URL,
 #' an xlsx-file or in a list that combines these data structures. The result is saved as

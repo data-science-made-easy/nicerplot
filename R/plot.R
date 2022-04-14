@@ -3,9 +3,11 @@
 #' @param x may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL referring to Statistics Netherlands.
 #' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).
 #' @return path/to/result/file.png
+#' @details
+#' \href{https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx}{hello-world.xlsx} is an example of an xlsx-file, which you can plot with this function. Please find many other examples in same directory.
 #' @examples
 #' \dontrun{
-#' # download https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx
+#' # please find a link to hello-world.xlsx in details above
 #' nplot("hello-world.xlsx")
 #' # plot up-to-date data from CBS (Statistics Netherlands)
 #' nplot("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD")

@@ -17,9 +17,12 @@ path/to/result/file.png
 \description{
 Creates nice figures (PNG, PDF, SVG, JPEG).
 }
+\details{
+\href{https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx}{hello-world.xlsx} is an example of an xlsx-file, which you can plot with this function. Please find many other examples in same directory.
+}
 \examples{
 \dontrun{
-# download https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx
+# please find a link to hello-world.xlsx in details above
 nplot("hello-world.xlsx")
 # plot up-to-date data from CBS (Statistics Netherlands)
 nplot("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD")

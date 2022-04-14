@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{nplot.matrix}
 \alias{nplot.matrix}
-\title{Plots data in matrix}
+\title{Nicer Plot of Matrix}
 \usage{
 nplot.matrix(x, ...)
 }

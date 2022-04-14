@@ -2,7 +2,7 @@
 % Please edit documentation in R/nplot.R
 \name{nplot}
 \alias{nplot}
-\title{Generic Function to Make a 'nice R plot'/'nicer plot` and Save it as Png, Pdf, Jpg and/or Svg}
+\title{Create a 'nice R plot'/'nicer plot` in Png, Pdf, Jpg and/or Svg format}
 \usage{
 nplot(x, ...)
 }

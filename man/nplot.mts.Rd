@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{nplot.mts}
 \alias{nplot.mts}
-\title{Plots data in mts object}
+\title{Nicer Plot of Multivariate Time Series Data}
 \usage{
 nplot.mts(x, ...)
 }

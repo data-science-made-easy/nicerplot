@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{nplot.data.frame}
 \alias{nplot.data.frame}
-\title{Plots data in data frame}
+\title{Nicer Plot of Data Frame}
 \usage{
 nplot.data.frame(x, ...)
 }

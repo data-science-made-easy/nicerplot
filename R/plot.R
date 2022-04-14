@@ -44,7 +44,7 @@ nplot.character <- function(x, ...) {
   }
 }
 
-#' @title Plots data in matrix
+#' @title Nicer Plot of Matrix
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x matrix
 #' @param ... you can add parameters to customize your figure (see manual)
@@ -53,7 +53,7 @@ nplot.matrix <- function(x, ...) {
   nplot(james(data = x, ...))
 }
 
-#' @title Plots data in data frame
+#' @title Nicer Plot of Data Frame
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x data.frame
 #' @param ... you can add parameters to customize your figure (see manual)
@@ -62,7 +62,7 @@ nplot.data.frame <- function(x, ...) {
   nplot(james(data = x, ...))
 }
 
-#' @title Plots data in ts object
+#' @title Nicer Plot of Time Series Data
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
@@ -77,7 +77,7 @@ nplot.ts <- function(x, ...) {
   nplot(james(data = z, ...))
 }
 
-#' @title Plots data in mts object
+#' @title Nicer Plot of Multivariate Time Series Data
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
@@ -86,7 +86,7 @@ nplot.mts <- function(x, ...) { # multi variate time series
   nplot.ts(x, ...)
 }
 
-#' @title Plots data in list
+#' @title Nicer Plot of Elements in List
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
 #' @param ... you can add parameters to customize your figure (see manual)
@@ -167,7 +167,7 @@ plot_continue_on_error <- function(p) {
   p
 }
 
-#' @title Plots data in so-called 'james' object
+#' @title Nicer Plot of James Object
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param p object of class james
 #' @param ... you can add parameters to customize your figure (see manual)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{nplot.ts}
 \alias{nplot.ts}
-\title{Plots data in ts object}
+\title{Nicer Plot of Time Series Data}
 \usage{
 nplot.ts(x, ...)
 }

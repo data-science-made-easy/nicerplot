@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{nplot.list}
 \alias{nplot.list}
-\title{Plots data in list}
+\title{Nicer Plot of Elements in List}
 \usage{
 nplot.list(x, ...)
 }

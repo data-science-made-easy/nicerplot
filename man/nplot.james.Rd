@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{nplot.james}
 \alias{nplot.james}
-\title{Plots data in so-called 'james' object}
+\title{Nicer Plot of James Object}
 \usage{
 nplot.james(p, ...)
 }

@@ -9,7 +9,7 @@ nplot(x, ...)
 \arguments{
 \item{x}{data.frame, james object, matrix, mts, ts, 'path/to/file.xlsx', URL}
 
-\item{...}{you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.\{png,pdf,jpg,svg\} as a result).}
+\item{...}{you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with path/to/your-file.\{png, pdf, jpg, svg\} as a result).}
 }
 \value{
 path/to/result/file.png

@@ -5,7 +5,7 @@
 #' @details
 #' Knowing the right parameter names is crucial. One example is parameter 'data', which
 #' you can use to store your data object. Please see manual for details. Please find the
-#' manual here: <https://data-science-made-easy.github.io/nicerplot>.
+#' manual here: \url{https://data-science-made-easy.github.io/nicerplot}.
 #' @examples
 #' \dontrun{
 #' x <- 0:6

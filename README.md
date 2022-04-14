@@ -43,7 +43,7 @@ This generates a figure in`./generated/hello-world.png` in your working director
 Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shouldered bars):
 
 ``` R
-library(nicerplot) # this exports function `nplot()`
+library(nicerplot) # this exports function 'nplot()'
 nplot(d, title = 'Shouldered bars', x_title = 'x', y_title = 'y', type = 'bar--', file = 'Hello-World-shouldered-bars')
 nplot(d, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = 'with turn = TRUE', type = 'bar=', file = 'Hello-World-stacked-bars', turn = TRUE)
 ```

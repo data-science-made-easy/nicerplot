@@ -8,10 +8,10 @@
 #' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).
 #' @return path/to/result/file.png
 #' @details
-#' An easy way of recycling parameters or data is storing them in a 'james' object. This
-#' enables you also to add parameters in an incremental fashion, rather than putting them
-#' all in one big nplot-statement.
-#' @seealso [james()] to create a james object
+#' 'james' can help you to recycle parameters and data accross multiple figures. A 'james'
+#' object also enables you also to add parameters in an incremental fashion, rather than
+#' putting them all in one big nplot-statement.
+#' @seealso [nicerplot::james()] to create a james object
 #' @examples
 #' \dontrun{
 #' x <- 0:6

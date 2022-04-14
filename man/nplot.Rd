@@ -20,9 +20,9 @@ an xlsx-file or in a list that combines these data structures. The result is sav
 PNG, PDF, SVG, and/or JPEG.
 }
 \details{
-An easy way of recycling parameters or data is storing them in a 'james' object. This
-enables you also to add parameters in an incremental fashion, rather than putting them
-all in one big nplot-statement.
+'james' can help you to recycle parameters and data accross multiple figures. A 'james'
+object also enables you also to add parameters in an incremental fashion, rather than
+putting them all in one big nplot-statement.
 }
 \examples{
 \dontrun{
@@ -32,5 +32,5 @@ nplot(d, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just a
 }
 }
 \seealso{
-[james()] to create a james object
+[nicerplot::james()] to create a james object
 }

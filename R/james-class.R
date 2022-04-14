@@ -1,8 +1,19 @@
 #' @title Object to Save Data and Meta Data on Your Figure
 #' @description The main data object in the 'nicerplot' package has class `james`. `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement.
-#' @param ... may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()
-#' @param ... you can add parameters to customize your figure (see manual)
+#' @param ... add parameters to customize figure (see manual)
 #' @return object of class james
+#' @details
+#' Knowing the right parameter names is crucial. One example is parameter 'data', which
+#' you can use to store your data object. Please see manual for details. You can find
+#' the manual at [here](https://data-science-made-easy.github.io/nicerplot/).
+#' @examples
+#' \dontrun{
+#' x <- 0:6
+#' d <- data.frame(x, first = (6 - x)^2, second = x^2)
+#' j <- nicerplot::james(data = d, title = 'Hello World', x_title = 'x', y_title = 'y') # init
+#' j$footnote <- 'just an example' # add other parameters
+#' nicerplot::nplot(j)
+#' }
 #' @export
 james <- function(...) { # Arg may be list or individual values, i.e. james(list(a=1,b=2)) or james(a=1,b=2) or james()
   p <- list(...)

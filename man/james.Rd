@@ -7,11 +7,25 @@
 james(...)
 }
 \arguments{
-\item{...}{you can add parameters to customize your figure (see manual)}
+\item{...}{add parameters to customize figure (see manual)}
 }
 \value{
 object of class james
 }
 \description{
 The main data object in the 'nicerplot' package has class `james`. `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement.
+}
+\details{
+Knowing the right parameter names is crucial. One example is parameter 'data', which
+you can use to store your data object. Please see manual for details. You can find
+the manual at [here](https://data-science-made-easy.github.io/nicerplot/).
+}
+\examples{
+\dontrun{
+x <- 0:6
+d <- data.frame(x, first = (6 - x)^2, second = x^2)
+j <- nicerplot::james(data = d, title = 'Hello World', x_title = 'x', y_title = 'y') # init
+j$footnote <- 'just an example' # add other parameters
+nicerplot::nplot(j)
+}
 }

@@ -1,4 +1,5 @@
-#' @importFrom openxlsx "read.xlsx"
+#' @importFrom stats is.mts is.ts
+#' @importFrom utils head tail type.convert
 
 cat("Initializing...\n")
 pkg.env <- new.env(parent = emptyenv())

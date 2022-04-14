@@ -52,7 +52,7 @@ whisker_pre <- function(p) {
       p$x_lim <- c(p$x - p$whisker_edge_length, p$x + p$whisker_edge_length)
     } else {
       p$x_lim[1] <- min(c(p$x_lim[1], p$x[1] - p$whisker_edge_length), na.rm = T)
-      p$x_lim[2] <- max(c(p$x_lim[2], tail(p$x, 1) + p$whisker_edge_length), na.rm = T)
+      p$x_lim[2] <- max(c(p$x_lim[2], utils::tail(p$x, 1) + p$whisker_edge_length), na.rm = T)
       
       # adjust x_lim for first group if labels are vertical FIX THIS TODO
       if (is_set(p$group_x) & p$turn) p$x_lim[1] <- min(p$x_lim[1], p$group_x[1])

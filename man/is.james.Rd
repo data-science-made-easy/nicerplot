@@ -4,7 +4,7 @@
 \alias{is.james}
 \title{Tests if its Argument has Class 'james'.}
 \usage{
-is.james(p)
+\method{is}{james}(p)
 }
 \arguments{
 \item{p}{an R object}

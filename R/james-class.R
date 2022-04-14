@@ -39,6 +39,8 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
 #' @description `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement. With `is.james` you can test whether a given object is of type `james`.
 #' @param p an R object
 #' @return boolean
+#' @importFrom methods "is" 
+#' @method is james
 #' @export
 is.james <- function(p) "james" == class(p)
 
@@ -120,6 +122,8 @@ get_parsed <- function(lst, name, allow_non_existing = FALSE) {
   return(val)
 }
 
+#' @method $ james
+#' @export
 "$.james" <- function(lst, name) get_parsed(lst, name)
 
 j_names <- function(p) {
@@ -128,7 +132,18 @@ j_names <- function(p) {
   sort(union(names(p), global_names))
 }
 
-print.james <- function(p) {
+#' @title Print james data object
+#' @param x object of class `james`
+#' @param ... further argumetns are ignored. The ... argument was added to be consistent with the generic print function
+#' @examples
+#' x <- 0:6
+#' my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
+#' p <- james(data = my_data, title = "Hello World")
+#' p
+#' # `print(p)` and `print.james(p)` give same results
+#' @export
+print.james <- function(x, ...) {
+  p <- x # for reasons of consistency with the generic print function 'print(x, ...)', this function has the same parameters (i.e., x and ...); however, please note, only the first argument 'x' is used and '...' is ignored.
   cat("# A james object\n")
   cat(paste0("# Parameters (", length(p) - 1, "):\n"))
   
@@ -141,7 +156,7 @@ print.james <- function(p) {
         this_val <- paste0(stringr::str_sub(p[[i]][1], end = 20), "... (nchar: ", nchar(paste0(p[[i]])), ")")
       } else if (ERROR == names(p)[i]) {
         this_val <- p[[ERROR]]$message
-      } else this_val <- head(get_parsed(p, names(p)[i]), n = if (8 < length(p[[i]])) 5 else 8)
+      } else this_val <- utils::head(get_parsed(p, names(p)[i]), n = if (8 < length(p[[i]])) 5 else 8)
       
       cat(paste0(names(p)[i], ": ", paste(rep(" ", nchar_max - nchar(names(p[i]))), collapse = ""), paste0(this_val, collapse = ", ")), if (length(this_val) < length(p[[i]]) & FIGS != names(p)[i]) paste0("... with ", length(p[[i]]), " values total") else "", "\n")
     }
@@ -149,7 +164,7 @@ print.james <- function(p) {
   cat("data:\n")
   d <- p[[DATA]]
   if (!is.null(dim(d))) {
-    print(head(d))
+    print(utils::head(d))
     cat(paste("# ... with", nrow(d), "rows total"))
   }
   if (is_set(p$warning)) {

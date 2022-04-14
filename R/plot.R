@@ -1,26 +1,3 @@
-#' @title Generic function to make a 'nice R plot'/'nicer plot` and save it as png, pdf, jpg and/or svg.
-#' @description Can plot time series data from xlsx-files, certain URLs, and directly from R (`data.frame`, `james`, `list`, `matrix`, `mts`, `ts`). Saves it as png, pdf, svg, and/or jpeg.
-#' @param x 'path/to/file.xlsx', 'URL', or above data types.
-#' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with `file`.{png,pdf,jpg,svg} as a result).
-#' @return path/to/result/file.png
-#' @examples
-#' \dontrun{
-#' x <- 0:6
-#' my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
-#' plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
-#' }
-#' @export
-plot <- function(x, ...) {
-  if (is.character(x))       plot.character(x, ...)
-  else if (is.data.frame(x)) plot.data.frame(x, ...)
-  else if (is.james(x))      plot.james(x, ...)
-  else if (is.list(x))       plot.list(x, ...)
-  else if (is.matrix(x))     plot.matrix(x, ...)
-  else if (is.mts(x))        plot.mts(x, ...)
-  else if (is.ts(x))         plot.ts(x, ...)
-}
-
-
 #' @title Plots Data from File or URL
 #' @description Creates nice figures (PNG, PDF, SVG, JPEG).
 #' @param x may be 'path/to/file.xlsx' (please note: at the current moment Excel files must have a meta-tab) or a URL referring to Statistics Netherlands.
@@ -29,13 +6,11 @@ plot <- function(x, ...) {
 #' @examples
 #' \dontrun{
 #' # download https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx
-#' plot("hello-world.xlsx")
+#' nplot("hello-world.xlsx")
 #' # plot up-to-date data from CBS (Statistics Netherlands)
-#' plot("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD")
+#' nplot("https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD")
 #' }
-#' @export plot.character
-#' @export
-plot.character <- function(x, ...) {
+nplot.character <- function(x, ...) {
   # string may be file or cbs-url
   if (file.exists(x)) { # try file
     # For now we allow only xlsx files with a 'meta' tab
@@ -55,14 +30,14 @@ plot.character <- function(x, ...) {
       index_report <- which(sapply(lst, function(p) is_report(p) & !is_no(p$create)))
       if (1 < length(index_report)) error_msg("Currently, James can only produce one report per xlsx-file.")
       if (length(index_report)) { # We want a report
-        return(plot(lst[[index_report]], ...))
+        return(nplot(lst[[index_report]], ...))
       } else { # We just want figures
-        return(plot(lst))
+        return(nplot(lst))
       }
     }    
   } else { # try cbs
     if ("https://" == stringr::str_sub(x, 1, 8)) {
-      return(plot(james(data = cbs(x), ...)))
+      return(nplot(james(data = cbs(x), ...)))
     } else {
       error_msg("File '", x, "' not found.")
     }
@@ -74,10 +49,8 @@ plot.character <- function(x, ...) {
 #' @param x matrix
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-#' @export plot.matrix
-#' @export
-plot.matrix <- function(x, ...) {
-  plot(james(data = x, ...))
+nplot.matrix <- function(x, ...) {
+  nplot(james(data = x, ...))
 }
 
 #' @title Plots data in data frame
@@ -85,10 +58,8 @@ plot.matrix <- function(x, ...) {
 #' @param x data.frame
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-#' @export plot.data.frame
-#' @export
-plot.data.frame <- function(x, ...) {
-  plot(james(data = x, ...))
+nplot.data.frame <- function(x, ...) {
+  nplot(james(data = x, ...))
 }
 
 #' @title Plots data in ts object
@@ -96,16 +67,14 @@ plot.data.frame <- function(x, ...) {
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-#' @export plot.ts
-#' @export
-plot.ts <- function(x, ...) {
+nplot.ts <- function(x, ...) {
   if (is.null(dim(x))) { # mat has only one dimension
     n <- length(x)
   } else { # mat has >1 dimensions
     n <- nrow(x)
   }
   z <- cbind(as.vector(stats::time(x)), head(x, n))
-  plot(james(data = z, ...))
+  nplot(james(data = z, ...))
 }
 
 #' @title Plots data in mts object
@@ -113,10 +82,8 @@ plot.ts <- function(x, ...) {
 #' @param x ts object
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-#' @export plot.mts
-#' @export
-plot.mts <- function(x, ...) { # multi variate time series
-  plot.ts(x, ...)
+nplot.mts <- function(x, ...) { # multi variate time series
+  nplot.ts(x, ...)
 }
 
 #' @title Plots data in list
@@ -124,9 +91,7 @@ plot.mts <- function(x, ...) { # multi variate time series
 #' @param x list must contain elements of a class that can be plotted by this package (e.g., matrix, data.frame, character, ts, mts)
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-#' @export plot.list
-#' @export
-plot.list <- function(x, ...) {
+nplot.list <- function(x, ...) {
   # Overwrite parameters in each imported item p with those in P
   P <- list(...)
   
@@ -176,7 +141,7 @@ plot.list <- function(x, ...) {
   # # SEQUENTIAL
   if (length(index_sequential)) {
     show_msg("Starting to create [", length(index_sequential), "] of [", length(x), "] figures sequentially...\nSet parameter 'parallel = y' in tab 'globals' in your xlsx-file to speed-up this process.\n")
-    for (p in x[index_sequential]) paths <- c(paths, plot(p))
+    for (p in x[index_sequential]) paths <- c(paths, nplot(p))
   }
     
   # Check for duplicated file names
@@ -189,7 +154,7 @@ plot.list <- function(x, ...) {
 plot_continue_on_error <- function(p) {
    path_or_error <- tryCatch(
     {
-      plot(p)
+      nplot(p)
     }, error = function(cond) {
       p$error <<- cond
     }, finally = {
@@ -207,8 +172,7 @@ plot_continue_on_error <- function(p) {
 #' @param p object of class james
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
-# @export
-plot.james <- function(p, ...) {
+nplot.james <- function(p, ...) {
   print_debug_info(p)
 
   # Overwrite parameters p
@@ -394,6 +358,7 @@ plot_james_png <- function(p) {
   create_dir_for_file(p$png_file)
   on.exit({grDevices::dev.off(); showtext::showtext_auto(enable = FALSE)})
   # p <- set_point_size(p)
+
   grDevices::png(p$png_file, width = p$width / grDevices::cm(1), height = p$height / grDevices::cm(1), pointsize = p$font_size, unit = "in", res = p$resolution, type = "cairo")
   
   p <- plot_james_internal(p)
@@ -453,7 +418,7 @@ plot_james_gif <- function(p) {
   for (i in 1:p$gif_n_frames) {
     p$png_file <- p$gif_pngs[i]
     p$data <- (i - 1) / (p$gif_n_frames - 1) * data_orig
-    plot(p, png = T, gif = F, open = F)
+    nplot(p, png = T, gif = F, open = F)
   }
 
   ## GIF name

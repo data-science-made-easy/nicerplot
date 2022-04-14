@@ -14,10 +14,10 @@ Time series data visualisation made easy for Excel users and R programmers. <img
    install.packages("devtools", repos = "http://cran.us.r-project.org")
    ```
 3. With the `devtools` package you can install `nicerplot` directly from github.
-    ``` R
-    devtools::install_github("data-science-made-easy/nicerplot")                            # for latest and greatest
-    # devtools::install_github("data-science-made-easy/nicerplot", ref = "v2022.4.12-beta") # for stable release
-    ```
+   ``` R
+   devtools::install_github("data-science-made-easy/nicerplot")                            # for latest and greatest
+   # devtools::install_github("data-science-made-easy/nicerplot", ref = "v2022.4.12-beta") # for stable release
+   ```
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
 

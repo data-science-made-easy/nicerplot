@@ -1,6 +1,6 @@
 if (file.exists('bars-highlight-series.xlsx') { # plot figures from Excel file:
-  nicerplot::plot('bars-highlight-series.xlsx')
+  nicerplot::nplot('bars-highlight-series.xlsx')
 } else if (file.exists('bars-highlight-series.RData') { # or plot figures directly in R:
   d <- dget('bars-highlight-series.RData')
-  nicerplot::plot(d, type = c('bar='), title = c('Number of phones (Europe yellow)'), highlight_series = c(2), highlight_col = c('yellow'), open = FALSE)
+  nicerplot::nplot(d, type = c('bar='), title = c('Number of phones (Europe yellow)'), highlight_series = c(2), highlight_col = c('yellow'), open = FALSE)
 }

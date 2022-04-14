@@ -1,6 +1,6 @@
 if (file.exists('x-lim-follow-data-example.xlsx') { # plot figures from Excel file:
-  nicerplot::plot('x-lim-follow-data-example.xlsx')
+  nicerplot::nplot('x-lim-follow-data-example.xlsx')
 } else if (file.exists('x-lim-follow-data-example.RData') { # or plot figures directly in R:
   d <- dget('x-lim-follow-data-example.RData')
-  nicerplot::plot(d, title = c('Groeibijdragen bestedingen'), y_title = c('%-punt bbp-groei'), footnote = c('x_lim_follow_data = y'), x_lim_follow_data = c('y'), open = FALSE)
+  nicerplot::nplot(d, title = c('Groeibijdragen bestedingen'), y_title = c('%-punt bbp-groei'), footnote = c('x_lim_follow_data = y'), x_lim_follow_data = c('y'), open = FALSE)
 }

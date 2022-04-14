@@ -24,19 +24,18 @@ Congratulations, you now have the cutting-edge development version of `nicerplot
 In some cases, however, you may prefer to install a stable release. For example, if you work together with other people, and you want to be sure that all work on the same version. In that case you can add `ref = <tag>` to the `install_github` call. Where `<tag>` is the version of the release, e.g. `"v2022.4.12-beta"`. Please find available [releases](https://github.com/data-science-made-easy/nicerplot/releases) and [tags](https://github.com/data-science-made-easy/nicerplot/tags) here.
 
 # Hello World example
-Step 1: define a so-called data-frame (other data types, e.g., matrix, are fine as well):
+Define a `data.frame` (or, e.g., a `matrix`, `mts`, `ts`, 'path/to/a-file.xlsx', or a combination in a `list`):
 ``` R
 x <- 0:6
-my_data <- data.frame(x, first = (6 - x)^2, second = x^2)
+d <- data.frame(x, first = (6 - x)^2, second = x^2)
 ```
 
 Step 2: plot the data given some parameters:
 ``` R
-library(nicerplot)
-plot(my_data, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
+nicerplot::nplot(d, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
-Step 2 produces a figure in`./generated/hello-world.png` in your working directory (see: `getwd()`), which looks like this:
+This generates a figure in`./generated/hello-world.png` in your working directory (see: `getwd()`), which looks like this:
 
 <img src="./inst/extdata/examples/png/Hello-World.png" width = 400>
 
@@ -44,8 +43,9 @@ Step 2 produces a figure in`./generated/hello-world.png` in your working directo
 Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shouldered bars):
 
 ``` R
-plot(my_data, title = 'Shouldered bars', x_title = 'x', y_title = 'y', type = 'bar--', file = 'Hello-World-shouldered-bars')
-plot(my_data, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = 'with turn = TRUE', type = 'bar=', file = 'Hello-World-stacked-bars', turn = TRUE)
+library(nicerplot) # this exports function `nplot()`
+nplot(d, title = 'Shouldered bars', x_title = 'x', y_title = 'y', type = 'bar--', file = 'Hello-World-shouldered-bars')
+nplot(d, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = 'with turn = TRUE', type = 'bar=', file = 'Hello-World-stacked-bars', turn = TRUE)
 ```
 
 <img src="./inst/extdata/examples/png/Hello-World-shouldered-bars.png" width = 400> <img src="./inst/extdata/examples/png/Hello-World-stacked-bars.png" width = 400>

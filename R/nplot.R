@@ -1,4 +1,4 @@
-#' @title Create a 'nice R plot'/'nicer plot` in Png, Pdf, Jpg and/or Svg format
+#' @title Create and Save 'nice R plot'/'nicer plot` as Png, Pdf, Jpg and/or Svg
 #' @description
 #' Plots data stored in a data.frame, james object, matrix, mts, ts, cbs.nl-type 'share data' URL,
 #' an xlsx-file or in a list that combines these data structures. The result is saved as
@@ -8,9 +8,10 @@
 #' @param ... you can add parameters to customize your figure (see manual). For example `title` to specify a title, `pdf = TRUE` if you want a PDF (`png = TRUE` by default), and `file` to specify file name (with path/to/your-file.\{png, pdf, jpg, svg\} as a result).
 #' @return path/to/result/file.png
 #' @details
-#' Class 'james' can help you to recycle parameters and data accross multiple figures. A 'james'
+#' Class 'james' can help you to recycle parameters and data across multiple figures. A 'james'
 #' object also enables you also to add parameters in an incremental fashion, rather than
 #' putting them all in one big nplot-statement.
+#' The name 'nplot' is a contraction of 'n(icer)plot', which can exist next to R's regular plot-function.
 #' @seealso \code{\link{james}} to create a james object
 #' @examples
 #' \dontrun{

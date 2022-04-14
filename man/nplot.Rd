@@ -2,7 +2,7 @@
 % Please edit documentation in R/nplot.R
 \name{nplot}
 \alias{nplot}
-\title{Create a 'nice R plot'/'nicer plot` in Png, Pdf, Jpg and/or Svg format}
+\title{Create and Save 'nice R plot'/'nicer plot` as Png, Pdf, Jpg and/or Svg}
 \usage{
 nplot(x, ...)
 }
@@ -20,9 +20,10 @@ an xlsx-file or in a list that combines these data structures. The result is sav
 PNG, PDF, SVG, and/or JPEG.
 }
 \details{
-Class 'james' can help you to recycle parameters and data accross multiple figures. A 'james'
+Class 'james' can help you to recycle parameters and data across multiple figures. A 'james'
 object also enables you also to add parameters in an incremental fashion, rather than
 putting them all in one big nplot-statement.
+The name 'nplot' is a contraction of 'n(icer)plot', which can exist next to R's regular plot-function.
 }
 \examples{
 \dontrun{

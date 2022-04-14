@@ -2,7 +2,7 @@
 % Please edit documentation in R/james-class.R
 \name{print.james}
 \alias{print.james}
-\title{Print james data object}
+\title{Print James Data Object in Nice Fashion}
 \usage{
 \method{print}{james}(x, ...)
 }
@@ -12,7 +12,10 @@
 \item{...}{further arguments are ignored. The ... argument was added to be consistent with the generic print function}
 }
 \description{
-Print james data object
+Print James Data Object in Nice Fashion
+}
+\details{
+Relevant parameters are shown with values that are properly aligned. Data are truncated.
 }
 \examples{
 x <- 0:6

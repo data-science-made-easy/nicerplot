@@ -2,7 +2,7 @@
 % Please edit documentation in R/james-class.R
 \name{is.james}
 \alias{is.james}
-\title{Tests if its Argument has Class 'james'.}
+\title{Tests if its Argument has Class James}
 \usage{
 \method{is}{james}(p)
 }

@@ -15,8 +15,8 @@ Time series data visualisation made easy for Excel users and R programmers. <img
    ```
 3. With the `devtools` package you can install `nicerplot` directly from github.
    ``` R
-   devtools::install_github("data-science-made-easy/nicerplot")                            # for latest and greatest
-   # devtools::install_github("data-science-made-easy/nicerplot", ref = "v2022.4.12-beta") # for stable release
+   devtools::install_github("data-science-made-easy/nicerplot")                   # for latest and greatest
+   # devtools::install_github("data-science-made-easy/nicerplot", ref = "v0.1.0") # for stable release
    ```
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!

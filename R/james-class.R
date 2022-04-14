@@ -145,7 +145,7 @@ j_names <- function(p) {
 
 #' @title Print james data object
 #' @param x object of class `james`
-#' @param ... further argumetns are ignored. The ... argument was added to be consistent with the generic print function
+#' @param ... further arguments are ignored. The ... argument was added to be consistent with the generic print function
 #' @examples
 #' x <- 0:6
 #' my_data <- data.frame(x, first = (6 - x)^2, second = x^2)

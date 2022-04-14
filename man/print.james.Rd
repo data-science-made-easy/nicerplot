@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{object of class `james`}
 
-\item{...}{further argumetns are ignored. The ... argument was added to be consistent with the generic print function}
+\item{...}{further arguments are ignored. The ... argument was added to be consistent with the generic print function}
 }
 \description{
 Print james data object

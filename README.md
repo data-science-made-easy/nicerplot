@@ -8,8 +8,8 @@ Time series data visualisation made easy for Excel users and R programmers. <img
 - [Installation](#installation)
 - [Hello World example](#hello-world-example)
   * [Change the layout](#change-the-layout)
-- [Manual with more examples](#manual-with-more-examples)
-- [Details](#details)
+- [Manual](#manual)
+  * [Details](#details)
 
 # Installation
 1. Download [RStudio](https://www.rstudio.com) or [R](https://cran.r-project.org/).
@@ -45,7 +45,7 @@ Nicerplot can visualise data in the following objects:
 - `character`, if it is a 'path/to/an-Excel-file.xlsx'
   - *e.g.*, `nplot('hello-world.xlsx')` reproduces the above figure (first download [hello-world.xlsx](https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx))
 - `character`, if it is a URL that points to data on [Statistics Netherlands](https:://cbs.nl)
-  - *e.g.* `nplot('https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD', title = 'Dutch housing market', hline_bold = 100, y_title = 'prices (2015 = 100)', file = 'url-example')` plots actual house prices and saves it in 'url-example.png'
+  - *e.g.* `nplot('https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD', title = 'Dutch housing market', hline_bold = 100, y_title = 'prices (2015 = 100)', file = 'url-example')` plots actual house prices and saves it as 'url-example.png'
 - `list`, with elements of the above objects and/or a 'sub-`list`'
 
 The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">manual</a> explains in great detail how to structure the above objects well.

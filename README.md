@@ -62,7 +62,7 @@ nplot(d, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = 'with 
 <img src="./inst/extdata/examples/png/Hello-World-shouldered-bars.png" width = 400> <img src="./inst/extdata/examples/png/Hello-World-stacked-bars.png" width = 400>
 
 # Manual
-The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure. Please ignore the file paths in the manual.
+The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure with this package.
 
 ## Details
 The default

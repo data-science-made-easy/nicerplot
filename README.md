@@ -1,5 +1,3 @@
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<i class="fa fa-camera-retro"></i> fa-camera-retro
 Time series data visualisation made easy for Excel users and R programmers. <img src='man/figures/nicerplot-hex-logo.png' align="right" height="139" />
 
 <!-- badges: start -->

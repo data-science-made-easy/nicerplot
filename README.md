@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 Time series data visualisation made easy for Excel users and R programmers. <img src='man/figures/nicerplot-hex-logo.png' align="right" height="139" />
 
 <!-- badges: start -->
@@ -24,7 +25,7 @@ Time series data visualisation made easy for Excel users and R programmers. <img
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
 
-In some cases, *e.g.* if you want work on common version together with others, you may prefer to install a [stable release](https://github.com/data-science-made-easy/nicerplot/releases). In that case you can add `ref = <tag>`, to the above `install_github` command. You can find a @icn-camera`<tag>` left of the [release](https://github.com/data-science-made-easy/nicerplot/releases) (*e.g.* @icn-tag`ref = 'v0.1.1'`).
+In some cases, *e.g.* if you want work on common version together with others, you may prefer to install a [stable release](https://github.com/data-science-made-easy/nicerplot/releases). In that case you can add `ref = <tag>`, to the above `install_github` command. You can find a @icn-camera`<tag>` left of the [release](https://github.com/data-science-made-easy/nicerplot/releases) (*e.g.* <i class="fa-solid fa-tag"></i>`ref = 'v0.1.1'`).
 
 # Hello World example
 Define a `data.frame` (or, e.g., a `matrix`, `mts`, `ts`, 'path/to/a-file.xlsx', or a combination in a `list`):

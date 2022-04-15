@@ -1,5 +1,9 @@
 Time series data visualisation made easy for Excel users and R programmers. <img src='man/figures/nicerplot-hex-logo.png' align="right" height="139" />
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/data-science-made-easy/nicerplot/workflows/R-CMD-check/badge.svg)](https://github.com/data-science-made-easy/nicerplot/actions)
+<!-- badges: end -->
+
 # Content
 - [Installation](#installation)
 - [Hello World example](#hello-world-example)
@@ -16,12 +20,11 @@ Time series data visualisation made easy for Excel users and R programmers. <img
 3. With the `devtools` package you can install `nicerplot` directly from github.
    ``` R
    devtools::install_github("data-science-made-easy/nicerplot")                   # for latest and greatest
-   # devtools::install_github("data-science-made-easy/nicerplot", ref = "v0.1.0") # for stable release
    ```
 
 Congratulations, you now have the cutting-edge development version of `nicerplot`!
 
-In some cases, however, you may prefer to install a stable release. For example, if you work together with other people, and you want to be sure that all work on the same version. In that case you can add `ref = <tag>` to the `install_github` call. Where `<tag>` is the version of the release, e.g. `"v2022.4.12-beta"`. Please find available [releases](https://github.com/data-science-made-easy/nicerplot/releases) and [tags](https://github.com/data-science-made-easy/nicerplot/tags) here.
+In some cases, *e.g.* if you want work on common version together with others, you may prefer to install a [stable release](https://github.com/data-science-made-easy/nicerplot/releases). In that case you can add `ref = <tag>`, to the above `install_github` command. You can find a <i class="fa-solid fa-tag">`<tag>`</i> left of the [release](https://github.com/data-science-made-easy/nicerplot/releases) (*e.g.* <i class="fa-solid fa-tag"></i>`ref = 'v0.1.1'`).
 
 # Hello World example
 Define a `data.frame` (or, e.g., a `matrix`, `mts`, `ts`, 'path/to/a-file.xlsx', or a combination in a `list`):

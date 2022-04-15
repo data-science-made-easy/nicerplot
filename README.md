@@ -4,7 +4,6 @@ Time series data visualisation made easy for Excel users and R programmers. <img
 [![R-CMD-check](https://github.com/data-science-made-easy/nicerplot/workflows/R-CMD-check/badge.svg)](https://github.com/data-science-made-easy/nicerplot/actions)
 <!-- badges: end -->
 
-# Content
 - [Installation](#installation)
 - [Hello World example](#hello-world-example)
   * [Change the layout](#change-the-layout)

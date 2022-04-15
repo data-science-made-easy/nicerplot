@@ -27,20 +27,24 @@ Congratulations, you now have the cutting-edge development version of `nicerplot
 In some cases, however, *e.g.* if you want work on common version together with others, you may prefer to install a [stable release](https://github.com/data-science-made-easy/nicerplot/releases). In that case you can add `ref = <tag>`, to the above `install_github` command. You can find the [tag](https://github.com/data-science-made-easy/nicerplot/tags) left of the [release](https://github.com/data-science-made-easy/nicerplot/releases) (*e.g.* `ref = 'v0.1.1'`).
 
 # Hello World example
-Define a `data.frame` (or, e.g., a `matrix`, `mts`, `ts`, 'path/to/a-file.xlsx', or a combination in a `list`):
+The example below defines a `data.frame` with two series of data:
 ``` R
 x <- 0:6
 d <- data.frame(x, first = (6 - x)^2, second = x^2)
-```
-
-Step 2: plot the data given some parameters:
-``` R
 nicerplot::nplot(d, title = 'Hello World', x_title = 'x', y_title = 'y', footnote = "just an example")
 ```
 
-This generates a figure in`./generated/hello-world.png` in your working directory (see: `getwd()`), which looks like this:
+This generates a figure in`./generated/hello-world.png` in your working directory (see: `getwd()`):
 
 <img src="./inst/extdata/examples/png/Hello-World.png" width = 400>
+
+Nicerplot can visualise data in the following objects:
+- `data.frame`, see the above example
+- `matrix`, similar to `data.frame`
+- `ts`, `mts`, (multivariate) time series objects
+- `character`, if it is a 'path/to/an-Excel-file.xlsx'
+- `character`, if it is a URL that points to data on [Statistics Netherlands](https:://cbs.nl)
+- `list`, with elements of the above objects and/or a 'sub-`list`'
 
 ## Change the layout
 Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shouldered bars):

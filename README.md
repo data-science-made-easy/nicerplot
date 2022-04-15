@@ -16,6 +16,7 @@ Time series data visualisation made easy for Excel users and R programmers. <img
    ``` R
    install.packages("devtools", repos = "http://cran.us.r-project.org")
    ```
+   As an alternative to `devtools` you can use `remotes`.
 3. With the `devtools` package you can install `nicerplot` directly from github.
    ``` R
    devtools::install_github("data-science-made-easy/nicerplot")

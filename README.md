@@ -46,6 +46,8 @@ Nicerplot can visualise data in the following objects:
 - `character`, if it is a URL that points to data on [Statistics Netherlands](https:://cbs.nl)
 - `list`, with elements of the above objects and/or a 'sub-`list`'
 
+The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">manual</a> explains in great detail how to structure the above objects well.
+
 ## Change the layout
 Instead of lines you can plot 'stacked bars' by using parameter `type = 'bar='` (use `type = 'bar--` for shouldered bars):
 
@@ -57,12 +59,11 @@ nplot(d, title = 'Stacked bars', x_title = 'x', y_title = 'y', footnote = 'with 
 
 <img src="./inst/extdata/examples/png/Hello-World-shouldered-bars.png" width = 400> <img src="./inst/extdata/examples/png/Hello-World-stacked-bars.png" width = 400>
 
-# Manual with more examples
-The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">official manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure. Please ignore the file paths in the manual.
+# Manual
+The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank">manual</a> provides many other examples. Below each figure in this manual you can find the R-code to reproduce that figure. Please ignore the file paths in the manual.
 
-# Details
+## Details
 The default
 
 - font is 'RijksoverheidSansText'. If that font is unavailable, 'sans' will be selected.
 - language is Dutch, so the decimal (thousand) separator is a comma (point). Use `style = 'english'` to swap those two separators.
-

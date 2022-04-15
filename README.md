@@ -43,7 +43,7 @@ Nicerplot can visualise data in the following objects:
 - `matrix`, similar to `data.frame`
 - `ts`, `mts`, (multivariate) time series objects
 - `character`, if it is a 'path/to/an-Excel-file.xlsx'
-  - example: if you download [hello-world.xlsx](https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx), you can reproduce the above example: `nplot('hello-world.xlsx')`
+  - *e.g.*, `nplot('[hello-world.xlsx](https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx)')` reproduces the above figure
 - `character`, if it is a URL that points to data on [Statistics Netherlands](https:://cbs.nl)
 - `list`, with elements of the above objects and/or a 'sub-`list`'
 

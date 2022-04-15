@@ -1,6 +1,6 @@
-if (file.exists('geo-first-example.xlsx') { # plot figures from Excel file:
+if (file.exists('geo-first-example.xlsx')) { # plot figures from Excel file:
   nicerplot::nplot('geo-first-example.xlsx')
-} else if (file.exists('geo-first-example.RData') { # or plot figures directly in R:
+} else if (file.exists('geo-first-example.RData')) { # or plot figures directly in R:
   d <- dget('geo-first-example.RData')
   nicerplot::nplot(d, style = c('map'), geo_cbs_map = c('arbeidsmarktregio_2020'), open = FALSE)
-}
+} else print(paste('Please download', xlsx_data_file, 'or', rdata_file, 'to create the nice R plot.'))

@@ -95,12 +95,12 @@ isolate_xlsx_and_r_script <- function(p) {
   #
   xlsx_data_file <- paste0(file_base_name, ".xlsx")
   rdata_file     <- paste0(file_base_name, ".RData")
-  write(paste0("if (file.exists('", xlsx_data_file, "') { # plot figures from Excel file:"), file = package_r_file)
+  write(paste0("if (file.exists('", xlsx_data_file, "')) { # plot figures from Excel file:"), file = package_r_file)
   write(paste0("  nicerplot::nplot('", xlsx_data_file, "')"), file = package_r_file, append = T)
-  write(paste0("} else if (file.exists('", rdata_file, "') { # or plot figures directly in R:"), file = package_r_file, append = T)
+  write(paste0("} else if (file.exists('", rdata_file, "')) { # or plot figures directly in R:"), file = package_r_file, append = T)
   write(paste0("  d <- dget('", rdata_file, "')"), file = package_r_file, append = T)
   write(paste0("  nicerplot::nplot(d, ", paste0(param_vec, collapse = ", "), ")"), file = package_r_file, append = T)
-  write(paste0("}"), file = package_r_file, append = T)
+  write(paste0("} else print(paste('Please download', xlsx_data_file, 'or', rdata_file, 'to create the nice R plot.'))"), file = package_r_file, append = T)
   
   # (4) return paths
   if (!exists("generate_manual_for_james_start")) generate_manual_for_james_start <- FALSE # Man.. what a hack :-O
@@ -223,7 +223,7 @@ figure_with_params <- function(report, id = "", ...) {
   }
   
   html <- paste0(c(html,
-    "<span style='color:#43B546'><B>How to reproduce this figure:</B></span> copy [this xlsx-file](", path$xlsx, ") and [", get_param("james_server_2_path"), "](", james_win_lin_path, ") (starts on Windows, runs on Linux), [", get_param("james_windows_path"), "](", james_win_win_path, ") (starts on Windows, runs on Windows), or [", get_param("james_sh_path"), "](", james_sh_path, ") (starts on Linux, runs on Linux) to a personal directory and start the batch file. Alternatively, you can also run [this R-script](", path$r, ") in R (starts in R, runs in R). If you use [the package 'nicerplot'](https://data-science-made-easy.github.io/nicerplot), you can download [this RData file](", path$rdata, ") and [this R-script](", path$rpack, ") to plot from the Excel-file or RData in R.",
+    "<span style='color:#43B546'><B>How to reproduce this figure:</B></span> copy [this xlsx-file](", path$xlsx, ") and [", get_param("james_server_2_path"), "](", james_win_lin_path, ") (starts on Windows, runs on Linux), [", get_param("james_windows_path"), "](", james_win_win_path, ") (starts on Windows, runs on Windows), or [", get_param("james_sh_path"), "](", james_sh_path, ") (starts on Linux, runs on Linux) to a personal directory and start the batch file. Alternatively, you can also run [this R-script](", path$r, ") in R (starts in R, runs in R). If you use the package 'nicerplot', you can download the [RData file](", path$rdata, ") and [this R-script](", path$rpack, ") to plot from the Excel-file or RData in R.",
     "</td></tr>",
   "</table>"), collapse = "\n")
   

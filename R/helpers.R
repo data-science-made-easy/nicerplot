@@ -328,7 +328,7 @@ fix_path <- function(path = '', use_local_path = F, linux_server = F, return_rel
   return(fixed_path)
 }
 
-fix_path_rel <- function(path = '', path_base = paste0('p_james/dev/', get_param("james_version")), platform = c(AUTO_DETECT, WINDOWS, LINUX, OSX, OSX_LOCAL)) {
+fix_path_rel <- function(path = '', path_base = paste0('p_james/release/', get_param("james_version")), platform = c(AUTO_DETECT, WINDOWS, LINUX, OSX, OSX_LOCAL)) {
   # fix_path_rel gives the path to our shared file system
   # from your current source (i.e. windows, linux, osx)
   # Exception: osx_local refers to development code directly

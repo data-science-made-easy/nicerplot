@@ -53,7 +53,7 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
 #' @importFrom methods "is" 
 #' @method is james
 #' @export
-is.james <- function(p) "james" == class(p)
+is.james <- function(p) any("james" == class(p))
 
 force_value <- function(lst, name, val) {
   if (is.na(val)) { # Force global too, if NA

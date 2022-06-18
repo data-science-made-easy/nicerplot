@@ -34,7 +34,7 @@ linez <- function(p) {
       } else {
         this_lty <- p$line_obs_fc_lty[index_obs_fc]
       }
-
+      
       graphics::lines(x, y, col = p$color[j], lwd = p$line_lwd[j], lty = fix_lty_vector_graphics(this_lty), xpd = T)
       
       # Add symbols

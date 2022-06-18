@@ -25,7 +25,7 @@ nplot <- function(x, ...) {
   else if (is.data.frame(x)) nplot.data.frame(x, ...)
   else if (is.james(x))      nplot.james(x, ...)
   else if (is.list(x))       nplot.list(x, ...)
-  else if (is.matrix(x))     nplot.matrix(x, ...)
   else if (stats::is.mts(x)) nplot.mts(x, ...)
   else if (stats::is.ts(x))  nplot.ts(x, ...)
+  else if (is.matrix(x))     nplot.matrix(x, ...) # this one as last because is.matrix('regts') == TRUE
 }

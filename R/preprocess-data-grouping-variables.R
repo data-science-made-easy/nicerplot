@@ -1,7 +1,6 @@
 preprocess_data_grouping_variables <- function(p) {
   print_debug_info(p)
   stopifnot(is.james(p))
-
   p$data <- as.data.frame(p$data, stringsAsFactors = FALSE) # as data frame
 
   #

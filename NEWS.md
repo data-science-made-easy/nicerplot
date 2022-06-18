@@ -1,5 +1,3 @@
-# nicerplot 0.1.2
-* bug fixes in scripts (in caption) that reproduce figures in manual
-
-# nicerplot 0.1.0
-* nplot() is the new name of the workhorse (previously plot())
+# nicerplot 0.1.3
+package of version 2022-06-18, greatest novelty is james.cpb.nl
+* Added a `NEWS.md` file to track changes to the package.

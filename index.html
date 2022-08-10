@@ -85,13 +85,13 @@
 <li>
 <p>Open RStudio or R, and install the package <code>devtools</code> if you don’t have it already:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span><span class="op">)</span></span></code></pre></div>
 <p>As an alternative to <code>devtools</code> you can use <code>remotes</code>.</p>
 </li>
 <li>
 <p>With the <code>devtools</code> package you can install <code>nicerplot</code> directly from github.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"data-science-made-easy/nicerplot"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"data-science-made-easy/nicerplot"</span><span class="op">)</span></span></code></pre></div>
 </li>
 </ol>
 <p>Congratulations, you now have the cutting-edge development version of <code>nicerplot</code>!</p>
@@ -102,9 +102,9 @@
 </h1>
 <p>The example below defines a <code>data.frame</code> with two series of data:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">6</span>
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x</span>, first <span class="op">=</span> <span class="op">(</span><span class="fl">6</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, second <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu">nicerplot</span><span class="fu">::</span><span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Hello World'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, footnote <span class="op">=</span> <span class="st">"just an example"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">6</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x</span>, first <span class="op">=</span> <span class="op">(</span><span class="fl">6</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, second <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu">nicerplot</span><span class="fu">::</span><span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Hello World'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, footnote <span class="op">=</span> <span class="st">"just an example"</span><span class="op">)</span></span></code></pre></div>
 <p>This generates a figure in<code>./generated/hello-world.png</code> in your working directory (see: <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code>):</p>
 <p><img src="./inst/extdata/examples/png/Hello-World.png" width="400"></p>
 <p>Nicerplot can visualise data in the following objects: - <code>data.frame</code>, see the above example - <code>matrix</code>, similar to <code>data.frame</code> - <code>ts</code>, <code>mts</code>, (multivariate) time series objects - <code>character</code>, if it is a ‘path/to/an-Excel-file.xlsx’ - <em>e.g.</em>, <code>nplot('hello-world.xlsx')</code> reproduces the above figure (first download <a href="https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx" class="external-link">hello-world.xlsx</a>) - <code>character</code>, if it is a URL that points to data on <a href="https://cbs.nl" class="external-link">Statistics Netherlands</a> - <em>e.g.</em> <code>nplot('https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD', title = 'Dutch housing market', y_title = 'prices (2015 = 100)', hline_bold = 100, file = 'url-example')</code> plots actual house prices and saves it as ‘url-example.png’ - <code>list</code>, with elements of the above objects and/or a ‘sub-<code>list</code>’</p>
@@ -114,9 +114,9 @@
 </h2>
 <p>Instead of lines you can plot ‘stacked bars’ by using parameter <code>type = 'bar='</code> (use <code>type = 'bar--</code> for shouldered bars):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/data-science-made-easy/nicerplot" class="external-link">nicerplot</a></span><span class="op">)</span> <span class="co"># this exports function 'nplot()'</span>
-<span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Shouldered bars'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, type <span class="op">=</span> <span class="st">'bar--'</span>, file <span class="op">=</span> <span class="st">'Hello-World-shouldered-bars'</span><span class="op">)</span>
-<span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Stacked bars'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, footnote <span class="op">=</span> <span class="st">'with turn = TRUE'</span>, type <span class="op">=</span> <span class="st">'bar='</span>, file <span class="op">=</span> <span class="st">'Hello-World-stacked-bars'</span>, turn <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/data-science-made-easy/nicerplot" class="external-link">nicerplot</a></span><span class="op">)</span> <span class="co"># this exports function 'nplot()'</span></span>
+<span><span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Shouldered bars'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, type <span class="op">=</span> <span class="st">'bar--'</span>, file <span class="op">=</span> <span class="st">'Hello-World-shouldered-bars'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Stacked bars'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, footnote <span class="op">=</span> <span class="st">'with turn = TRUE'</span>, type <span class="op">=</span> <span class="st">'bar='</span>, file <span class="op">=</span> <span class="st">'Hello-World-stacked-bars'</span>, turn <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="./inst/extdata/examples/png/Hello-World-shouldered-bars.png" width="400"><img src="./inst/extdata/examples/png/Hello-World-stacked-bars.png" width="400"></p>
 </div>
 </div>
@@ -188,7 +188,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

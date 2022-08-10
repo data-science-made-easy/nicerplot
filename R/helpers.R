@@ -173,7 +173,8 @@ get_str_dim <- function(p, x, horizontal = TRUE, ...) {
 
 #' @keywords internal
 as_char_vec <- function(str, sep = SEP1, trim = TRUE) {
-  if (!is.na(str) && !is.null(str) && str == sep) return(str) else {
+  # if (!is.na(str) && !is.null(str) && str == sep) return(str) else {
+	if (identical(sep, str)) return(str) else {
     vec <- unlist(stringr::str_split(str, sep))
     if (trim) return(stringr::str_trim(vec)) else return(vec)
   }

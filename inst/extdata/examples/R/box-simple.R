@@ -1,3 +1,3 @@
-source('M:/p_james/release/2022-06-18/R-header.R')
-d <- dget('M:/p_james/release/2022-06-18/examples/R/box-simple.RData')
+source('M:/p_james/release/2022-09-14/R-header.R')
+d <- dget('M:/p_james/release/2022-09-14/examples/R/box-simple.RData')
 nplot(d, style = c('no-legend, wide'), type = c('box'), title = c('Kans om in risicogroep te zitten'), x_title = c('kenmerk'), y_title = c('toename in de kans om geraakt te worden t.o.v. het gemiddelde'), turn = c('y'), box_col_all_equal = c('y'), box_quantiles = c(0.025, .5, .5, .5, .975), box_median_shape = c(19), box_median_col = c('rose'), hline_dash = c(0), box_median_lab_show = c('y'), box_median_lab_n_decimals = c(2), open = FALSE)

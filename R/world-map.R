@@ -20,7 +20,15 @@ world_map_pre <- function(p) {
 
   # Load maps
   p$world <- rnaturalearth::ne_countries(scale = "small", returnclass = "sf")
-  p$ocean <- sf::st_read(fix_path("ext/geo/ne_110m_ocean", use_local_path = on_mac()))
+
+  ocean_found <- FALSE
+  for (ocean_path in get_param("ocean_file_paths")) {
+    if (file.exists(ocean_path)) {
+      ocean_found <- TRUE
+      p$ocean <- sf::st_read(file.path(ocean_path, "ne_110m_ocean"))
+    }
+  }
+  if (!ocean_found) error_msg("Ocean not found! Paths '", paste(get_param("ocean_file_paths"), collapse = ", "), "' do not exist :-O")
   
   # Check country codes
   if (!all(2 == nchar(p$data[, 1])) & !all(3 == nchar(p$data[, 1])))

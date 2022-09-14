@@ -195,7 +195,10 @@ j_legend <- function(p) {
     # }
 
     # Legend text
-    graphics::text(x_left + symbol_width + p$legend_space_symbol_txt / p$width, y_line, labels = p$name[j], font = hack_font(p, p$legend_font_style), adj = 0, cex = scaling * p$legend_font_size, family = p$font)
+    # Enable 'expressions' with ^super and mu and [lowerscript]
+    this_label <- if (is_yes(p$legend_math)) parse(text = p$name[j]) else p$name[j] # TODO generalise to all text labels
+
+    graphics::text(x_left + symbol_width + p$legend_space_symbol_txt / p$width, y_line, labels = this_label, font = hack_font(p, p$legend_font_style), adj = 0, cex = scaling * p$legend_font_size, family = p$font)
     
     legend_txt_length <- max(legend_txt_length, graphics::strwidth(p$name[j], font = hack_font(p, p$legend_font_style), cex = p$legend_font_size, family = p$font))
   }

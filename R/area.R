@@ -60,8 +60,8 @@ area_pre <- function(p) {
     
     # Adapt y_lim
     range_to_add <- c(as.numeric(p$y[, j_low]), as.numeric(p$y[, j_high]))
-    if (!p$y_lim_by_user & is_yl(p, j_low)) p <- update_y_lims(p, i, range_to_add)
-    if (is_yr(p, j_low))                    p <- update_y_lims(p, i, range_to_add) # TODO NOT if user sets yr
+    # if (!p$y_lim_by_user & is_yl(p, j_low)) p <- update_y_lims(p, i, range_to_add)
+    # if (is_yr(p, j_low))                    p <- update_y_lims(p, i, range_to_add) # TODO NOT if user sets yr
   }
   
   # Remove second column of area from our data

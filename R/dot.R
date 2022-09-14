@@ -1,16 +1,16 @@
 is_dot <- function(type) if (is_set(type)) type == DOT else FALSE
 
-dot_pre <- function(p) {
-  print_debug_info(p)  
-  if (!any(is_dot(p$type))) return(p)
-  
-  for (j in 1:ncol(p$y)) if (is_dot(p$type[j])) {
-    if (!p$y_lim_by_user & is_yl(p, j)) p <- update_y_lims(p, j, p$y[, j])
-    if (is_yr(p, j))                    p <- update_y_lims(p, j, p$y[, j]) # TODO NOT if user sets yr
-  }
-    
-  p
-}
+# dot_pre <- function(p) {
+#   print_debug_info(p)
+#   if (!any(is_dot(p$type))) return(p)
+#
+#   # for (j in 1:ncol(p$y)) if (is_dot(p$type[j])) {
+#   #   if (!p$y_lim_by_user & is_yl(p, j)) p <- update_y_lims(p, j, p$y[, j])
+#   #   if (is_yr(p, j))                    p <- update_y_lims(p, j, p$y[, j]) # TODO NOT if user sets yr
+#   # }
+#
+#   p
+# }
 
 is_nth_dot <- function(j, p) {
   index <- which(is_dot(p$type))

@@ -14,8 +14,8 @@ box_pre <- function(p) {
     quantile_matrix <- rbind(quantile_matrix, new_quantiles)
     
     # Update y_lim
-    if (!p$y_lim_by_user & is_yl(p, j)) p <- update_y_lims(p, j, new_quantiles)
-    if (is_yr(p, j))                    p <- update_y_lims(p, j, new_quantiles) # TODO NOT if user sets yr
+    # if (!p$y_lim_by_user & is_yl(p, j)) p <- update_y_lims(p, j, new_quantiles)
+    # if (is_yr(p, j))                    p <- update_y_lims(p, j, new_quantiles) # TODO NOT if user sets yr
   }
 
   # Determine where to show boxes

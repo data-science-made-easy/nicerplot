@@ -174,7 +174,7 @@ get_str_dim <- function(p, x, horizontal = TRUE, ...) {
 #' @keywords internal
 as_char_vec <- function(str, sep = SEP1, trim = TRUE) {
   # if (!is.na(str) && !is.null(str) && str == sep) return(str) else {
-	if (identical(sep, str)) return(str) else {
+  if (identical(sep, str)) return(str) else {
     vec <- unlist(stringr::str_split(str, sep))
     if (trim) return(stringr::str_trim(vec)) else return(vec)
   }
@@ -214,8 +214,8 @@ combine_lists <- function(high_prio, low_prio) {
     value <- high_prio[[i]]
     
     # Only use NA to overwrite if var was non-existent
-    if (is.null(value) || !is.na(value) || is.null(lst[[var]]))
-      lst[[var]] <- value
+    # if (is.null(value) || !is.na(value) || is.null(lst[[var]])) lst[[var]] <- value
+    if (is_set(value)) lst[[var]] <- value
   }
   
   return(lst)

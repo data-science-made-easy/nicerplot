@@ -72,8 +72,13 @@ axes <- function(p) {
   
   if (is.element("y-right", p$style)) {
     if (p$turn) {
-      error_msg("y-right withouth turn: TODO")
+      error_msg("y-right does not work yet if turn = yes")
     } else {
+      # check
+      if (length(p$y_at) != length(p$y_r_lab)) error_msg("You have ", length(p$y_at), " gridlines. However, at your right y-axis, you defined ", length(p$y_r_lab), " label(s). The number of labels should equal the number of gridlines. Please note that you should separate your labels with two semicolons (;;), not with one semicolo (;) as in earlier versions of James. The idea behind the use of two semicolons as separator is that one can choose to use a single semicolon in a label.")
+        
+        
+      # do it
       graphics::axis(4, at = p$y_at, labels = set_newline(p$y_r_lab), las = 2, lwd = 0, mgp = c(0, p$y_lab_margin_right * p$width / grDevices::cm(1) * 8.55, 0), cex.axis = p$y_lab_font_size, family = p$font, col.axis = get_col_from_p(p, p$y_r_lab_col)) # y_r_lab
     }
   }

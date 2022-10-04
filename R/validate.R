@@ -45,6 +45,11 @@ validate <- function(p) {
       }
     }
   }
+
+  # In meta tab one MUST use a dot as decimal separator. Error in case parameter type 'numeric' has a comma (',') in it.
+  for (this_param in names(p)) if (NUMERIC == get_param_value_type(this_param)) if (is_set(p[[this_param]])) if (!is.numeric(get_parsed(p, this_param))) {
+    error_msg("Parameter '", this_param, "' has type 'numeric'. However, the assigned value '", p[[this_param]], "' is instead of type '", class(p[[this_param]]), "'. Please use a dot ('.') as decimal separator for numbers.", if (param_is_list_type(this_param)) " Please note that the parameter is of type 'list'. If your list has length > 1, please split its elements with separator '", get_param_list_sep(this_param), "'.")
+  }
   
   # LIMS
   if (is_set(p$y_l_lim)) error_msg("It is not allowed to set parameter 'y_l_lim'. Please use parameter 'y_lim' instead.")

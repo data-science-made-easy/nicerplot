@@ -1,4 +1,4 @@
-Time series data visualisation made easy for Excel users and R programmers. <img src='man/figures/nicerplot-hex-logo.png' align="right" height="139" />
+Time series data visualization made easy for Excel users and R programmers. <img src='man/figures/nicerplot-hex-logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/data-science-made-easy/nicerplot/workflows/R-CMD-check/badge.svg)](https://github.com/data-science-made-easy/nicerplot/actions)
@@ -38,7 +38,7 @@ This generates a figure in`./generated/hello-world.png` in your working director
 
 <img src="./inst/extdata/examples/png/Hello-World.png" width = 400>
 
-Nicerplot can visualise data in the following objects:
+Nicerplot can visualize data in the following objects:
 - `data.frame`, see the above example
 - `matrix`, similar to `data.frame`
 - `ts`, `mts`, (multivariate) time series objects

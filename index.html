@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Create NiceR Plots and Save as PNG/PDF/JPEG/SVG">
-<meta property="og:description" content="Create elegant data visualisations and save them in high resolution PNG or PDF. Input can be an xlsx-file, a CBS-url, a data frame, a list, a matrix, or a time-series (mts, ts) object.">
+<meta property="og:description" content="Create elegant data visualizations and save them in high resolution PNG or PDF. Input can be an xlsx-file, a CBS-url, a data frame, a list, a matrix, or a time-series (mts, ts) object.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nicerplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.7</span>
       </span>
     </div>
 
@@ -66,7 +66,7 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p>Time series data visualisation made easy for Excel users and R programmers. <img src="reference/figures/nicerplot-hex-logo.png" align="right" height="139"></p>
+<p>Time series data visualization made easy for Excel users and R programmers. <img src="reference/figures/nicerplot-hex-logo.png" align="right" height="139"></p>
 <!-- badges: start -->
 <ul>
 <li><a href="#installation">Installation</a></li>
@@ -107,7 +107,7 @@
 <span><span class="fu">nicerplot</span><span class="fu">::</span><span class="fu"><a href="reference/nplot.html">nplot</a></span><span class="op">(</span><span class="va">d</span>, title <span class="op">=</span> <span class="st">'Hello World'</span>, x_title <span class="op">=</span> <span class="st">'x'</span>, y_title <span class="op">=</span> <span class="st">'y'</span>, footnote <span class="op">=</span> <span class="st">"just an example"</span><span class="op">)</span></span></code></pre></div>
 <p>This generates a figure in<code>./generated/hello-world.png</code> in your working directory (see: <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code>):</p>
 <p><img src="./inst/extdata/examples/png/Hello-World.png" width="400"></p>
-<p>Nicerplot can visualise data in the following objects: - <code>data.frame</code>, see the above example - <code>matrix</code>, similar to <code>data.frame</code> - <code>ts</code>, <code>mts</code>, (multivariate) time series objects - <code>character</code>, if it is a ‘path/to/an-Excel-file.xlsx’ - <em>e.g.</em>, <code>nplot('hello-world.xlsx')</code> reproduces the above figure (first download <a href="https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx" class="external-link">hello-world.xlsx</a>) - <code>character</code>, if it is a URL that points to data on <a href="https://cbs.nl" class="external-link">Statistics Netherlands</a> - <em>e.g.</em> <code>nplot('https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD', title = 'Dutch housing market', y_title = 'prices (2015 = 100)', hline_bold = 100, file = 'url-example')</code> plots actual house prices and saves it as ‘url-example.png’ - <code>list</code>, with elements of the above objects and/or a ‘sub-<code>list</code>’</p>
+<p>Nicerplot can visualize data in the following objects: - <code>data.frame</code>, see the above example - <code>matrix</code>, similar to <code>data.frame</code> - <code>ts</code>, <code>mts</code>, (multivariate) time series objects - <code>character</code>, if it is a ‘path/to/an-Excel-file.xlsx’ - <em>e.g.</em>, <code>nplot('hello-world.xlsx')</code> reproduces the above figure (first download <a href="https://github.com/data-science-made-easy/nicerplot/raw/master/inst/extdata/examples/xlsx/hello-world.xlsx" class="external-link">hello-world.xlsx</a>) - <code>character</code>, if it is a URL that points to data on <a href="https://cbs.nl" class="external-link">Statistics Netherlands</a> - <em>e.g.</em> <code>nplot('https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD', title = 'Dutch housing market', y_title = 'prices (2015 = 100)', hline_bold = 100, file = 'url-example')</code> plots actual house prices and saves it as ‘url-example.png’ - <code>list</code>, with elements of the above objects and/or a ‘sub-<code>list</code>’</p>
 <p>The <a href="https://htmlpreview.github.io/?https://github.com/data-science-made-easy/nicerplot/blob/master/inst/extdata/nicerplot-manual.html" target="_blank" class="external-link">manual</a> explains in great detail how to structure the above objects well.</p>
 <div class="section level2">
 <h2 id="change-the-layout">Change the layout<a class="anchor" aria-label="anchor" href="#change-the-layout"></a>

@@ -48,45 +48,6 @@ bars_pre <- function(p) {
   index_whisker <- which(WHISKER == this_type)
   if (length(index_whisker)) this_type <- this_type[-index_whisker] 
   #### HACK STOP
-  
-  # # Update y_lim for bar--
-  # if (!p$y_lim_by_user & any(is_bar_next(p$type))) {
-  #   index <- which(is_bar_next(p$type))
-  #   vec   <- as.vector(unlist(p$y[,index]))
-  #   p     <- update_y_lims(p, index, vec) # range(as.numeric(c(p$y_lim, vec)), na.rm = T) # TODO Try just simpler
-  #   # Update y_lim max if we want to show labels (#ugly hack, but we don't know label dims before plotting...)
-  #   if (p$bar_lab_show & p$bar_lab_top) {
-  #     todo(p, "y-lim zou alleen bijgewerkt moeten worden als hoogste BAR + x% boven huidige y-lim uitschiet. en dan apart voor yleft en yright as...")
-  #     if (any(0 < vec)) p$y_lim[2] <- p$y_lim[2] + p$bar_lab_increase_y_lim_2 * diff(p$y_lim)
-  #     if (any(vec < 0)) p$y_lim[1] <- p$y_lim[1] - p$bar_lab_increase_y_lim_2 * diff(p$y_lim)
-  #   }
-  # }
-  #
-  # # Update y_lim for stacks
-  # if (!p$y_lim_by_user & stack_exists) {
-  #   stack_pos <- stack_neg <- rep(0, length(p$x))
-  #   index_stack <- which(is_bar_stack(p$type))
-  #   for (j in index_stack) {
-  #     for (i in 1:length(p$x)) {
-  #       if (p$y[i, j] < 0) stack_neg[i] <- stack_neg[i] + p$y[i, j]
-  #         else             stack_pos[i] <- stack_pos[i] + p$y[i, j]
-  #     }
-  #   }
-  #
-  #   y_bar_next <- NULL
-  #   for (j in seq_along(p$type)) if (is_bar_next(p$type[j])) y_bar_next <- c(y_bar_next, p$y[, j])
-  #
-  #   # p$y_lim[1] <- min(p$y_lim[1], stack_neg, y_bar_next, na.rm = T) # min(stack_neg)
-  #   # p$y_lim[2] <- max(p$y_lim[2], stack_pos, y_bar_next, na.rm = T) # max(stack_pos)
-  #
-  #   p <- update_y_lims(p, index_stack, c(stack_neg, stack_pos)) # Yoyoyo alles op de schop wbt (groepen van) stacks
-  #
-  #   if (p$bar_lab_show & p$bar_lab_top) {
-  #     todo(p, "y-lim zou alleen bijgewerkt moeten worden als hoogste STACK + x% boven huidige y-lim uitschiet. en dan apart voor yleft en yright as...")
-  #     if (any(0 < stack_pos)) p$y_lim[2] <- p$y_lim[2] + p$bar_lab_increase_y_lim_2 * diff(p$y_lim)
-  #     if (any(stack_neg < 0)) p$y_lim[1] <- p$y_lim[1] - p$bar_lab_increase_y_lim_2 * diff(p$y_lim)
-  #   }
-  # }
     
   p
 }
@@ -94,7 +55,7 @@ bars_pre <- function(p) {
 bars <- function(p) {
   print_debug_info(p)
   if (!any(p$type %in% BAR_SET)) return(p)
-  
+
   p_return <- p # Don't pass the modified p (e.g. with swap) on to next function (bit of hack)
   p <- swap_xy(p)
   
@@ -153,7 +114,7 @@ bars <- function(p) {
       
       xl <- p$x[i] + p$stack_x_left[bar_next_number]
       xr <- p$x[i] + p$stack_x_right[bar_next_number]
-      yl <- 0
+      yl <- if (is_yl(p, j)) 0 else p$y_r_scaling[1]
       yh <- p$y[i, j]
       if (is.na(yh)) yh <- 0 # set 0 if user did not fill in value
       this_col <- p$color[j]

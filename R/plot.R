@@ -70,12 +70,7 @@ nplot.data.frame <- function(x, ...) {
 #' @param ... you can add parameters to customize your figure (see manual)
 #' @return path/to/result/files.png
 nplot.ts <- function(x, ...) {
-  if (is.null(dim(x))) { # mat has only one dimension
-    n <- length(x)
-  } else { # mat has >1 dimensions
-    n <- nrow(x)
-  }
-  z <- cbind(as.vector(stats::time(x)), head(x, n))
+  z <- cbind(as.vector(stats::time(x)), unclass(x)) # can deal with ts and also deal with 'cpb/regts'
   nplot(james(data = z, ...))
 }
 

@@ -10,6 +10,13 @@
 # Alleen bij installatie extrafont::font_import(paths = "M:/p_io/Medewerkers/mdk/fonts") # PAD MOET TOEGANKELIJK ZIJN!  Het gaat volgens mij om de ttf files!
 # extrafont::loadfonts(quiet = TRUE)
 
+# library(extrafont)
+# library(remotes)
+# remotes::install_version("Rttf2pt1", version = "1.3.8")
+# extrafont::font_import(paths = "fonts")
+# extrafont::font_import(paths = "M:/p_io/Medewerkers/mdk/fonts")
+# extrafont::ttf_import(paths = "fonts")
+
 init_font <- function(p) {
   print_debug_info(p)
   # p <- list(font = "RijksoverheidSansText")
@@ -26,9 +33,11 @@ init_font <- function(p) {
 
   # For png(?):
   if ("RijksoverheidSansText" == p$font & !is.element(p$font, sysfonts::font_families())) {
-    if (on_windows())      path_prefix <- "M:/p_james/fonts/RijksoverheidSansText-"
-    if (on_linux_server()) path_prefix <- "/cifs/p_james/fonts/RijksoverheidSansText-"
-    if (on_mac())          path_prefix <- "~/Library/Fonts/RijksoverheidSansText-"
+    path_prefix <- get_first_existing(get_param("font_path"))
+    path_prefix <- file.path(path_prefix, "RijksoverheidSansText-")
+    # if (on_windows())      path_prefix <- "M:/p_james/fonts/RijksoverheidSansText-"
+    # if (on_linux_server()) path_prefix <- "/cifs/p_james/fonts/RijksoverheidSansText-"
+    # if (on_mac())          path_prefix <- "~/Library/Fonts/RijksoverheidSansText-"
     rijk_regular    <- paste0(path_prefix, "Regular_2_0.ttf")
     rijk_italic     <- paste0(path_prefix, "Italic_2_0.ttf")
     rijk_bold       <- paste0(path_prefix, "Bold_2_0.ttf")
@@ -41,7 +50,7 @@ init_font <- function(p) {
   }
   
   # For pdf: TODO moet hier niet ook bold, italic, enz staan?
-  if (on_windows() & !is.element("RijksoverheidSansText", names(grDevices::pdfFonts()))) grDevices::pdfFonts(RijksoverheidSansText = grDevices::Type1Font("RijksoverheidSansText", metrics = rep("M:/p_james/fonts/RijksoverheidSansText-Regular_2_0.ttf", 4))) 
+  if (on_windows() & !is.element("RijksoverheidSansText", names(grDevices::pdfFonts()))) grDevices::pdfFonts(RijksoverheidSansText = grDevices::Type1Font("RijksoverheidSansText", metrics = rep("M:/p_james/fonts/RijksoverheidSansText-Regular_2_0.ttf", 4)))
   
     # if (on_mac()) grDevices::pdfFonts(RijksoverheidSansText = Type1Font("RijksoverheidSansText", metrics = c(rijk_regular, rijk_bold, rijk_italic, rijk_bolditalic)))
   

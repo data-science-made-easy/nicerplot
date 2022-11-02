@@ -137,7 +137,7 @@ nplot.list <- function(x, ...) {
 
   # # SEQUENTIAL
   if (length(index_sequential)) {
-    show_msg("Starting to create [", length(index_sequential), "] of [", length(x), "] figures sequentially...\nSet parameter 'parallel = y' in tab 'globals' in your xlsx-file to speed-up this process.\n")
+    show_msg("Starting to create [", length(index_sequential), "] of [", length(x), "] figures.\n")
     for (p in x[index_sequential]) paths <- c(paths, nplot(p))
   }
     
@@ -246,7 +246,7 @@ nplot.james <- function(p, ...) {
     if (on_mac()) {
       extrafont::embed_fonts(p$pdf_file)
     } else {
-      font_path <- get_param("font_path")
+      font_path <- get_first_existing(get_param("font_path"))
       if (!dir.exists(font_path)) error_msg("Directory with fonts does not exist: ", font_path) 
       grDevices::embedFonts(p$pdf_file, options = paste0("-sFONTPATH=", font_path))      
     }
@@ -320,7 +320,9 @@ plot_james_pdf <- function(p) {
   extrafont::loadfonts(quiet = TRUE)
   on.exit(grDevices::dev.off())
   # p <- set_point_size(p)
+
   grDevices::pdf(p$pdf_file, width = p$width / grDevices::cm(1), height = p$height / grDevices::cm(1), pointsize = p$font_size, useDingbats = FALSE, family = p$font)
+
   p <- plot_james_internal(p)
   
   todo(p, "Fix return value of plot")

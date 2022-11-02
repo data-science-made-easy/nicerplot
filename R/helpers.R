@@ -356,25 +356,8 @@ fix_path_rel <- function(path = '', path_base = paste0('p_james/release/', get_p
   file.path(prefix, path_base, path)
 }
 
+get_first_existing <- function(paths) {
+  for (i in seq_along(paths)) if (file.exists(paths[i])) return(paths[i])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return(NULL)
+}

@@ -132,12 +132,12 @@ nplot.list <- function(x, ...) {
     }
     
     # STOP IF ANY ERROR
-    if (!is.null(error_text)) stop(paste0("\n\n", error_text)) else show_msg("Done.")
+    if (!is.null(error_text)) stop(paste0("\n\n", error_text)) else if (!p$quiet) show_msg("Done.")
   }
 
   # # SEQUENTIAL
   if (length(index_sequential)) {
-    show_msg("Starting to create [", length(index_sequential), "] of [", length(x), "] figures.\n")
+    if (!p$quiet) show_msg("Starting to create [", length(index_sequential), "] of [", length(x), "] figures.\n")
     for (p in x[index_sequential]) paths <- c(paths, nplot(p))
   }
     
@@ -171,6 +171,11 @@ plot_continue_on_error <- function(p) {
 #' @return path/to/result/files.png
 nplot.james <- function(p, ...) {
   print_debug_info(p)
+
+  # TODO
+  # Read ~/.james with 'base settings' like 'open = TRUE', e.g.:
+  # private_settings <- james("~/.james")
+  # p <- combine_lists(high_prio = p, low_prio = private_settings)
 
   # Overwrite parameters p
   P <- list(...)
@@ -252,7 +257,7 @@ nplot.james <- function(p, ...) {
     }
 
     save_hash(p, "pdf")
-    show_msg("Done.")
+    if (!p$quiet) show_msg("Done.")
     if (!creating_report_now() & is_yes(p$open)) {
       print_progress(p, "Opening ", p$pdf_file)
       system(paste("open", p$pdf_file), wait = FALSE)
@@ -266,7 +271,7 @@ nplot.james <- function(p, ...) {
     plot_james_png(p)
     showtext::showtext_auto(enable = FALSE) # double check
     save_hash(p, "png")
-    show_msg("Done.")
+    if (!p$quiet) show_msg("Done.")
     if (!creating_report_now() & is_yes(p$open)) {
       print_progress(p, "Opening ", p$png_file)
       system(paste("open", p$png_file))
@@ -279,7 +284,7 @@ nplot.james <- function(p, ...) {
     plot_james_jpg(p)
     showtext::showtext_auto(enable = FALSE) # double check
     save_hash(p, "jpg")
-    show_msg("Done.")
+    if (!p$quiet) show_msg("Done.")
     if (!creating_report_now() & is_yes(p$open)) {
       print_progress(p, "Opening ", p$jpg_file)
       system(paste("open", p$jpg_file))
@@ -290,7 +295,7 @@ nplot.james <- function(p, ...) {
     p <- init_font(p)
     plot_james_svg(p)
     save_hash(p, "svg")
-    show_msg("Done.")
+    if (!p$quiet) show_msg("Done.")
   }
   if (p$gif) {
     print_progress(p, "Creating ", basename(p$gif_file), "...")
@@ -301,7 +306,7 @@ nplot.james <- function(p, ...) {
     p$gif_file <- gif_file
     showtext::showtext_auto(enable = FALSE) # double check
     # to do: cash
-    show_msg("Done.")
+    if (!p$quiet) show_msg("Done.")
     if (!creating_report_now() & is_yes(p$open)) {
       print_progress(p, "Opening ", p$gif_file)
       system(paste("open", p$gif_file))
@@ -315,7 +320,7 @@ nplot.james <- function(p, ...) {
 
 plot_james_pdf <- function(p) {
   print_debug_info(p)
-  create_dir_for_file(p$pdf_file)
+  create_dir_for_file(p$pdf_file, p$quiet)
   # extrafont::font_import() # ONLY ONCE
   extrafont::loadfonts(quiet = TRUE)
   on.exit(grDevices::dev.off())
@@ -354,7 +359,7 @@ plot_james_pdf <- function(p) {
 
 plot_james_png <- function(p) {
   print_debug_info(p)
-  create_dir_for_file(p$png_file)
+  create_dir_for_file(p$png_file, p$quiet)
   on.exit({grDevices::dev.off(); showtext::showtext_auto(enable = FALSE)})
   # p <- set_point_size(p)
 
@@ -367,7 +372,7 @@ plot_james_png <- function(p) {
 
 plot_james_jpg <- function(p) {
   print_debug_info(p)
-  create_dir_for_file(p$jpg_file)
+  create_dir_for_file(p$jpg_file, p$quiet)
   on.exit({grDevices::dev.off(); showtext::showtext_auto(enable = FALSE)})
   # p <- set_point_size(p)
   grDevices::jpeg(p$jpg_file, width = p$width / grDevices::cm(1), height = p$height / grDevices::cm(1), pointsize = p$font_size, unit = "in", res = p$resolution, quality = p$quality, type = "cairo") # , family = p$font seems not to work here; instead inject everywhere apart
@@ -377,7 +382,7 @@ plot_james_jpg <- function(p) {
 
 plot_james_svg <- function(p) {
   print_debug_info(p)
-  create_dir_for_file(p$svg_file)
+  create_dir_for_file(p$svg_file, p$quiet)
   # extrafont::font_import() # ONLY ONCE
   extrafont::loadfonts(quiet = TRUE)
   # if ("windows" == .Platform$OS.type) loadfonts(device = "win")
@@ -397,7 +402,7 @@ plot_james_svg <- function(p) {
 
 plot_james_gif <- function(p) {
   print_debug_info(p)
-  create_dir_for_file(p$gif_file)
+  create_dir_for_file(p$gif_file, p$quiet)
   on.exit({if (length(grDevices::dev.list())) grDevices::dev.off();showtext::showtext_auto(enable = FALSE)})
   # jstop(p)
   # Make end figure to derive y_lim

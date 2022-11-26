@@ -5,6 +5,7 @@ print_debug_info <- function(p)   if (p$debug & !creating_report_now()) {
   # cat(paste0(" >> ", paste(p$png_file, collapse = ", "), "\n"))
   # if (is_set(p$legend_type)) cat(paste0(" >> ", p$legend_type, "\n"))
   p. <<- p
+  # if (is_set(p$x_at)) stop('found it')
 }
 
 show_msg         <- function(...) cat(paste0("> INFO > ", paste0(...), "\n"))

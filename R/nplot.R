@@ -21,11 +21,11 @@
 #' }
 #' @export
 nplot <- function(x, ...) {
-  if (is.character(x))       nplot.character(x, ...)
-  else if (is.data.frame(x)) nplot.data.frame(x, ...)
-  else if (is.james(x))      nplot.james(x, ...)
-  else if (is.list(x))       nplot.list(x, ...)
-  else if (stats::is.mts(x)) nplot.mts(x, ...)
-  else if (stats::is.ts(x))  nplot.ts(x, ...)
-  else if (is.matrix(x))     nplot.matrix(x, ...) # this one as last because is.matrix('regts') == TRUE
+  if (is.character(x))       nplot.character(x, ...)  # may be path/to/file.xlsx, cbs-url
+  else if (is.data.frame(x)) nplot.data.frame(x, ...) #
+  else if (is.james(x))      nplot.james(x, ...)      # james object
+  else if (is.list(x))       nplot.list(x, ...)       # list of plotable objects
+  else if (stats::is.mts(x)) nplot.mts(x, ...)        # multivariate time series
+  else if (stats::is.ts(x))  nplot.ts(x, ...)         # time series
+  else if (is.matrix(x))     nplot.matrix(x, ...)     # last one, because is.matrix('regts') == TRUE
 }

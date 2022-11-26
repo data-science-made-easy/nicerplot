@@ -29,7 +29,7 @@ set_export_flags <- function(p) {
           # i.e. check whether file was made with same (meta) data
           if (p$hash_p == readLines(hash_of_file_path)[[1]]) {
             p[[file_format]] <- FALSE
-            print_progress(p, "Skipping ", if (p$open) "creation and opening of '" else "'", p[[file_name_param]], "' (cached).")
+            print_progress(p, "Skipping ", if (is_yes(p$open)) "creation and opening of '" else "'", p[[file_name_param]], "' (cached).")
           }
         }
       }

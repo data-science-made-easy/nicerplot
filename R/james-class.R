@@ -42,7 +42,11 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
     
   attr(p, "class") <- "james"
 
-  # preprocess_data_grouping_variables(p)
+  if (on_mac() & !is_set(p$open)) {
+    if (!p$quiet) show_msg("Figure will 'auto open' after it is generated.")
+    p$open <- T
+  }
+
   p
 }
 

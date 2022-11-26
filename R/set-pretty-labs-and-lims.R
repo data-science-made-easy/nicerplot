@@ -181,26 +181,37 @@ find_y_r_scaling <- function(p) {
 
 
 get_pretty_date_lab <- function(p, dates) {
+  print_debug_info(p)
+
   y <- lubridate::year(dates)
   m <- lubridate::month(dates)
-  # m <- stringr::str_pad(lubridate::month(dates), 2, pad = "0")
-  d <- stringr::str_pad(lubridate::day(dates),   2, pad = "0")
+  d <- lubridate::day(dates)
 
-  use_y <- 1 < length(unique(y))
-  use_d <- !use_y | any("01" != d & "02" != d) # hack
-  use_m <- use_d | any("1" != m)
+  # month as a word
+  month      <- if (is_english(p)) p$month_en[m] else p$month_nl[m]
+  month_full <- if (is_english(p)) p$month_en_full[m] else p$month_nl_full[m]
 
-  # replace my by name of month
-  if (is_english(p)) {
-    m <- MONTH_EN[m]
-  } else {
-    m <- MONTH_NL[m]
+  lab <- rep(p$x_date_format, length(dates))
+  
+  for (i in seq_along(lab)) {
+    # year
+    lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "yyyy", replacement = as.character(y[i]))
+    lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "yy", replacement = as.character(stringr::str_sub(y[i], 3, 4)))
+    # day
+    lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "dd", replacement = as.character(stringr::str_pad(d[i], 2, pad = "0")))
+    lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "d", replacement = as.character(d[i]))
+    # month
+    # extra checks needed to prevent cases like 'month' -> 'may' ([m]ay) -> '5ay'
+    if (stringr::str_detect(string = lab[i], pattern = "mm")) {
+      lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "mm", replacement = as.character(stringr::str_pad(m[i], 2, pad = "0")))
+    } else if (stringr::str_detect(string = lab[i], pattern = "month_full")) {
+      lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "month_full", replacement = month_full[i])
+    } else if (stringr::str_detect(string = lab[i], pattern = "month")) {
+      lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "month", replacement = month[i])
+    } else if (stringr::str_detect(string = lab[i], pattern = "m")) {
+      lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "m", replacement = as.character(m[i]))
+    }    
   }
-
-  lab <- NULL
-  if (use_y) lab <- y
-  if (use_m) lab <- if (use_y) if (is_english(p)) paste0(lab, "-", m) else paste0(m, "-", lab) else m
-  if (use_d) lab <- if (use_m) if (is_english(p)) paste0(lab, "-", d) else paste0(d, "-", lab) else d
 
   return(lab)
 }
@@ -208,22 +219,50 @@ get_pretty_date_lab <- function(p, dates) {
 
 set_labs <- function(p) {
   print_debug_info(p)
-  #
-  ## fix x_at, x_lim
-  #
 
-  if (!is_set(p$x_at)) {
+  # set x_at, based on x_at_date (i.e. convert dates to numbers)
+  if (is_set(p$x_at_date)) {
+    # validate
+    n_dashes <- stringr::str_count(string = p$x_at_date, pattern = "-")
+    if (1 < length(unique(n_dashes))) {
+      error_msg("The dates specified for parameter x_at_dates have different formats. Please specify all values in one and the same format. Possible formats for 'x_at_date' are: 'yyyy-mm-dd', 'yy-m' (or a combination), where dd = 1..31, mm = 1..12, and year can be specified by two or four digits (e.g., 2022-3, 22-03 are equivalent).")
+    } else {
+      if (1 == n_dashes[1]) {
+        x_date <- lubridate::ym(p$x_at_date)
+      } else if (2 == n_dashes[1]) {
+        x_date <- lubridate::ymd(p$x_at_date)
+      } else error_msg("Possible formats are: 'yyyy-mm-dd', 'yy-m' (or a combination).")
+    }   
+    
+    # set x_at
+    p$x_at <- lubridate::decimal_date(x_date)
+  }
+
+  if (!is_set(p$x_at) & !is_set(p$x_at_date)) {
     p$x_at <- pretty(if (is_set(p$x_lim)) p$x_lim else p$x_lim_data)
     p$x_at <- cut_data(p$x_at, p$x_lim)
-  }  
-  # For dates make sure that x_at is exactly at start of day
+  } 
+
+  # derive x_at, x_lab from x_at_date
   if (is_yes(p$x_lab_date_show)) {
-    x_at_as_date <- lubridate::round_date(lubridate::date_decimal(p$x_at), unit = "day")
-    p$x_at       <- lubridate::decimal_date(x_at_as_date)
-    index_keep <- which(p$x_at %in% cut_data(p$x_at, p$x_lim))
-    p$x_at     <- p$x_at[index_keep]
-    p$x_lab    <- get_pretty_date_lab(p, x_at_as_date[index_keep])
-  }
+    # For dates make sure that x_at is exactly at start of day
+    # if (!is_set(p$x_at)) {
+      x_at_as_date <- lubridate::round_date(lubridate::date_decimal(p$x_at), unit = "day")
+      p$x_at       <- lubridate::decimal_date(x_at_as_date)
+      index_keep <- which(p$x_at %in% cut_data(p$x_at, p$x_lim))
+      p$x_at     <- p$x_at[index_keep]
+    # }
+    
+    # set x_lab
+    if (!is_set(p$x_lab)) {
+      if (exists('x_date')) {
+        p$x_lab <- get_pretty_date_lab(p, x_date)
+      } else {
+        p$x_lab <- get_pretty_date_lab(p, x_at_as_date[index_keep])
+      }
+    }
+    
+  } 
 
   # Adapt x_lim to axes 
   if (!p$x_lim_by_user) p$x_lim <- range(c(p$x_at, p$x_lim, p$x_ticks), na.rm = T)

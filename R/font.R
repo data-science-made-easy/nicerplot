@@ -23,21 +23,10 @@ init_font <- function(p) {
 
   if ("RijksoverheidSansText" != p$font) return(p)
 
-  # if (on_windows())     path_prefix <- "M:/p_james/fonts/RijksoverheidSansText-"
-  # if (on_linux_server()) path_prefix <- "~/m:/p_james/fonts/RijksoverheidSansText-"
-  # if (on_mac())         path_prefix <- "~/Library/Fonts/RijksoverheidSansText-"
-  # rijk_regular    <- paste0(path_prefix, "Regular_2_0.ttf")
-  # rijk_italic     <- paste0(path_prefix, "Italic_2_0.ttf")
-  # rijk_bold       <- paste0(path_prefix, "Bold_2_0.ttf")
-  # rijk_bolditalic <- paste0(path_prefix, "BoldItalic_2_0.ttf")
-
-  # For png(?):
+  # FOR PNG:
   if ("RijksoverheidSansText" == p$font & !is.element(p$font, sysfonts::font_families())) {
     path_prefix <- get_first_existing(get_param("font_path"))
     path_prefix <- file.path(path_prefix, "RijksoverheidSansText-")
-    # if (on_windows())      path_prefix <- "M:/p_james/fonts/RijksoverheidSansText-"
-    # if (on_linux_server()) path_prefix <- "/cifs/p_james/fonts/RijksoverheidSansText-"
-    # if (on_mac())          path_prefix <- "~/Library/Fonts/RijksoverheidSansText-"
     rijk_regular    <- paste0(path_prefix, "Regular_2_0.ttf")
     rijk_italic     <- paste0(path_prefix, "Italic_2_0.ttf")
     rijk_bold       <- paste0(path_prefix, "Bold_2_0.ttf")

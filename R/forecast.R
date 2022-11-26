@@ -45,15 +45,16 @@ forecast <- function(p) {
   p_return <- p # Don't pass the modified p (e.g. with swap) on to next function (bit of hack)
   p <- swap_xy(p)
     
+  fc_txt <- set_newline(p$forecast_text)
   # abline(v = if (p$turn) NULL else p$x_forecast, h = if (p$turn) p$x_forecast else NULL, lty = 1, col = p$forecast_bg_col)
 
   # determine x
-  x <- mean(c(p$forecast_x, if (p$turn) p$y_lim[1] else p$x_lim[2]))
-  str_dim <- graphics::strwidth(p$forecast_text, cex = p$forecast_font_size, font = hack_font(p, p$forecast_font_style), units = "user", family = p$font)
+  x <- mean(c(p$forecast_x, if (p$turn) p$y_l_lim[1] else p$x_lim[2]))
+  str_dim <- graphics::strwidth(fc_txt, cex = p$forecast_font_size, font = hack_font(p, p$forecast_font_style), units = "user", family = p$font)
 
-  if (p$turn) str_dim <- str_dim / diff(p$x_lim) * abs(diff(p$y_lim))
+  if (p$turn) str_dim <- str_dim / diff(p$x_lim) * abs(diff(p$y_l_lim))
   if (p$turn) {
-    x_exceed <- x + str_dim / 2 - p$y_lim[1]
+    x_exceed <- x + str_dim / 2 - p$y_l_lim[1]
   } else {
     x_exceed <- x + str_dim / 2 - p$x_lim[2]
   }
@@ -72,7 +73,7 @@ forecast <- function(p) {
     y <- y_high
   } 
 
-  graphics::text(x = x, y = y, p$forecast_text, xpd = TRUE, adj= c(0.5, p$forecast_below_gridline), cex = p$forecast_font_size, font = hack_font(p, p$forecast_font_style), col = get_col_from_p(p, p$forecast_text_col), srt = if (p$turn) 270 else 0, family = p$font)
+  graphics::text(x = x, y = y, fc_txt, xpd = TRUE, adj= c(0.5, p$forecast_below_gridline), cex = p$forecast_font_size, font = hack_font(p, p$forecast_font_style), col = get_col_from_p(p, p$forecast_text_col), srt = if (p$turn) 270 else 0, family = p$font)
 
   # lines(x = c(p$forecast_x, p$forecast_x), y = c(y_high + 0.02 * (y_high - y_low), y_high), col = get_col_from_p(p, "sun"), xpd = T, lwd = 2)
   #

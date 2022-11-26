@@ -5,3 +5,6 @@
 .Rapp.history
 ..Rcheck/
 generated/
+inst/doc
+/doc/
+/Meta/

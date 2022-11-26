@@ -32,6 +32,9 @@ preprocess_data_grouping_variables <- function(p) {
     # set back x_at
     p$x_at <- x_at
   }
+  
+  # detect if user wants dates on x-axis
+  if (is_set(p$x_at_date) & !is_set(p$x_lab_date_show)) p$x_lab_date_show <- T
 
   # cast x-axis data
   if (!all(1:nrow(p$data) == rownames(p$data)) & !is_really_character(p$data[,1])) p$data <- cbind(x = rownames(p$data), p$data) # hack

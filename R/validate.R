@@ -53,7 +53,7 @@ validate <- function(p) {
   
   # LIMS
   if (is_set(p$y_l_lim)) error_msg("It is not allowed to set parameter 'y_l_lim'. Please use parameter 'y_lim' instead.")
- 
+  
   # ID may not have spaces
   if (is_set(p$id)) if (grepl("\\s+", p$id, perl = T)) error_msg("Parameter 'id' does not allow a whitespace. Please remove the whitespace or replace it with e.g. '-'. Problematic id: '", p$id, "'.")
  

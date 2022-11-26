@@ -73,7 +73,7 @@ create_report <- function(report) { # TODO rewrite code
   
   # Get right file name and create dir for report
   report <- set_file_name(report)
-  report_dir <- create_dir_for_file(report$report_file)
+  report_dir <- create_dir_for_file(report$report_file, quiet = report$quiet)
 
   # Create report in each format (html, pdf, ...)
   for (format in report$report_format) {
@@ -201,29 +201,9 @@ plot_all_figs_in_xlsx <- function(report) {
   res
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+nplot_md <- function(..., caption = NULL) {
+  path <- nplot(..., quiet = TRUE)
+  fig  <- if ("pdf" == tools::file_ext(path)) paste0("\\includegraphics{", path, "}") else paste0("![](", path, ")")
+  caption <- if (is_set(caption)) c(caption, "<BR/>\n\n") else ""
+  cat(paste0(c(fig, "<BR/>\n\n", caption), collapse = ""))
+}

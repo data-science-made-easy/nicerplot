@@ -1,3 +1,3 @@
-source('M:/p_james/release/2022-11-26/R-header.R')
-d <- dget('M:/p_james/release/2022-11-26/examples/R/impact-no-deal-brexit.RData')
+source('M:/p_james/release/2022-11-28/R-header.R')
+d <- dget('M:/p_james/release/2022-11-28/examples/R/impact-no-deal-brexit.RData')
 nplot(d, type = c('bar--, bar--, whisker, whisker, whisker, whisker'), title = c('Impact no-deal Brexit (horizontal)'), y_title = c('% verandering VK'), y_title_col = c('rose'), y_lab = c('-25;;-20;; -15;; -10;; -5;; 0;; 5'), y_lab_col = c('rose'), x_ticks = c(1,5,6,7,8,9,10,11,12,13,14,15,16,17,18), y_r_title = c('% verandering'), x_lab_rotation = c(45), y_at = c(-5, -4, -3, -2, -1, 0, 1), vline_dash = c(3), text_x = c(2, 4), text_y = c(-2, -2), text_label = c('zie linker y-as;; zie rechter y-as'), text_rotation = c(90), text_col = c('rose, black'), x_lab_col = c('rose, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black'), y_r_lab = c('-5;;-4;; -3;; -2;; -1;; 0;; 1'), legend_n_per_column = c(1), legend_y = c(0.5), whisker_legend_show_n = c(0), style = c('default'), open = FALSE)

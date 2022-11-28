@@ -1,3 +1,14 @@
+#' @title Imports James-xlsx file
+#' @description
+#' Imports and parses parameters in your xlsx-file. You can nplot(import("file.xlsx")). Please find examples in the manual. Below each figure is a link to an xlsx-file, which you can use to reproduce the figure.
+#' @param xlsx path/to/your/james-file.xlsx
+#' @param ... parameters listed here will overwrite the parameters of the imported meta-data. In addition, you can import a specific figure from an xlsx file by setting 'id = id-of-figure'; e.g. import("my-big-file.xlsx") will return a list with james objects of all figures in the file, while import("my-big-file.xlsx", id = "hello-world") will return a list with only one specific element.
+#' @return list with james-objects
+#' @examples
+#' \dontrun{
+#' import("my-james-file.xlsx")
+#' }
+#' @export
 import <- function(xlsx, ...) { # filter = "create" to speedup import
   p <- list(...)
 

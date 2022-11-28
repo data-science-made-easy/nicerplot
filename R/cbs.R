@@ -1,3 +1,23 @@
+#' @title Download 'live' cbs data
+#' @description
+#' Enables the use of 'live' CBS data in your nicerplot
+#' @param url url to cbs data
+#' @return data.frame
+#' @details
+#' See manual for details.
+#' @examples
+#' \dontrun{
+#' link <- "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD"
+#' head(cbs(link))
+#'
+#' nplot(link)
+#'
+#' j <- james(cbs(link))
+#' j$title   <- "Stad nog steeds in trek"
+#' j$y_title <- "verkoopprijzen (2015 = 100)"
+#' nplot(j)
+#' }
+#' @export
 cbs <- function(url = "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83913NED/table?dl=323FD") {
   mat <- cbsodataR::cbs_get_data_from_link(url, message = FALSE)  
   mat <- cbsodataR::cbs_add_label_columns(mat)

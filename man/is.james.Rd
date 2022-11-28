@@ -4,10 +4,10 @@
 \alias{is.james}
 \title{Tests if its Argument has Class James}
 \usage{
-\method{is}{james}(p)
+is.james(p)
 }
 \arguments{
-\item{p}{an R object}
+\item{p}{R object to be tested}
 }
 \value{
 boolean

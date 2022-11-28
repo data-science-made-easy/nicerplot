@@ -52,10 +52,9 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
 
 #' @title Tests if its Argument has Class James
 #' @description `james` objects enable you to add data and meta data in an incremental fashion so you don't need to put everything in one and the same plot-statement. With `is.james` you can test whether a given object is of type `james`.
-#' @param p an R object
+#' @param p R object to be tested
 #' @return boolean
-#' @importFrom methods "is" 
-#' @method is james
+#' @importFrom methods "is"
 #' @export
 is.james <- function(p) any("james" == class(p))
 

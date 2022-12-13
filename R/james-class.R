@@ -43,7 +43,7 @@ james <- function(...) { # Arg may be list or individual values, i.e. james(list
   attr(p, "class") <- "james"
 
   if (on_mac() & !is_set(p$open)) {
-    if (!p$quiet) show_msg("Figure will 'auto open' after it is generated.")
+    # if (!p$quiet) show_msg("Figure will 'auto open' after it is generated.")
     p$open <- T
   }
 

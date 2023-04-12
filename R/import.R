@@ -83,6 +83,10 @@ import <- function(xlsx, ...) { # filter = "create" to speedup import
           this_list[[REPORT_TEXT]] <- data_frame_to_string(openxlsx::read.xlsx(xlsx, sheet = as.character(this_tab), colNames = F, rowNames = F, skipEmptyRows = F))
         } else { # in case of data
           this_data <- openxlsx::read.xlsx(xlsx, sheet = as.character(this_tab), sep.names = " ", colNames = T, rowNames = F, detectDates = T)
+          # colnames may be NA (auto replaced by X1, X2, X3 if NA) so we must do more work
+          col_name <- openxlsx::read.xlsx(xlsx, sheet = as.character(this_tab), sep.names = " ", colNames = F, rowNames = F, detectDates = T, rows = 1, skipEmptyCols = F)
+          col_name <- as.vector(unlist(col_name))
+          colnames(this_data) <- col_name
           this_list[[DATA]] <- if (is_set(this_list[[DATA]])) plyr::rbind.fill(this_list[[DATA]], this_data) else this_data
         }
       } else if (!is.element(i, index_map) & is_set(this_tab)) error_msg("In column ", i, " of your meta tab, you refer to a non-existing tab '", this_tab, "'.")
@@ -97,7 +101,6 @@ import <- function(xlsx, ...) { # filter = "create" to speedup import
     
     ### Set create of figs default to FALSE if we also produce a report
     ### if (not_plot_figs_next_to_report & any(REPORT != meta_lst[[i]]$type)) meta_lst[[i]]$create_for_report <- FALSE
-
     # Give element name
     sheet_id <- meta_lst[[i]]$id
     sheet_id_set_by_user <- is_set(sheet_id)
@@ -111,7 +114,7 @@ import <- function(xlsx, ...) { # filter = "create" to speedup import
     names(meta_lst)[i]              <- sheet_id
     meta_lst[[i]]$id                <- sheet_id # Also give the ID to the element itself
   }
-  
+
   meta_lst
 }
 

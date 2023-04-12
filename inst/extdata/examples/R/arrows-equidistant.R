@@ -1,3 +1,3 @@
-source('M:/p_james/release/2022-11-28/R-header.R')
-d <- dget('M:/p_james/release/2022-11-28/examples/R/arrows-equidistant.RData')
+source('M:/p_james/release/2023-03-30/R-header.R')
+d <- dget('M:/p_james/release/2023-03-30/examples/R/arrows-equidistant.RData')
 nplot(d, title = c('Spanning op arbeidsmarkt blijft toenemen'), x_title = c('werkloosheidspercentage'), y_title = c('vacaturegraad (vacatures per 1000 werknemersbanen)'), arrow_n = c(5), style = c('default'), open = FALSE)

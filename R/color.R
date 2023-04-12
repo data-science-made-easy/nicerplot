@@ -68,7 +68,7 @@ color_pre <- function(p) {
   }
 
   # Check all series get indeed a color
-  if (any(is.na(p$color))) error_msg("The palette of figure '", if (is_set(p$file)) p$file else p$id, "' has not enough colors. The figure has ", p$n_series, " time series while the color palette has only ", length(which(!is.na(p$color))), " color(s). Please add colors to the palette. The manual, section 'Colors', explains in detail how you may do so (e.g. palette = cpb, info).")
+  if (!is_heatmap(p) & any(is.na(p$color))) error_msg("The palette of figure '", if (is_set(p$file)) p$file else p$id, "' has not enough colors. The figure has ", p$n_series, " time series while the color palette has only ", length(which(!is.na(p$color))), " color(s). Please add colors to the palette. The manual, section 'Colors', explains in detail how you may do so (e.g. palette = cpb, info).")
 
   p
 }

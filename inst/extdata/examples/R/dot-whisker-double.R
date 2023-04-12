@@ -1,3 +1,3 @@
-source('M:/p_james/release/2022-11-28/R-header.R')
-d <- dget('M:/p_james/release/2022-11-28/examples/R/dot-whisker-double.RData')
+source('M:/p_james/release/2023-03-30/R-header.R')
+d <- dget('M:/p_james/release/2023-03-30/examples/R/dot-whisker-double.RData')
 nplot(d, style = c('wide, english'), type = c('dot, dot, whisker, whisker, whisker, whisker'), title = c('Two series of whiskers in one plot'), x_title = c('year'), y_title = c('effect (a.u.)'), footnote = c('The whiskers of the two series don't overlap because their x-values are adapted by hand.'), x_lim = c(0.5, 15.5), dot_size = c(0.5), x_at = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15), hline_dash = c(0), legend_order = c(1, 3, 2), whisker_col = c('endeavour, rose'), whisker_legend_col = c('black'), whisker_legend_show_n = c(1), open = FALSE)

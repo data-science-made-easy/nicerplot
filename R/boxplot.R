@@ -111,6 +111,13 @@ jbox <- function(p) {
     # And put the median as text on top
     if (p$box_median_lab_show) {
       median_lab <- fix_numbers(p$quantile_matrix[j, 3], n_decimals = p$box_median_lab_n_decimals, p$decimal_mark, big_mark = if (p$box_lab_big_mark_show) p$big_mark else "")
+      
+      # add suffix
+      if (is_set(p$box_median_lab_suffix)) {
+        process_whitespaces <- stringr::str_replace_all(p$box_median_lab_suffix, "\\\\s", " ") # we need \s because by default James trims strings
+        median_lab <- paste0(median_lab, process_whitespaces)
+      }
+      
       median_lab_height <- graphics::strheight(median_lab, cex = p$box_median_lab_font_size)
 
       if (0 == p$box_median_shape) { # adapt to line

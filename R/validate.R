@@ -7,12 +7,15 @@ validate <- function(p) {
   
   if (p$r_plot & any_file_to_save(p)) error_msg("Please set parameter 'r_plot = n' if you want to export your figure (gif, jpg, pdf, png, svg).")  
   
-  if (any(!is.element(p$style, styles()))) error_msg("Not all of your styles, ", paste0(p$style, collapse = ", "), ", are part of the available styles: ", paste0(styles(), collapse = ", "))
+  index_unavailable_style <- which(!is.element(p$style, styles()))
+  if (length(index_unavailable_style)) {
+    error_msg("Style, ", p$style[index_unavailable_style], " is unavailable. Available styles are: ", paste0(styles(), collapse = ", "))
+  }
 
   todo(p, "TODO make types()")
   todo(p, "TODO rename styles to style")
   existing_types_string <- get_param("type", style = "example")
-  existing_types <- as_char_vec(existing_types_string, sep = SEP0) # this line can be removed?
+  existing_types <- as_char_vec(existing_types_string, sep = SEP0) # this line can be removed? NO :)
   non_existing_type_index <- which(!(p$type %in% existing_types))
   if (length(non_existing_type_index)) error_msg("Type '", p$type[non_existing_type_index], "' not allowed! Please choose from the following types: ", paste0(existing_types_string, collapse = ", "), ".")
     
@@ -54,6 +57,10 @@ validate <- function(p) {
   # LIMS
   if (is_set(p$y_l_lim)) error_msg("It is not allowed to set parameter 'y_l_lim'. Please use parameter 'y_lim' instead.")
   
+  # y_r_at
+  # if (is_set(p$y_r_lab) & !is_set(p$y_r_at)) error_msg("You have set parameter y_r_lab. Please ")
+  # if (is_set(p$y_r_at) & 2 < length(p$y_r_at)) if (any(1e-10 < abs(diff(diff(p$y_r_at))))) error_msg("Values of parameter y_r_at should be equidistant.")
+  
   # ID may not have spaces
   if (is_set(p$id)) if (grepl("\\s+", p$id, perl = T)) error_msg("Parameter 'id' does not allow a whitespace. Please remove the whitespace or replace it with e.g. '-'. Problematic id: '", p$id, "'.")
  
@@ -77,6 +84,15 @@ validate <- function(p) {
       
     if (length(index)) error_msg("The following parameters are locked: ", paste(p$locked_settings[index], collapse = ", "), ". The reason for this is to make the figures more similar/uniform/comparable for publication purposes. You can unlock these settings by setting parameter 'lock = no'.")
   }
- 
+
+  # HEATMAP
+  if (is.element(HEATMAP, p$type)) {
+    if (1 < length(p$type)) error_msg("Currently James can't add extra plot types to a heatmap. Please use 'type = heatmap' and remove other types/data.")
+
+    # input mistakes
+    if (is_no(p$heatmap_x_axis_asis) & is_really_character(colnames(p$data))) error_msg("You set 'heatmap_x_axis_asis = no', while the x-axis (i.e. first row) in your data contains a non-numeric character.")
+    if (is_no(p$heatmap_y_axis_asis) & is_really_character(p$data[, 1])) error_msg("You set 'heatmap_y_axis_asis = no', while the y-axis (i.e. first column) in your data contains a non-numeric character.")
+  }
+  
   return(p)
 }

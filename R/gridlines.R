@@ -1,7 +1,9 @@
 gridlines <- function(p) {
   print_debug_info(p)
-    
-  graphics::abline(h = if (p$turn) NULL else p$y_at, v = if (p$turn) p$x_at else NULL, lwd = p$grid_lines_lwd, col = p$grid_lines_col)
+  
+  if (!is_heatmap(p)) {
+    graphics::abline(h = if (p$turn) NULL else p$y_at, v = if (p$turn) p$x_at else NULL, lwd = p$grid_lines_lwd, col = p$grid_lines_col)
+  }  
 
   if (is_yes(p$x_axis_bold_if_zero)) {
     if (p$turn) {

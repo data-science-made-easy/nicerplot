@@ -90,6 +90,13 @@ set_lims <- function(p) {
     if (RIGHT == elt$y_axis) p$y_r_lim <- range(c(p$y_r_lim, elt$low, elt$high), na.rm = T)
   }
   
+  #
+  ## HEATMAP
+  #
+  if (is_heatmap(p) & !p$y_l_lim_by_user) {
+    p$y_l_lim <- p$y_lim #0.5 + c(0, length(p$x))
+  }
+  
   # hline_bold
   if (is_set(p$hline_bold) & !p$y_l_lim_by_user) p$y_l_lim <- range(c(p$y_l_lim, p$hline_bold), na.rm = T)
 # }
@@ -110,49 +117,49 @@ find_y_r_scaling <- function(p) {
   if (!any(is_yr(p)) & !whisker_right) return(p)
 
   n_labels <- length(p$y_at)
-  if (is_set(p$y_r_lab)) {
-    if (n_labels != length(p$y_r_lab)) error_msg("At your left y-axis you have ", n_labels, " values, while at your right y-axis you have ", length(p$y_r_lab), " values. Please update the values of y_r_lab. (Now: ", p$y_r_lab, ".)")
-      y_r_lab <- as.numeric(p$y_r_lab)
+  if (is_set(p$y_r_at)) {
+    if (n_labels != length(p$y_r_at)) error_msg("At your left y-axis you have ", n_labels, " values, while at your right y-axis you have ", length(p$y_r_at), " values. Please update the values of y_r_at. (Now: ", p$y_r_at, ".)")
+      y_r_at <- p$y_r_at
   } else { # find new labs right
     low  <- p$y_r_lim[1]
     high <- p$y_r_lim[2]
 
     if (!p$y_r_scale_auto | p$y_r_lim_by_user) {
-      y_r_lab <- seq(low, high, length = n_labels)
+      y_r_at <- seq(low, high, length = n_labels)
     } else {
-      y_r_lab <- pretty(c(low, high), n = n_labels)
-      n       <- n_labels - length(y_r_lab)
-      delta   <- diff(head(y_r_lab, 2))
+      y_r_at <- pretty(c(low, high), n = n_labels)
+      n       <- n_labels - length(y_r_at)
+      delta   <- diff(head(y_r_at, 2))
       while (0 != n) {
         if (0 < n) {
           for (i in n:1) { # we don't have enough labels right, yet
             # for reasons of simplicity, just add equidistant labels at top/bottom
-            if (low - y_r_lab[1] < tail(y_r_lab, 1) - high) {
-              y_r_lab <- c(y_r_lab[1] - delta, y_r_lab) # add below
+            if (low - y_r_at[1] < tail(y_r_at, 1) - high) {
+              y_r_at <- c(y_r_at[1] - delta, y_r_at) # add below
             } else {
-              y_r_lab <- c(y_r_lab, tail(y_r_lab, 1) + delta) # add above
+              y_r_at <- c(y_r_at, tail(y_r_at, 1) + delta) # add above
             }
           }
         } else { # we have too many labels right
           # chop in half
-          y_r_lab <- odd_elements(y_r_lab) # potentially slightly suboptimal :-#
-          delta   <- diff(head(y_r_lab, 2))
+          y_r_at <- odd_elements(y_r_at) # potentially slightly suboptimal :-#
+          delta  <- diff(head(y_r_at, 2))
         }      
-        n <- n_labels - length(y_r_lab)
+        n <- n_labels - length(y_r_at)
       }
     }
   }
   
   # New labels implies y_r_lim
-  if (!p$y_r_lim_by_user) p$y_r_lim <- c(y_r_lab[1], tail(y_r_lab, 1))
+  if (!p$y_r_lim_by_user) p$y_r_lim <- c(y_r_at[1], tail(y_r_at, 1))
   
   # Get transformation
-  slope <- (p$y_at[1] - tail(p$y_at, 1)) / (y_r_lab[1] - tail(y_r_lab, 1))
-  inter <- p$y_at[1] - slope * y_r_lab[1]
+  slope <- (p$y_at[1] - tail(p$y_at, 1)) / (y_r_at[1] - tail(y_r_at, 1))
+  inter <- p$y_at[1] - slope * y_r_at[1]
   
   # Export labels
   if (!is_set(p$y_r_lab)) {
-    p$y_r_lab <- fix_numbers(y_r_lab, p$y_r_n_decimals, p$decimal_mark, big_mark = if (p$y_lab_big_mark_show) p$big_mark else "") # converts numbers to string with right number of decimals and right decimal separator
+    p$y_r_lab <- fix_numbers(y_r_at, p$y_r_n_decimals, p$decimal_mark, big_mark = if (p$y_lab_big_mark_show) p$big_mark else "") # converts numbers to string with right number of decimals and right decimal separator
   }
   
   # Export scaling
@@ -184,6 +191,7 @@ get_pretty_date_lab <- function(p, dates) {
   print_debug_info(p)
 
   y <- lubridate::year(dates)
+  q <- lubridate::quarter(dates)
   m <- lubridate::month(dates)
   d <- lubridate::day(dates)
 
@@ -197,6 +205,8 @@ get_pretty_date_lab <- function(p, dates) {
     # year
     lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "yyyy", replacement = as.character(y[i]))
     lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "yy", replacement = as.character(stringr::str_sub(y[i], 3, 4)))
+    # quarter
+    lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "q", replacement = as.character(q[i]))
     # day
     lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "dd", replacement = as.character(stringr::str_pad(d[i], 2, pad = "0")))
     lab[i] <- stringr::str_replace_all(string = lab[i], pattern = "d", replacement = as.character(d[i]))
@@ -219,13 +229,12 @@ get_pretty_date_lab <- function(p, dates) {
 
 set_labs <- function(p) {
   print_debug_info(p)
-
   # set x_at, based on x_at_date (i.e. convert dates to numbers)
   if (is_set(p$x_at_date)) {
     # validate
     n_dashes <- stringr::str_count(string = p$x_at_date, pattern = "-")
     if (1 < length(unique(n_dashes))) {
-      error_msg("The dates specified for parameter x_at_dates have different formats. Please specify all values in one and the same format. Possible formats for 'x_at_date' are: 'yyyy-mm-dd', 'yy-m' (or a combination), where dd = 1..31, mm = 1..12, and year can be specified by two or four digits (e.g., 2022-3, 22-03 are equivalent).")
+      error_msg("The dates specified for parameter x_at_dates have different formats. Please specify all values in one and the same format. Possible formats for 'x_at_date' are: 'yyyy-mm-dd', 'yy-m' (or a combination of those elements), where dd = 1..31, mm = 1..12, and year can be specified by two or four digits (e.g., 2022-3 and 22-03 are equivalent).")
     } else {
       if (1 == n_dashes[1]) {
         x_date <- lubridate::ym(p$x_at_date)

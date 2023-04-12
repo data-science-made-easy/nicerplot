@@ -46,9 +46,28 @@ preprocess_data_grouping_variables <- function(p) {
       p$data[, 1] <- as_native_vec(p$data[, 1], sep = "this is improper use")
       if (is_really_character(p$data[, 1]) | is_yes(p$x_lab_as_text)) {
         # p$x_lab_as_text <- F
-        if (!is_set(p$x_lab)) p$x_lab <- p$data[, 1]
-        if (!is_set(p$x_at))  p$x_at <- 1:nrow(p$data)
-        if (!is_set(p$x))     p$x <- p$x_at
+        if (is_heatmap(p)) {
+          # x-axis (y-axis stuff fixed in heatmap_pre)
+          if (!is_set(p$heatmap_x_axis_asis)) p$heatmap_x_axis_asis <- is_really_character(colnames(p$data)) | is_yes(p$x_lab_as_text)
+          if (p$heatmap_x_axis_asis) {
+            if (!is_set(p$x_lab)) p$x_lab <- colnames(p$data)[-1]
+            if (!is_set(p$x_at))  p$x_at  <- 2:ncol(p$data) - 1
+            if (!is_set(p$x))     p$x     <- p$x_at
+          } else {
+            # if (!is_set(p$x_lab)) p$x_lab <- colnames(p$data)[-1]
+            # if (!is_set(p$x_at))  p$x_at  <- 2:ncol(p$data) - 1
+            # if (!is_set(p$x))     p$x     <- p$x_at
+            # if (!is_set(p$x_at))  p$x_at  <- 1:n_x
+            # if (!is_set(p$y_at))  p$y_at  <- 1:n_y
+            # # x,y lab
+            # if (!is_set(p$y_lab)) p$y_lab <- rev(p$x)
+            # if (!is_set(p$x_lab)) p$x_lab <- colnames(p$y)
+          }
+        } else {
+          if (!is_set(p$x_lab)) p$x_lab <- p$data[, 1]
+          if (!is_set(p$x_at))  p$x_at  <- 1:nrow(p$data)
+          if (!is_set(p$x))     p$x     <- p$x_at
+        }
       }
     }
   }

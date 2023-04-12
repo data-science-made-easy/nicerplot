@@ -1,7 +1,7 @@
 legend_pre <- function(p) {
   print_debug_info(p)
-  p$legend_type  <- p$type
-  p$legend_color <- p$color
+  if (!is_set(p$legend_type))  p$legend_type  <- p$type
+  if (!is_set(p$legend_color)) p$legend_color <- p$color
 
   # Remove text labels from legend
   if (any(is_label(p$legend_type))) {

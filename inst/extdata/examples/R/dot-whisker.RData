@@ -1,3 +1,3 @@
-structure(list(X1 = c("scenario 1", "scenario 2", "scenario 3", 
-"scenario 4"), mean = c(3.5, 1, 9, 7), range = c(0.5, 0.5, 6, 
-6), range = c(5, 1.5, 12, 10)), row.names = c(NA, 4L), class = "data.frame")
+structure(list(c("scenario 1", "scenario 2", "scenario 3", "scenario 4"
+), c(3.5, 1, 9, 7), c(0.5, 0.5, 6, 6), c(5, 1.5, 12, 10)), names = c(NA, 
+"mean", "range", "range"), row.names = c(NA, 4L), class = "data.frame")

@@ -1,3 +1,4 @@
-structure(list(X1 = c(1, 10), `line_lty = 1` = c(1, 2), `line_lty = 2` = c(2, 
-3), `line_lty = 3` = c(3, 4), `line_lty = 4` = c(4, 5), `line_lty = 5` = c(5, 
-6), `line_lty = 6` = c(6, 7)), row.names = 1:2, class = "data.frame")
+structure(list(c(1, 10), c(1, 2), c(2, 3), c(3, 4), c(4, 5), 
+    c(5, 6), c(6, 7)), names = c(NA, "line_lty = 1", "line_lty = 2", 
+"line_lty = 3", "line_lty = 4", "line_lty = 5", "line_lty = 6"
+), row.names = 1:2, class = "data.frame")

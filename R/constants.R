@@ -70,6 +70,7 @@ LINE_SET      <- c(LINE, LINE_DASH)
 AREA_STACK    <- "area="
 AREA          <- "area"
 AREA_SET      <- c(AREA, AREA_STACK)
+HEATMAP       <- "heatmap"
 HIST          <- "histogram"
 BAR_NEXT      <- "bar--"
 BAR_STACK     <- "bar="
@@ -91,6 +92,12 @@ ALIGNMENT     <- c("left", "center", "right")
 TIME_UNITES   <- c("years", "quarters", "months", "weeks", "days")
 MONTH_NL      <- c("jan", "feb", "mar", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec")
 MONTH_EN      <- c("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "okt", "nov", "dec")
+
+# HEATMAP COLOR PALETTES
+CUSTOM   <- "custom"
+LOW_HIGH <- "low_high"
+PALETTE_HEATMAP_EXTREME <- "palette_heatmap_extreme"
+PALETTE_HEATMAP_MIDDLE  <- "palette_heatmap_middle"
 
 # LEGEND
 LEGEND_BLOCK    <- c(AREA_SET, BAR_SET, MAP)

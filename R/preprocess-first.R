@@ -5,7 +5,11 @@ preprocess_first <- function(p) {
   if (!is_set(p$name)) p$name <- colnames(p$y)
 
   # Set total number of series
-  p$n_series <- ncol(p$y)
+  if (is_heatmap(p)) {
+    p$n_series <- 1
+  } else {
+    p$n_series <- ncol(p$y)
+  }
   p$n_series_without_whiskers <- p$n_series - length(which(is_whisker(p$type)))
 
   # Is y_at set by user?
@@ -28,7 +32,6 @@ preprocess_first <- function(p) {
   for (param in c("x_lim", "y_l_lim", "y_r_lim")) {
     if (is_set(p[[param]])) p[[param]] <- sort(p[[param]])
   }
-  
-  
+
   return(p)
 }

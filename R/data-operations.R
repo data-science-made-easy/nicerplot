@@ -20,7 +20,7 @@ data_operations <- function(p) {
   for (j in 1:ncol(p$y)) if (!is_param(p$type[j])) p$y[, j] <- as.numeric(as.character(p$y[, j])) # cast to numeric
 
   # Check all data numeric
-  if (!is.numeric(p$x)) error_msg("Some x-value(s) seem not numeric.")
+  if (!is.numeric(p$x) & !is_heatmap(p)) error_msg("Some x-value(s) seem not numeric.")
   for (j in 1:ncol(p$y)) if (!is_param(p$type[j])) if (!all(is.numeric(p$y[, j]))) error_msg("Some datapoint(s) seem not numeric.")
 
   # Select series and change order

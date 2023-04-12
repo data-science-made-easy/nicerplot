@@ -1,8 +1,8 @@
-structure(list(X1 = c("geslacht", "geslacht", "afkomst", "afkomst", 
+structure(list(c("geslacht", "geslacht", "afkomst", "afkomst", 
 "afkomst", "inkomen", "inkomen", "inkomen", "opleiding ouders", 
-"opleiding ouders"), X2 = c("jongens", "meisjes", "Nederlands", 
-"Westers", "niet-Westers", "laag", "midden", "hoog", "geen HO", 
-"HO"), `als centraal examen meetelt` = c(8.723, 9.711, 8.177, 
-10.551, 16.969, 10.561, 9.359, 8.699, 11.197, 8.027), `als centraal examen niet meetelt` = c(8.752, 
-5.072, 6.348, 7.359, 9.672, 7.68, 6.888, 6.345, 7.971, 6.001)), row.names = c(NA, 
-10L), class = "data.frame")
+"opleiding ouders"), c("jongens", "meisjes", "Nederlands", "Westers", 
+"niet-Westers", "laag", "midden", "hoog", "geen HO", "HO"), c(8.723, 
+9.711, 8.177, 10.551, 16.969, 10.561, 9.359, 8.699, 11.197, 8.027
+), c(8.752, 5.072, 6.348, 7.359, 9.672, 7.68, 6.888, 6.345, 7.971, 
+6.001)), names = c(NA, NA, "als centraal examen meetelt", "als centraal examen niet meetelt"
+), row.names = c(NA, 10L), class = "data.frame")

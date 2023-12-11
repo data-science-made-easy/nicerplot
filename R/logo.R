@@ -16,7 +16,8 @@ logo <- function(p) {
   if (!p$logo) return(p)
 
 #  logo_matrix <- png::readPNG(fix_path_rel(p$logo_file), T) # put this back!! TODO
-  logo_matrix <- png::readPNG("./img/rijkslogo.png", T) # just for chatcpb
+  logo_file <- system.file("extdata", "rijkslogo.png", package = "nicerplot")
+  logo_matrix <- png::readPNG(logo_file, T) # just for chatcpb
 
   # Keep aspect ratio, given logo_height
   w_aspect <- (p$logo_height * ncol(logo_matrix) / nrow(logo_matrix)) / p$width

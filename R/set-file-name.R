@@ -5,7 +5,7 @@ set_file_name <- function(p) {
   if (!is_set(p$file)) {
     if (is_set(p$id))
       p$file <- p$id            # try id
-    else if (is_set(p$title))
+    else if (is_set(p$title) & (0 < nchar(p$title)))
       p$file <- p$title         # try title
     else if (is_set(p$tab))
       p$file <- p$tab           # try tab name
@@ -13,7 +13,7 @@ set_file_name <- function(p) {
       p$file <- "james-report"  # just a report name
     } else {
       p$file <- "james-figure"  # just a file name
-    }    
+    }
   }  
 
   if (p$time_stamp) p$file <- paste0(p$file, "-", time_stamp())

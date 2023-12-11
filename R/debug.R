@@ -1,9 +1,6 @@
 print_var <- function(x) print(paste0(as.list(match.call())[[2]], ": ", x))
 print_debug_info <- function(p)   if (p$debug & !creating_report_now()) {
   cat(paste0("DEBUG INFO>> ", deparse(sys.calls()[[sys.nframe()-1]]), "\n"))
-  # print(paste(">>", p$x))
-  # cat(paste0(" >> ", paste(p$png_file, collapse = ", "), "\n"))
-  # if (is_set(p$legend_type)) cat(paste0(" >> ", p$legend_type, "\n"))
   p. <<- p
   # if (is_set(p$x_at)) stop('found it')
 }

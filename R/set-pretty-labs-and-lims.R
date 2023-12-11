@@ -2,6 +2,7 @@ is_english <- function(p) is.element("english", p$style)
 
 cut_data <- function(vec, lim) {
   if (!is_set(lim)) return(vec)
+  lim   <- sort(lim) # to catch negative numbers
   index <- which(vec < lim[1] | lim[2] < vec)
   if (length(index)) vec <- vec[-index]
   vec

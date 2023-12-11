@@ -37,7 +37,7 @@ titles <- function(p) {
   }
   
   # x-title
-  graphics::text(get_adj(if (p$turn) p$y_title_align else p$x_title_align)$x, (p$margin_south - p$x_title_v_shift) / p$height, labels = set_newline(p$x_title), adj = get_adj(if (p$turn) p$y_title_align else p$x_title_align)$adj, font = hack_font(p, 3), cex = p$x_title_font_size, col = get_col_from_p(p, p$x_title_col), family = p$font)
+  graphics::text(get_adj(if (p$turn) p$y_title_align_turn else p$x_title_align)$x, (p$margin_south - p$x_title_v_shift) / p$height, labels = set_newline(p$x_title), adj = get_adj(if (p$turn) p$y_title_align_turn else p$x_title_align)$adj, font = hack_font(p, 3), cex = p$x_title_font_size, col = get_col_from_p(p, p$x_title_col), family = p$font)
 
   # x-title top
   if (is_set(p$y_r_title)) {
@@ -47,7 +47,7 @@ titles <- function(p) {
   }
   
   # y-title "left"
-  graphics::text(get_adj(if (p$turn) p$x_title_align else p$y_title_align)$x, 1 - (p$margin_north - p$y_title_v_shift) / p$height, labels = set_newline(p$y_title), font = hack_font(p, 3), cex = p$y_title_font_size, adj = get_adj(if (p$turn) p$x_title_align else p$y_title_align)$adj, col = get_col_from_p(p, p$y_title_col), family = p$font)
+  graphics::text(get_adj(if (p$turn) p$x_title_align_turn else p$y_title_align)$x, 1 - (p$margin_north - p$y_title_v_shift) / p$height, labels = set_newline(p$y_title), font = hack_font(p, 3), cex = p$y_title_font_size, adj = get_adj(if (p$turn) p$x_title_align_turn else p$y_title_align)$adj, col = get_col_from_p(p, p$y_title_col), family = p$font)
 
   p_return
 }

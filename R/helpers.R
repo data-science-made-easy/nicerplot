@@ -63,6 +63,11 @@ get_param <- function(name, style = DEFAULT) {
   } 
 }
 
+param_exists <- function(name) {
+  index <- which(name == pkg.env$globals$param)
+  if (!length(index)) return(FALSE) else return(TRUE)
+}
+
 param_is_list_type <- function(name) {
   index <- which(name == pkg.env$globals$param)
   if (!length(index)) 

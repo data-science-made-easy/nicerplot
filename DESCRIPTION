@@ -1,7 +1,7 @@
 Package: nicerplot
 Type: Package
 Title: Create NiceR Plots and Save as PNG/PDF/JPEG/SVG
-Version: 0.2.8
+Version: 0.2.9
 Authors@R: person("Martijn", "Dijkstra", email = "m.dijkstra@cpb.nl", role = c("cre","aut"))
 Description: Create elegant data visualizations and save them in high resolution PNG or PDF. Input can be an xlsx-file, a CBS-url, a data frame, a list, a matrix, or a time-series (mts, ts) object.
 License: MIT + file LICENSE

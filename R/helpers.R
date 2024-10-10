@@ -19,7 +19,7 @@ hack_font <- function(p, x) {
   return(x)
 }
 
-fix_lty_vector_graphics <- function(lty) if (3 == lty & (creating_pdf_now() | creating_svg_now())) return(2) else return(lty)
+fix_lty_vector_graphics <- function(lty) if (3 == lty & (creating_pdf_now() | creating_svg_now())) return(2) else if (is.na(lty)) return(1) else return(lty)
 
 # append multiple values
 mappend <- function(x, values, after = length(x)) {

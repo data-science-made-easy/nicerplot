@@ -85,6 +85,7 @@ j_legend <- function(p) {
   legend_txt_length <- 0
   this_order        <- if (is_set(p$legend_order)) p$legend_order else if (is_set(p$legend_type)) 1:length(p$legend_type) else NULL
   for (j in this_order) {
+
     n_th_item <- which(j == this_order)
     col_j <- (n_th_item - 1) %/% p$legend_n_per_column
     if (0 < col_j & 0 == (n_th_item - 1) %% p$legend_n_per_column) {
@@ -97,8 +98,7 @@ j_legend <- function(p) {
 
     # Legend line  
     if (is.element(p$legend_type[j], LINE_SET)) {
-      graphics::lines(x_left + c(0, symbol_width), rep(y_line, 2), col = get_col_from_p(p, p$legend_color[j]), lwd = p$line_lwd[j], lty = fix_lty_vector_graphics(p$line_lty[j]))
-      
+      graphics::lines(x_left + c(0, symbol_width), rep(y_line, 2), col = get_col_from_p(p, p$legend_color[j]), lwd = p$line_lwd[j], lty = fix_lty_vector_graphics(p$line_lty[j]))    
       # TODO move color_pre to start of pipeline so color determination of symbols can be in linez_pre available for legend
       # TODO code below is duplicated from linez.R; please keep only one copy
       if (0 != p$line_symbol[j]) {
@@ -117,7 +117,7 @@ j_legend <- function(p) {
         graphics::points(x_left + symbol_width / 2, y_line, pch = p$line_symbol[j], col = this_col, cex = p$line_symbol_size[j])
       }
     }
-      
+
     # Legend block
     if (is.element(p$legend_type[j], LEGEND_BLOCK)) graphics::polygon(x = c(x_left, x_left + symbol_width, x_left + symbol_width, x_left), y = c(y_line, y_line, y_line + symbol_height, y_line + symbol_height) - symbol_height / 2, col = get_col_from_p(p, p$legend_color[j]), border = NA)
     
@@ -166,7 +166,7 @@ j_legend <- function(p) {
       
       graphics::points(x_left + symbol_width / 2, y_line, col = this_col, pch = this_pch, lwd = if (1 == length(p$dot_lwd)) p$dot_lwd else p$dot_lwd[is_nth_dot(j, p)], cex = p$dot_size) # , cex = p$dot_size ... or  keep constant cex constant?
     }
-    
+
     if (LEGEND_WHISKER == p$legend_type[j]) {
       whisk_line <- function(x, y) graphics::lines(x, y, col = get_col_from_p(p, p$legend_color[j]), lwd = p$whisker_lwd)
       if (p$turn) {

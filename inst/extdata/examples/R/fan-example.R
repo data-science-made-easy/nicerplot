@@ -1,3 +1,3 @@
-source('M:/p_james/release/2023-03-30/R-header.R')
-d <- dget('M:/p_james/release/2023-03-30/examples/R/fan-example.RData')
+source('M:/p_james/release/2024-10-10/R-header.R')
+d <- dget('M:/p_james/release/2024-10-10/examples/R/fan-example.RData')
 nplot(d, style = c('fan'), title = c('Inflatie'), y_title = c('mutatie in %'), open = FALSE)

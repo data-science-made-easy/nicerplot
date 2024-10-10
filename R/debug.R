@@ -1,6 +1,8 @@
 print_var <- function(x) print(paste0(as.list(match.call())[[2]], ": ", x))
 print_debug_info <- function(p)   if (p$debug & !creating_report_now()) {
   cat(paste0("DEBUG INFO>> ", deparse(sys.calls()[[sys.nframe()-1]]), "\n"))
+#  print(p$y_l_lim)
+#  print(p$y_force_include_zero)
   p. <<- p
   # if (is_set(p$x_at)) stop('found it')
 }

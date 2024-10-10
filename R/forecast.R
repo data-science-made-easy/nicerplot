@@ -61,7 +61,7 @@ forecast <- function(p) {
   if (0 < x_exceed) x <- x - x_exceed
   
   y_high <- tail(p$y_at, 1)
-  y_low  <- p$y_at[1]
+  # y_low  <- p$y_at[1]
     
   # determine x, y
   if (p$turn) {

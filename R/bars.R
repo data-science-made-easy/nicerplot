@@ -15,8 +15,8 @@ bars_pre <- function(p) {
 
   stack_exists       <- any(is_bar_stack(p$type))
 
-  # 
-  if (stack_exists) p$y_force_include_zero <- TRUE # must do so for stacked bars.
+  # include y = 0?
+  if (!p$y_force_include_zero_by_user & stack_exists) p$y_force_include_zero <- TRUE # must do so for stacked bars.
 
   p$n_bar_sets       <- length(p$x) # N
   p$n_stacks_per_set <- length(which(p$type %in% BAR_NEXT)) + stack_exists # n_bar-- + 1_bar=

@@ -1,3 +1,3 @@
-source('M:/p_james/release/2023-03-30/R-header.R')
-d <- dget('M:/p_james/release/2023-03-30/examples/R/geo-first-example.RData')
+source('M:/p_james/release/2024-10-10/R-header.R')
+d <- dget('M:/p_james/release/2024-10-10/examples/R/geo-first-example.RData')
 nplot(d, style = c('map'), geo_cbs_map = c('arbeidsmarktregio_2020'), open = FALSE)

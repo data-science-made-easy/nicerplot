@@ -4,14 +4,20 @@ geo_init <- function(p) {
   print_debug_info(p)
   
   # Determine layer
-  if (!is_set(p$geo_cbs_map)) error_msg("Please set 'geo_cbs_map' (see manual for options).")
+  # if (!is_set(p$geo_cbs_map)) error_msg("Please set 'geo_cbs_map' (see manual for options).")
+  if (!is_set(p$cbs_map))      error_msg("Please set 'cbs_map' (see manual for options).")
+  if (!is_set(p$cbs_map_year)) error_msg("Please set 'cbs_map_year' (see manual for options).")
 
-  p$geo_url_polygon  <- paste0(p$geo_cbs_url_base, p$geo_cbs_map, p$geo_cbs_url_polygon)
-  p$geo_url_centroid <- paste0(p$geo_cbs_url_base, p$geo_cbs_map, p$geo_cbs_url_centroid)
+  # p$geo_url_polygon  <- paste0(p$geo_cbs_url_base, p$geo_cbs_map, p$geo_cbs_url_polygon)
+  # p$geo_url_centroid <- paste0(p$geo_cbs_url_base, p$geo_cbs_map, p$geo_cbs_url_centroid)
 
   # Read data
-  p$geo_region_data   <- sf::st_read(p$geo_url_polygon,   stringsAsFactors = F, quiet = T)
-  p$geo_centroid_data <- sf::st_read(p$geo_url_centroid,  stringsAsFactors = F, quiet = T)
+  # 
+  # p$geo_region_data   <- sf::st_read(p$geo_url_polygon,   stringsAsFactors = F, quiet = T)
+  # p$geo_centroid_data <- sf::st_read(p$geo_url_centroid,  stringsAsFactors = F, quiet = T)
+
+  p$geo_region_data   <- cbsodataR::cbs_get_sf(p$cbs_map, p$cbs_map_year, verbose = FALSE)
+  p$geo_centroid_data <- suppressWarnings(sf::st_centroid(p$geo_region_data))
 
   #
   ## Filter data
@@ -115,7 +121,7 @@ geo_pre <- function(p) {
   # Color based on value in data
   if (is.element("value", colnames(p$data))) {
     # cast value column
-    p$data <- transform(p$data, value = as.numeric(p$data$value))
+    p$data <- transform(p$data, value = as.numeric(p$data[, "value"]))
     
     # If user did not set 'geo_col_threshold', then use min and max
     if (!is_set(p$geo_col_threshold)) {

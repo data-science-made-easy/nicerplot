@@ -28,6 +28,10 @@ preprocess_first <- function(p) {
   # Is line_lty user set?
   p$line_lty_by_user <- is_set(p$line_lty)
   
+  # include y = 0?
+  p$y_force_include_zero_by_user <- is_set(p$y_force_include_zero)
+  if (!p$y_force_include_zero_by_user) p$y_force_include_zero <- FALSE
+  
   # Sort lims
   for (param in c("x_lim", "y_l_lim", "y_r_lim")) {
     if (is_set(p[[param]])) p[[param]] <- sort(p[[param]])

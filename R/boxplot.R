@@ -97,6 +97,8 @@ jbox <- function(p) {
       graphics::lines(x = c(co$xl, co$xr), y = c(co$yl, co$yh), col = this_col, lwd = p$line_lwd)
     }
     
+    ### ERROR TODO Hier gaat iets niet lekker. Je moet de positie van het label zelf kunnen bepalen. Als je alles in dezelfde kleur doet dan is de lijn van de mediaan niet goed zichtbaar :-O
+    
     # Now the median
     y_delta <- abs(co$yh - co$yl) * p$box_median_line_extension_factor
     median_col <- if (is_set(p$box_median_col)) get_col_from_p(p, p$box_median_col) else this_col # same as box

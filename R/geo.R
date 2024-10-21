@@ -37,8 +37,8 @@ geo_init <- function(p) {
   
   if (!is_set(p$data)) { # Init stuff in xlsx to make user's life easier    
     n_colors <- if (is_set(p$name)) length(p$name) else min(3, length(p$geo_region_data$statnaam))
-    p$geo_n_regions <- length(p$geo_region_data$statnaam)
-    p$data <- cbind(region = p$geo_region_data$statnaam, code = p$geo_region_data$statcode, value = 1:p$geo_n_regions, label = 1:p$geo_n_regions)
+    p$cbs_map_n_regions <- length(p$geo_region_data$statnaam)
+    p$data <- cbind(region = p$geo_region_data$statnaam, code = p$geo_region_data$statcode, value = 1:p$cbs_map_n_regions, label = 1:p$cbs_map_n_regions)
     
     print_progress(p, "Adding data tab '", p$tab, "' with geo regions to your file '", p$xlsx, "'...\n\n")    
     wb <- openxlsx::loadWorkbook(p$xlsx)
@@ -51,8 +51,8 @@ geo_init <- function(p) {
     print_progress(p, "Done. Please re-open '", p$xlsx, "' and edit the color column of tab '", p$tab, "'.\n")
   }
   
-  if (is_set(p$geo_n_regions)) stopifnot(p$geo_n_regions == nrow(p$data)) else {
-    p$geo_n_regions <- nrow(p$data)
+  if (is_set(p$cbs_map_n_regions)) stopifnot(p$cbs_map_n_regions == nrow(p$data)) else {
+    p$cbs_map_n_regions <- nrow(p$data)
   }
 
   p
@@ -62,7 +62,7 @@ geo_validate <- function(p) {
   print_debug_info(p)
   
   # Check column names
-  if (!all(is.element(colnames(p$data), p$geo_data_column_names))) error_msg("The column names of geo-tab '", p$tab, "' must be equal to or a subset of: ", paste(p$geo_data_column_names, collapse = ", "), ".")
+  if (!all(is.element(colnames(p$data), p$cbs_map_data_column_names))) error_msg("The column names of geo-tab '", p$tab, "' must be equal to or a subset of: ", paste(p$cbs_map_data_column_names, collapse = ", "), ".")
 
   # Check presence identifier
   if (!any(is.element(c("region", "code"), colnames(p$data)))) {
@@ -87,18 +87,18 @@ geo_validate <- function(p) {
   }
 
   # Check consistency if both present
-  if (all(is.element(c("region", "code"), colnames(p$data)))) for (i in 1:p$geo_n_regions) {
+  if (all(is.element(c("region", "code"), colnames(p$data)))) for (i in 1:p$cbs_map_n_regions) {
     if (!is.na(p$data[i, "region"]) & !is.na(p$data[i, "code"])) {
       index <- which(p$geo_region_data$statcode == p$data[i, "code"])
-      if (p$geo_region_data$statnaam[index] != p$data[i, "region"]) error_msg("Your entry 'code = ", p$data[i, "code"], "' has 'region = ", p$data[i, "region"], "', while in the original data set '", p$geo_cbs_map, "', the region name is '", p$geo_region_data$statnaam[index], "'. Please make the two equal or remove the region name from your data set.")
+      if (p$geo_region_data$statnaam[index] != p$data[i, "region"]) error_msg("Your entry 'code = ", p$data[i, "code"], "' has 'region = ", p$data[i, "region"], "', while in the original data set '", p$cbs_map, "', the region name is '", p$geo_region_data$statnaam[index], "'. Please make the two equal or remove the region name from your data set.")
     }
   }
     
-  # If data has column value, then geo_col_threshold must be set too
-  if ("value" %in% colnames(p$data)) if (!is_set(p$geo_col_threshold)) print_warning("Your geo-tab '", p$tab, "' has a column 'value', while parameter 'geo_col_threshold' is not set by you (now auto-set to min/max).")
+  # If data has column value, then cbs_map_col_threshold must be set too
+  if ("value" %in% colnames(p$data)) if (!is_set(p$cbs_map_col_threshold)) print_warning("Your geo-tab '", p$tab, "' has a column 'value', while parameter 'cbs_map_col_threshold' is not set by you (now auto-set to min/max).")
   
-  # Validate geo_col_threshold  
-  if (is_set(p$geo_col_threshold)) if (is.unsorted(p$geo_col_threshold, strictly = T)) error_msg("The values in your parameter 'geo_col_threshold' should be strictly increasing. Now they are not: ", paste0(p$geo_col_threshold, collapse = ", "), ".")
+  # Validate cbs_map_col_threshold  
+  if (is_set(p$cbs_map_col_threshold)) if (is.unsorted(p$cbs_map_col_threshold, strictly = T)) error_msg("The values in your parameter 'cbs_map_col_threshold' should be strictly increasing. Now they are not: ", paste0(p$cbp_map_col_threshold, collapse = ", "), ".")
   
   p
 }
@@ -123,18 +123,18 @@ geo_pre <- function(p) {
     # cast value column
     p$data <- transform(p$data, value = as.numeric(p$data[, "value"]))
     
-    # If user did not set 'geo_col_threshold', then use min and max
-    if (!is_set(p$geo_col_threshold)) {
-      p$geo_col_threshold <- seq(from = min(p$data[, "value"], na.rm = T), to = max(p$data[, "value"], na.rm = T), length = length(p$palette))
+    # If user did not set 'cbs_map_col_threshold', then use min and max
+    if (!is_set(p$cbs_map_col_threshold)) {
+      p$cbs_map_col_threshold <- seq(from = min(p$data[, "value"], na.rm = T), to = max(p$data[, "value"], na.rm = T), length = length(p$palette))
     }
 
-    for (i in 1:p$geo_n_regions) if (!is_set(p$region_color[i])) {
+    for (i in 1:p$cbs_map_n_regions) if (!is_set(p$region_color[i])) {
       this_value <- as.numeric(p$data[i, "value"])
       # detect this value in palette
-      for (j in 2:length(p$geo_col_threshold)) {
-        if (!is.na(this_value)) if (p$geo_col_threshold[j - 1] <= this_value & this_value <= p$geo_col_threshold[j]) {
-          this_value <- this_value - p$geo_col_threshold[j - 1]
-          this_value <- this_value / (p$geo_col_threshold[j] - p$geo_col_threshold[j - 1])
+      for (j in 2:length(p$cbs_map_col_threshold)) {
+        if (!is.na(this_value)) if (p$cbs_map_col_threshold[j - 1] <= this_value & this_value <= p$cbs_map_col_threshold[j]) {
+          this_value <- this_value - p$cbs_map_col_threshold[j - 1]
+          this_value <- this_value / (p$cbs_map_col_threshold[j] - p$cbs_map_col_threshold[j - 1])
           rgb_col    <- grDevices::colorRamp(p$palette[c(j - 1, j)], interpolate = "linear", space = "rgb")(this_value)
           hex_col    <- grDevices::rgb(rgb_col[1,1], rgb_col[1,2], rgb_col[1,3], maxColorValue = 255)
           p$region_color[i] <- hex_col
@@ -163,7 +163,7 @@ geo_pre <- function(p) {
   }
   
   # Legend
-  if (!is_set(p$name)) p$name <- p$geo_col_threshold
+  if (!is_set(p$name)) p$name <- p$cbs_map_col_threshold
   p$n_series     <- if (is_set(p$name)) length(p$name) else 0
   p$legend_type  <- rep(MAP, p$n_series)
   p$legend_color <- p$color
@@ -197,7 +197,7 @@ geo_plot <- function(p) {
   }
   
   # Plot map
-  plot(sf::st_geometry(p$geo_region_data)[index_match], col = p$region_color, border = p$geo_border_col, lwd = p$geo_border_lwd)
+  plot(sf::st_geometry(p$geo_region_data)[index_match], col = p$region_color, border = p$cbs_map_border_col, lwd = p$cbs_map_border_lwd)
   
   # Add text labels
   if (is_set(p$region_label)) {

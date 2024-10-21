@@ -110,7 +110,7 @@ axes <- function(p) {
     if (p$turn) {
       lheight <- graphics::par("csi") * grDevices::cm(1)
       this_line <- (p$group_label_offset) / lheight
-      graphics::mtext(side = 2, at = p$group_x, text = set_newline(unique(p$group)), col = get_col_from_p(p, p$group_col), las = 2, adj = 0, line = this_line, cex.axis = p$group_font_size, font = hack_font(p, p$group_font), family = p$font)
+      graphics::mtext(side = 2, at = p$group_x, text = set_newline(unique(p$group)), col = get_col_from_p(p, p$group_col), las = 2, adj = 0, line = this_line, cex = p$group_font_size, font = hack_font(p, p$group_font), family = p$font)
     } else {
       group_x_mean <- NULL
       unique_group_names <- unique(p$group)

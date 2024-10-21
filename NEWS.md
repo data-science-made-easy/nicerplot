@@ -1,3 +1,4 @@
-# nicerplot 0.2.3
+# nicerplot 24.10.22
 
-* Added a `NEWS.md` file to track changes to the package.
+* Initial CRAN submission.
+Now use date as version

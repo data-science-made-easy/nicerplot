@@ -174,15 +174,15 @@ figure_with_params <- function(report, id = "", ...) {
   if (!exists("generate_manual_for_package")) generate_manual_for_package <- FALSE # Man.. what a hack :-O
 
   # Figure path
-  if ("geo-first-example" == id) { # TODO WORKAROUND FOR BUG ON MAC: suddenly can't read *.gpkg file anymore
-    p$figure_path <- "ext/img/geo-first-example.png"
-  } else if ("geo-three-cols" == id) {
-    p$figure_path <- "ext/img/geo-three-cols.png"
-  } else if ("geo-participatie-gemeenten" == id) {
-    p$figure_path <- "ext/img/geo-participatie-gemeenten.png"
-  } else {
+  # if ("geo-first-example" == id) { # TODO WORKAROUND FOR BUG ON MAC: suddenly can't read *.gpkg file anymore
+  #   p$figure_path <- "ext/img/geo-first-example.png"
+  # } else if ("geo-three-cols" == id) {
+  #   p$figure_path <- "ext/img/geo-three-cols.png"
+  # } else if ("geo-participatie-gemeenten" == id) {
+  #   p$figure_path <- "ext/img/geo-participatie-gemeenten.png"
+  # } else {
     p$figure_path <- nplot(p, lock = F)
-  }
+  # }
   rmd_link_to_figure <- if ("pdf" == report$report_format) paste0("\\includegraphics{", p$figure_path, "}") else paste0("![](", p$figure_path, ")")
 
   # xlsx, RData, R path
